@@ -1,2 +1,0 @@
-# mayanksuman.blog
-Blog Content
