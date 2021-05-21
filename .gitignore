@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# No output files
+output/
+
 # C extensions
 *.so
 

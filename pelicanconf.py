@@ -4,7 +4,10 @@ from __future__ import unicode_literals
 from datetime import datetime
 
 AUTHOR = 'Mayank Suman'
-SITEURL = 'http://localhost:8000'
+SITEURL = 'https://mayanksuman.in'
+DOMAIN = SITEURL
+FEED_DOMAIN = SITEURL
+HTTPS = True
 SITENAME = f"{AUTHOR}'s Blog"
 SITETITLE = AUTHOR
 SITESUBTITLE = "Research Scholar, IIT Kharagpur"
