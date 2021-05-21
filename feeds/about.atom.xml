@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog - about</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/about.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2020-02-09T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>About me</title><link href="https://mayanksuman.in/posts/09_Feb_2020_about-me/" rel="alternate"></link><published>2020-02-09T00:00:00+05:30</published><updated>2020-02-09T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2020-02-09:/posts/09_Feb_2020_about-me/</id><summary type="html">&lt;p&gt;I am researcher studying/modeling climate change impacts on hydrological systems, statistical analysis of hydrological time series, and application of wavelet transformation and copula theory in hydroclimatic analysis.&lt;/p&gt;
+&lt;p&gt;I have recently submitted my Ph.D. Thesis titled “Analysis and Modeling of Climate Change Impact on Hydrological Extreme Events across India …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am researcher studying/modeling climate change impacts on hydrological systems, statistical analysis of hydrological time series, and application of wavelet transformation and copula theory in hydroclimatic analysis.&lt;/p&gt;
+&lt;p&gt;I have recently submitted my Ph.D. Thesis titled “Analysis and Modeling of Climate Change Impact on Hydrological Extreme Events across India” (work carried out under the supervision of &lt;a href="http://www.facweb.iitkgp.ac.in/~rajibmaity/"&gt;Prof. Rajib Maity&lt;/a&gt;, Department of Civil Engineering, Indian Institute of Technology Kharagpur). Earlier, I have received my B.Tech. degree in Civil Engineering from the National Institute of Technology Hamirpur, India, in 2013, and M.Tech. degree in Hydraulics and Water Resources from Department of Civil Engineering &lt;span class="caps"&gt;IIT&lt;/span&gt; Kharagpur, India, in 2015.&lt;/p&gt;
+&lt;p&gt;More academic details and my list of publication are available in &lt;a href="https://mayanksuman.in/about/cv.pdf"&gt;my Curriculum Vitae&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Apart from being a researcher, I am also&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;An avid Open Source enthusiast and hence, regular contributor to multiple Open Source project. I am also &lt;code&gt;Arctic Code Vault Contributor&lt;/code&gt; for 2020 Github Code Archive Program. More details are available at &lt;a href="https://github.com/mayanksuman"&gt;my github account&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A marital artist. I hold First Degree Black Belt (Shodan) in Kyokyushin-kan Karate.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="https://mayanksuman.in/pages/contact.html"&gt;Contact me&lt;/a&gt;.&lt;/p&gt;</content><category term="about"></category></entry><entry><title>Contact</title><link href="https://mayanksuman.in/posts/09_Feb_2020_contact/" rel="alternate"></link><published>2020-02-09T00:00:00+05:30</published><updated>2020-02-09T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2020-02-09:/posts/09_Feb_2020_contact/</id><summary type="html">&lt;!--
+     Before implementing this contact form make sure
+     1. you verify your form on formspree.io.
+--&gt;
+&lt;form action="https://formspree.io/xqkynjnj" class="wj-contact" id="my-form" method="POST"&gt;
+&lt;input name="email" placeholder="Email Address" type="text"/&gt;
+&lt;input name="name" placeholder="Name (Optional)" type="text"/&gt;
+&lt;textarea name="content" placeholder="Message" rows="10" type="text"&gt;&lt;/textarea&gt;
+&lt;input id="my-form-button" type="submit" value="Submit"/&gt;
+&lt;p id="my-form-status"&gt;&lt;/p&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  window.addEventListener("DOMContentLoaded", function() {
+
+    // get the form elements defined in your form HTML above
+
+    var form = document.getElementById("my-form");
+    var button = document.getElementById("my-form-button");
+    var status = document.getElementById("my-form-status");
+
+    // Success and Error functions for after the form is submitted
+
+    function success() {
+      form.reset();
+      button.style = "display: none ";
+      status.innerHTML = "Thanks …&lt;/script&gt;</summary><content type="html">&lt;!--
+     Before implementing this contact form make sure
+     1. you verify your form on formspree.io.
+--&gt;
+&lt;form action="https://formspree.io/xqkynjnj" class="wj-contact" id="my-form" method="POST"&gt;
+&lt;input name="email" placeholder="Email Address" type="text"/&gt;
+&lt;input name="name" placeholder="Name (Optional)" type="text"/&gt;
+&lt;textarea name="content" placeholder="Message" rows="10" type="text"&gt;&lt;/textarea&gt;
+&lt;input id="my-form-button" type="submit" value="Submit"/&gt;
+&lt;p id="my-form-status"&gt;&lt;/p&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  window.addEventListener("DOMContentLoaded", function() {
+
+    // get the form elements defined in your form HTML above
+
+    var form = document.getElementById("my-form");
+    var button = document.getElementById("my-form-button");
+    var status = document.getElementById("my-form-status");
+
+    // Success and Error functions for after the form is submitted
+
+    function success() {
+      form.reset();
+      button.style = "display: none ";
+      status.innerHTML = "Thanks!";
+    }
+
+    function error() {
+      status.innerHTML = "Oops! There was a problem.";
+    }
+
+    // handle the form submission event
+
+    form.addEventListener("submit", function(ev) {
+      ev.preventDefault();
+      var data = new FormData(form);
+      if (data.get("email") == "" || data.get("content").trim() == "") {
+        alert("Please fill both your email and message.");
+      }else{
+        if (validateEmail(data.get("email"))){
+          ajax(form.method, form.action, data, success, error);}
+      }
+    });
+  });
+
+  // helper function for sending an AJAX request
+
+  function ajax(method, url, data, success, error) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+      if (xhr.status === 200) {
+        success(xhr.response, xhr.responseType);
+      } else {
+        error(xhr.status, xhr.response, xhr.responseType);
+      }
+    };
+    xhr.send(data);
+  }
+
+  // helper function for checking validity of email string
+
+  function validateEmail(mail) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)){
+    return (true);
+    }
+    alert("Please enter a valid email address!");
+    return (false);
+  }
+&lt;/script&gt;
+&lt;style&gt;
+form.wj-contact input[type="text"], form.wj-contact textarea[type="text"] {
+    width: 100%;
+    vertical-align: middle;
+    margin-top: 0.25em;
+    margin-bottom: 0.5em;
+    padding: 0.75em;
+    font-family: monospace, sans-serif;
+    font-weight: lighter;
+    border-style: solid;
+    border-color: #444;
+    outline-color: #2e83e6;
+    border-width: 1px;
+    border-radius: 3px;
+    transition: box-shadow .2s ease;
+}
+
+form.wj-contact input[type="submit"] {
+    outline: none;
+    color: white;
+    background-color: #2e83e6;
+    border-radius: 3px;
+    padding: 0.5em;
+    margin: 0.25em 0 0 0;
+    border: 1px solid transparent;
+    height: auto;
+}
+&lt;/style&gt;</content><category term="about"></category></entry></feed>

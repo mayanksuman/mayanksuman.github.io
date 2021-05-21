@@ -149,7 +149,7 @@
       
     <h1 id="windows-10-guest-on-qemu">Windows 10 guest on <span class="caps">QEMU</span></h1>
     <p>
-      Posted on Fri 22 January 2021 in <a href="https://mayanksuman.in/category/software.html">Software</a>
+      Posted on 22-01-2021 in <a href="https://mayanksuman.in/category/software.html">Software</a>
 
         &#8226; 2 min read &#8226;
       
@@ -161,10 +161,10 @@
     <p>I use Linux (Debian) as my daily driver. However, for some softwares only available on the Windows platform, I use <code>Windows 10 VM</code> in <code>QEMU</code> (managed using <code>virt-manager</code>). There is a myth about the <code>Windows 10</code> guest under <code>QEMU</code> that they are slow compared to other virtualization techniques/softwares (VirtualBox, VMWare, and others). Surely, the default values in <code>virt-manager</code> do not result in the most performant Windows virtual machine out of box. Still, with the following tips one can get a very performant virtual machine setup (with low computational load additionally):</p>
 <ol>
 <li>Please ensure that the disk file to be created for the virtual machine is not on a <code>BTRFS</code> partition. Furthermore, at the last step of new virtual machine wizard in <code>virt-manager</code>, click <strong>Customize configuration before install</strong>.
-    <img alt="Create VM Wizard" src="images/new_vm_last_step.png" style="width: 608px; height: auto; max-width: 100%;"/></li>
+    <img alt="Create VM Wizard" src="https://mayanksuman.in/images/new_vm_last_step.png" style="width: 608px; height: auto; max-width: 100%;"/></li>
 <li>In the next dialog box, change the disk bus of <code>SATA Disk 1</code> and device model of Network Interface Card (<code>NIC</code>) to <code>VirtIO</code>. <code>Windows</code> do not have <code>VirtIO</code> drivers, so attach a new <code>SATA CDROM</code> with the latest <code>VirtIO</code> iso file downloaded from <a href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.185-2/">virtio-archive</a>. After doing all these setting, start the installation. During installation, <code>Windows</code> will notify about missing disk, which can be troubleshot by navigating to the appropriate disk driver file in <code>viostor</code> folder in the <code>VirtIO</code> driver iso.
-    <img alt="VirtIO Option Selection" src="images/virtio_selection.png" style="width: 2194px; height: auto; max-width: 100%;"/>
-<img alt="New CDROM drive" src="images/new_cdrom.png" style="width: 1025px; height: auto; max-width: 100%;"/></li>
+    <img alt="VirtIO Option Selection" src="https://mayanksuman.in/images/virtio_selection.png" style="width: 2194px; height: auto; max-width: 100%;"/>
+<img alt="New CDROM drive" src="https://mayanksuman.in/images/new_cdrom.png" style="width: 1025px; height: auto; max-width: 100%;"/></li>
 <li>After installation, install additional drivers from <code>VirtIO</code> driver disk. Additionally, install other <a href="https://www.spice-space.org/download.html"><code>SPICE</code> drivers</a>, specially <code>spice-guest-tools</code> and <code>Spice WEBDAV Daemon</code>.</li>
 <li>Debloat it with <a href="https://github.com/Sycnex/Windows10Debloater">Windows 10 Debloater</a> and enhance your privacy with <a href="https://www.oo-software.com/en/shutup10">O&amp;O ShutUp10</a>. Please ensure that before running <code>Windows10Debloater</code>, execution policy in <code>Powershell</code> (Administrator) is unrestrictive (<code>Set-ExecutionPolicy Unrestricted</code>). Don’t forget to change the execution policy afterward (<code>Set-ExecutionPolicy restricted</code>).</li>
 <li>Additional Tip: For sharing files from Linux host, you have two options a) by <span class="caps">USB</span> redirection of attached pen drive b) by WebDAV. For using WebDAV, <code>Spice WebDAV Daemon</code> should be installed in Windows guest. Add a new channel hardware with target name <code>org.spice-space.webdav.0</code>. Start the Windows guest and connect it with <code>remote-viewer</code> (<code>remote-viewer spice://127.0.0.1:5900</code>) and then use <code>File &gt; Preferences</code> to select the folder to be shared. If this does not work, ensure that on the host machine (Linux), the user is a member of <code>libvirt</code> or other appropriate groups, and on the guest virtual machine (Windows), <code>Spice WebDAV</code> service is running.</li>

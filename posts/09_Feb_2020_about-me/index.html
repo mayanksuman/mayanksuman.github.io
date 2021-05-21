@@ -56,23 +56,23 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="Mayank Suman" />
-<meta name="description" content="I do not prefer having closed source software on my Debian machine. However, due to the popularity of Skype, the package skypeforlinux was installed on my Debian system. Finally, I am able to get rid of the binary blob by using the web version of the service. If you also …" />
+<meta name="description" content="I am researcher studying/modeling climate change impacts on hydrological systems, statistical analysis of hydrological time series, and application of wavelet transformation and copula theory in hydroclimatic analysis. I have recently submitted my Ph.D. Thesis titled “Analysis and Modeling of Climate Change Impact on Hydrological Extreme Events across India …" />
 <meta name="keywords" content="">
 
 
 <meta property="og:site_name" content="Mayank Suman's Blog"/>
-<meta property="og:title" content="Setting up Skype for web in Debian"/>
-<meta property="og:description" content="I do not prefer having closed source software on my Debian machine. However, due to the popularity of Skype, the package skypeforlinux was installed on my Debian system. Finally, I am able to get rid of the binary blob by using the web version of the service. If you also …"/>
+<meta property="og:title" content="About me"/>
+<meta property="og:description" content="I am researcher studying/modeling climate change impacts on hydrological systems, statistical analysis of hydrological time series, and application of wavelet transformation and copula theory in hydroclimatic analysis. I have recently submitted my Ph.D. Thesis titled “Analysis and Modeling of Climate Change Impact on Hydrological Extreme Events across India …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://mayanksuman.in/posts/21_Mar_2020_setting-up-skype-for-web-in-debian/"/>
+<meta property="og:url" content="https://mayanksuman.in/posts/09_Feb_2020_about-me/"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-03-21 00:00:00+05:30"/>
+<meta property="article:published_time" content="2020-02-09 00:00:00+05:30"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://mayanksuman.in/author/mayank-suman.html">
-<meta property="article:section" content="software"/>
+<meta property="article:section" content="about"/>
 <meta property="og:image" content="https://mayanksuman.in/images/profile.png">
 
-  <title>Mayank Suman's Blog &ndash; Setting up Skype for web in Debian</title>
+  <title>Mayank Suman's Blog &ndash; About me</title>
 
 </head>
 <body >
@@ -147,9 +147,9 @@
 <article class="single">
   <header>
       
-    <h1 id="setting-up-skype-for-web-in-debian">Setting up Skype for web in&nbsp;Debian</h1>
+    <h1 id="about-me">About&nbsp;me</h1>
     <p>
-      Posted on 21-03-2020 in <a href="https://mayanksuman.in/category/software.html">software</a>
+      Posted on 09-02-2020 in <a href="https://mayanksuman.in/category/about.html">about</a>
 
         &#8226; 1 min read &#8226;
       
@@ -158,38 +158,15 @@
 
 
   <div>
-    <p>I do not prefer having closed source software on my Debian machine.
-However, due to the popularity of Skype, the package <code>skypeforlinux</code> was installed on my Debian system.
-Finally, I am able to get rid of the binary blob by using the web version of the service.
-If you also want to get rid of the binary software and still want to have the convenience offered by it, the steps are listed below:</p>
-<ol>
-<li>Get rid of <code>skypeforlinux</code> package by <code>sudo apt purge skypeforlinux</code> command.</li>
-<li>Make a text file named <code>skype_web.desktop</code> in <code>~/.local/share/applications</code> with following content.</li>
-</ol>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">[Desktop Entry]</span>
-<span class="na">Name</span><span class="o">=</span><span class="s">Skype Web</span>
-<span class="na">Comment</span><span class="o">=</span><span class="s">Skype Web application in a Chrome profile</span>
-<span class="na">Exec</span><span class="o">=</span><span class="s">sh -c "mkdir -p $HOME/.local/share/skypeweb &amp;&amp; GDK_BACKEND=x11 chromium --kiosk --user-data-dir=$HOME/.local/share/skypeweb https://web.skype.com 1&gt;/dev/null 2&gt;/dev/null &amp;"</span>
-<span class="na">Terminal</span><span class="o">=</span><span class="s">false</span>
-<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
-<span class="na">Encoding</span><span class="o">=</span><span class="s">UTF-8</span>
-<span class="na">Categories</span><span class="o">=</span><span class="s">Network;Application;</span>
-</code></pre></div>
-</td></tr></table>
-<ol start="3">
-<li>In the activities panel of gnome-shell, select <code>Skype Web</code> to start it.</li>
-<li>Login with your credentials and select to remain logged in.</li>
-</ol>
-<p>Enjoy Skype from the web interface.
-Further, it also frees me from worry that skype might be running in the background.
-If chromium is closed, the skype is no longer running.</p>
+    <p>I am researcher studying/modeling climate change impacts on hydrological systems, statistical analysis of hydrological time series, and application of wavelet transformation and copula theory in hydroclimatic analysis.</p>
+<p>I have recently submitted my Ph.D. Thesis titled “Analysis and Modeling of Climate Change Impact on Hydrological Extreme Events across India” (work carried out under the supervision of <a href="http://www.facweb.iitkgp.ac.in/~rajibmaity/">Prof. Rajib Maity</a>, Department of Civil Engineering, Indian Institute of Technology Kharagpur). Earlier, I have received my B.Tech. degree in Civil Engineering from the National Institute of Technology Hamirpur, India, in 2013, and M.Tech. degree in Hydraulics and Water Resources from Department of Civil Engineering <span class="caps">IIT</span> Kharagpur, India, in 2015.</p>
+<p>More academic details and my list of publication are available in <a href="https://mayanksuman.in/about/cv.pdf">my Curriculum Vitae</a>.</p>
+<h3>Apart from being a researcher, I am also</h3>
+<ul>
+<li>An avid Open Source enthusiast and hence, regular contributor to multiple Open Source project. I am also <code>Arctic Code Vault Contributor</code> for 2020 Github Code Archive Program. More details are available at <a href="https://github.com/mayanksuman">my github account</a>.</li>
+<li>A marital artist. I hold First Degree Black Belt (Shodan) in Kyokyushin-kan Karate.</li>
+</ul>
+<p><a href="https://mayanksuman.in/pages/contact.html">Contact me</a>.</p>
   </div>
 
 
