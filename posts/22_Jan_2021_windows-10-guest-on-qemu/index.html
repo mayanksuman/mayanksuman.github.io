@@ -56,23 +56,23 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="Mayank Suman" />
-<meta name="description" content="Currently, most of the population is working from home, so having a good video conferencing setup has become important. I have setup droidcam for getting video input from phone/ipad and obs-studio for managing different audio/video source in Debian using the following steps: At first install droidcam in PC …" />
+<meta name="description" content="I use Linux (Debian) as my daily driver. However, for some softwares only available on the Windows platform, I use Windows 10 VM in QEMU (managed using virt-manager). There is a myth about the Windows 10 guest under QEMU that they are slow compared to other virtualization techniques/softwares (VirtualBox …" />
 <meta name="keywords" content="">
 
 
 <meta property="og:site_name" content="Mayank Suman's Blog"/>
-<meta property="og:title" content="Setting up droidcam and obs-studio cam in Debian"/>
-<meta property="og:description" content="Currently, most of the population is working from home, so having a good video conferencing setup has become important. I have setup droidcam for getting video input from phone/ipad and obs-studio for managing different audio/video source in Debian using the following steps: At first install droidcam in PC …"/>
+<meta property="og:title" content="Windows 10 guest on QEMU"/>
+<meta property="og:description" content="I use Linux (Debian) as my daily driver. However, for some softwares only available on the Windows platform, I use Windows 10 VM in QEMU (managed using virt-manager). There is a myth about the Windows 10 guest under QEMU that they are slow compared to other virtualization techniques/softwares (VirtualBox …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://mayanksuman.in/posts/30_Jul_2020_setting-up-droidcam-and-obs-studio-cam-in-debian/"/>
+<meta property="og:url" content="https://mayanksuman.in/posts/22_Jan_2021_windows-10-guest-on-qemu/"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-07-30 00:00:00+05:30"/>
+<meta property="article:published_time" content="2021-01-22 00:00:00+05:30"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://mayanksuman.in/author/mayank-suman.html">
-<meta property="article:section" content="software"/>
+<meta property="article:section" content="Software"/>
 <meta property="og:image" content="https://mayanksuman.in/images/profile.png">
 
-  <title>Mayank Suman's Blog &ndash; Setting up droidcam and obs-studio cam in Debian</title>
+  <title>Mayank Suman's Blog &ndash; Windows 10 guest on QEMU</title>
 
 </head>
 <body >
@@ -147,53 +147,28 @@
 <article class="single">
   <header>
       
-    <h1 id="setting-up-droidcam-and-obs-studio-cam-in-debian">Setting up droidcam and obs-studio cam in&nbsp;Debian</h1>
+    <h1 id="windows-10-guest-on-qemu">Windows 10 guest on <span class="caps">QEMU</span></h1>
     <p>
-      Posted on Thu 30 July 2020 in <a href="https://mayanksuman.in/category/software.html">software</a>
+      Posted on Fri 22 January 2021 in <a href="https://mayanksuman.in/category/software.html">Software</a>
 
-        &#8226; 1 min read &#8226;
+        &#8226; 2 min read &#8226;
       
     </p>
   </header>
 
 
   <div>
-    <p>Currently, most of the population is working from home, so having a good video conferencing setup has become important. I have setup droidcam for getting video input from phone/ipad and obs-studio for managing different audio/video source in Debian using the following steps:</p>
+    <p>I use Linux (Debian) as my daily driver. However, for some softwares only available on the Windows platform, I use <code>Windows 10 VM</code> in <code>QEMU</code> (managed using <code>virt-manager</code>). There is a myth about the <code>Windows 10</code> guest under <code>QEMU</code> that they are slow compared to other virtualization techniques/softwares (VirtualBox, VMWare, and others). Surely, the default values in <code>virt-manager</code> do not result in the most performant Windows virtual machine out of box. Still, with the following tips one can get a very performant virtual machine setup (with low computational load additionally):</p>
 <ol>
-<li>At first install <code>droidcam</code> in <span class="caps">PC</span> using software from <a href="https://www.dev47apps.com/droidcam/linux/">here</a>. <code>droidcam</code> should also be installed on phone/ipad using app store.</li>
-<li>Install obs-studio by the command <code>sudo apt install obs-studio</code>.</li>
+<li>Please ensure that the disk file to be created for the virtual machine is not on a <code>BTRFS</code> partition. Furthermore, at the last step of new virtual machine wizard in <code>virt-manager</code>, click <strong>Customize configuration before install</strong>.
+    <img alt="Create VM Wizard" src="images/new_vm_last_step.png" style="width: 608px; height: auto; max-width: 100%;"/></li>
+<li>In the next dialog box, change the disk bus of <code>SATA Disk 1</code> and device model of Network Interface Card (<code>NIC</code>) to <code>VirtIO</code>. <code>Windows</code> do not have <code>VirtIO</code> drivers, so attach a new <code>SATA CDROM</code> with the latest <code>VirtIO</code> iso file downloaded from <a href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.185-2/">virtio-archive</a>. After doing all these setting, start the installation. During installation, <code>Windows</code> will notify about missing disk, which can be troubleshot by navigating to the appropriate disk driver file in <code>viostor</code> folder in the <code>VirtIO</code> driver iso.
+    <img alt="VirtIO Option Selection" src="images/virtio_selection.png" style="width: 2194px; height: auto; max-width: 100%;"/>
+<img alt="New CDROM drive" src="images/new_cdrom.png" style="width: 1025px; height: auto; max-width: 100%;"/></li>
+<li>After installation, install additional drivers from <code>VirtIO</code> driver disk. Additionally, install other <a href="https://www.spice-space.org/download.html"><code>SPICE</code> drivers</a>, specially <code>spice-guest-tools</code> and <code>Spice WEBDAV Daemon</code>.</li>
+<li>Debloat it with <a href="https://github.com/Sycnex/Windows10Debloater">Windows 10 Debloater</a> and enhance your privacy with <a href="https://www.oo-software.com/en/shutup10">O&amp;O ShutUp10</a>. Please ensure that before running <code>Windows10Debloater</code>, execution policy in <code>Powershell</code> (Administrator) is unrestrictive (<code>Set-ExecutionPolicy Unrestricted</code>). Don’t forget to change the execution policy afterward (<code>Set-ExecutionPolicy restricted</code>).</li>
+<li>Additional Tip: For sharing files from Linux host, you have two options a) by <span class="caps">USB</span> redirection of attached pen drive b) by WebDAV. For using WebDAV, <code>Spice WebDAV Daemon</code> should be installed in Windows guest. Add a new channel hardware with target name <code>org.spice-space.webdav.0</code>. Start the Windows guest and connect it with <code>remote-viewer</code> (<code>remote-viewer spice://127.0.0.1:5900</code>) and then use <code>File &gt; Preferences</code> to select the folder to be shared. If this does not work, ensure that on the host machine (Linux), the user is a member of <code>libvirt</code> or other appropriate groups, and on the guest virtual machine (Windows), <code>Spice WebDAV</code> service is running.</li>
 </ol>
-<p>For using the output of obs-studio into video-conferencing software, <code>obs-v4l2sink</code> should be installed and properly configured.</p>
-<ol>
-<li>Install <code>v4l2loopback</code> kernel module by <code>sudo apt install v4l2loopback-dkms</code></li>
-<li>Install deb file for <code>obs-v4l2sink</code> downloaded from <a href="https://github.com/CatxFish/obs-v4l2sink/releases">their release page</a>.</li>
-<li>Make a link for <code>obs-v4l2sink</code> plugin in right folder by <code>sudo ln -s /usr/lib/obs-plugins/v4l2sink.so /usr/lib/x86_64-linux-gnu/obs-plugins/v4l2sink.so</code></li>
-<li>Open <code>/etc/modprobe.d/droidcam.conf</code> and edit it so that content looks like</li>
-</ol>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="err">options v4l2loopback_dc width=1280 height=720 card_label="Droidcam"</span>
-<span class="err">options v4l2loopback width=1280 height=720 devices=1 video_nr=10 card_label="obs_studio_cam"  exclusive_caps=1</span>
-<span class="err">options snd-aloop enable=1,1 index=3,4</span>
-</code></pre></div>
-</td></tr></table>
-<ol start="5">
-<li>Add <code>v4l2loopback</code> to autoload modules by editing <code>/etc/modules-load.d/droidcam.conf</code>, so that its content is</li>
-</ol>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="err">videodev</span>
-<span class="err">v4l2loopback_dc</span>
-<span class="err">v4l2loopback</span>
-<span class="err">snd-aloop</span>
-</code></pre></div>
-</td></tr></table>
-<ol start="6">
-<li>Update initramfs by <code>sudo update-initramfs -u</code>.</li>
-<li>Reboot the system and enjoy video output from obs-studio in your video conferencing session.</li>
-</ol>
-<p>Update (20/04/2021): Camera functionality is now built into <code>obs-studio</code> 26.1+. Out of box, it works with almost all popular video conferencing systems. However, for <code>skype</code>, please limit the camera output resolution to 1280x720.</p>
   </div>
 
 

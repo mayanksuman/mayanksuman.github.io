@@ -55,17 +55,24 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333333">
 
-    <meta name="author" content="Mayank Suman" />
-    <meta name="description" content="Mayank Suman's Notes and Random Ideas" />
+<meta name="author" content="Mayank Suman" />
+<meta name="description" content="I do not prefer having closed source software on my Debian machine. However, due to the popularity of Skype, the package skypeforlinux was installed on my Debian system. Finally, I am able to get rid of the binary blob by using the web version of the service. If you also …" />
+<meta name="keywords" content="">
+
+
 <meta property="og:site_name" content="Mayank Suman's Blog"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="Mayank Suman's Blog"/>
-<meta property="og:description" content="Mayank Suman's Notes and Random Ideas"/>
+<meta property="og:title" content="Setting up Skype for web in Debian"/>
+<meta property="og:description" content="I do not prefer having closed source software on my Debian machine. However, due to the popularity of Skype, the package skypeforlinux was installed on my Debian system. Finally, I am able to get rid of the binary blob by using the web version of the service. If you also …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://mayanksuman.in"/>
+<meta property="og:url" content="https://mayanksuman.in/posts/21_Mar_2020_setting-up-skype-for-web-in-debian/"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-03-21 00:00:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://mayanksuman.in/author/mayank-suman.html">
+<meta property="article:section" content="software"/>
 <meta property="og:image" content="https://mayanksuman.in/images/profile.png">
 
-  <title>Mayank Suman's Blog &ndash; Posts by Mayank Suman:</title>
+  <title>Mayank Suman's Blog &ndash; Setting up Skype for web in Debian</title>
 
 </head>
 <body >
@@ -137,131 +144,59 @@
 
     </nav>
 
-
-
-<article>
+<article class="single">
   <header>
-    <h2><a href="https://mayanksuman.in/posts/01_Oct_2021_access-data-in-lvm2-drive/#access-data-in-lvm2-drive">Access data in lvm2&nbsp;drive</a></h2>
+      
+    <h1 id="setting-up-skype-for-web-in-debian">Setting up Skype for web in&nbsp;Debian</h1>
     <p>
-      Posted on Fri 01 October 2021 in <a href="https://mayanksuman.in/category/software.html">Software</a>
+      Posted on Sat 21 March 2020 in <a href="https://mayanksuman.in/category/software.html">software</a>
 
-
-        &#8226; 1 min read
+        &#8226; 1 min read &#8226;
+      
     </p>
   </header>
-  <div>
-      <p>Prerequisite: The system should have <code>lvm2</code> installed. On debian this can be
-achieved by <code>sudo apt install lvm2</code>.</p>
-<p>For mounting a <code>lvm2</code> drive, we need to activate the associated <span class="caps">LVM</span> group. The following command can list all available <span class="caps">LVM</span> group:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo vgscan
-</code></pre></div>
-</td></tr></table>
-<p>Scanning will show the name of different …</p>
-        <br>
-        <a class="btn"
-           href="https://mayanksuman.in/posts/01_Oct_2021_access-data-in-lvm2-drive/#access-data-in-lvm2-drive">
-          Continue reading
-        </a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://mayanksuman.in/posts/21_May_2021_closure-functions/#closure-functions">Closure&nbsp;Functions</a></h2>
-    <p>
-      Posted on Fri 21 May 2021 in <a href="https://mayanksuman.in/category/programming.html">Programming</a>
 
-          &#8226; Tagged with
-              <a href="https://mayanksuman.in/tag/first-class-functions.html">first-class functions</a>,              <a href="https://mayanksuman.in/tag/python.html">python</a>,              <a href="https://mayanksuman.in/tag/luajit.html">luajit</a>,              <a href="https://mayanksuman.in/tag/javascript.html">javascript</a>
-        &#8226; 1 min read
-    </p>
-  </header>
+
   <div>
-      <p>Closure are higher-order functions which return lower-order function (usually first-order function) with its environment. Defining closure functions is possible in languages which has <a href="https://mayanksuman.in/posts/20_May_2021_first-class-functions/">first-class functions</a> like Python, JavaScript, Lua, Scheme, and others.</p>
-<h2>Example</h2>
+    <p>I do not prefer having closed source software on my Debian machine.
+However, due to the popularity of Skype, the package <code>skypeforlinux</code> was installed on my Debian system.
+Finally, I am able to get rid of the binary blob by using the web version of the service.
+If you also want to get rid of the binary software and still want to have the convenience offered by it, the steps are listed below:</p>
+<ol>
+<li>Get rid of <code>skypeforlinux</code> package by <code>sudo apt purge skypeforlinux</code> command.</li>
+<li>Make a text file named <code>skype_web.desktop</code> in <code>~/.local/share/applications</code> with following content.</li>
+</ol>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">divisiblity_check</span><span class="p">(</span><span class="n">divisor</span><span class="p">):</span>
-    <span class="sd">"""Factory for producing functions that check divisiblity with …</span></code></pre></div></td></tr></table>
-        <br>
-        <a class="btn"
-           href="https://mayanksuman.in/posts/21_May_2021_closure-functions/#closure-functions">
-          Continue reading
-        </a>
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">[Desktop Entry]</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">Skype Web</span>
+<span class="na">Comment</span><span class="o">=</span><span class="s">Skype Web application in a Chrome profile</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">sh -c "mkdir -p $HOME/.local/share/skypeweb &amp;&amp; GDK_BACKEND=x11 chromium --kiosk --user-data-dir=$HOME/.local/share/skypeweb https://web.skype.com 1&gt;/dev/null 2&gt;/dev/null &amp;"</span>
+<span class="na">Terminal</span><span class="o">=</span><span class="s">false</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
+<span class="na">Encoding</span><span class="o">=</span><span class="s">UTF-8</span>
+<span class="na">Categories</span><span class="o">=</span><span class="s">Network;Application;</span>
+</code></pre></div>
+</td></tr></table>
+<ol start="3">
+<li>In the activities panel of gnome-shell, select <code>Skype Web</code> to start it.</li>
+<li>Login with your credentials and select to remain logged in.</li>
+</ol>
+<p>Enjoy Skype from the web interface.
+Further, it also frees me from worry that skype might be running in the background.
+If chromium is closed, the skype is no longer running.</p>
   </div>
-  <hr />
+
+
+
+
+
 </article>
-<article>
-  <header>
-    <h2><a href="https://mayanksuman.in/posts/20_May_2021_first-class-functions/#first-class-functions">First Class&nbsp;Functions</a></h2>
-    <p>
-      Posted on Thu 20 May 2021 in <a href="https://mayanksuman.in/category/programming.html">Programming</a>
-
-          &#8226; Tagged with
-              <a href="https://mayanksuman.in/tag/first-class-functions.html">first-class functions</a>,              <a href="https://mayanksuman.in/tag/python.html">python</a>,              <a href="https://mayanksuman.in/tag/luajit.html">luajit</a>,              <a href="https://mayanksuman.in/tag/javascript.html">javascript</a>
-        &#8226; 1 min read
-    </p>
-  </header>
-  <div>
-      <p>In most programming languages, type, object, entity, or value is considered first-class object and hence can be returned from a function, modified or assigned to a variable. If a programming language considers functions as first-class object, then the programming language is said to have first-class functions. Hence, in such programming …</p>
-        <br>
-        <a class="btn"
-           href="https://mayanksuman.in/posts/20_May_2021_first-class-functions/#first-class-functions">
-          Continue reading
-        </a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://mayanksuman.in/posts/31_Jan_2021_mounting-qcow2-drive/#mounting-qcow2-drive">Mounting qcow2&nbsp;drive</a></h2>
-    <p>
-      Posted on Sun 31 January 2021 in <a href="https://mayanksuman.in/category/software.html">Software</a>
-
-
-        &#8226; 1 min read
-    </p>
-  </header>
-  <div>
-      <p>The qcow2 (or <span class="caps">QEMU</span> copy-on-write) is a virtual disk image format primarly used by <span class="caps">QEMU</span> for guest systems. In many circustances, such as reseting passwords, editting or recovering files etc., mouting a qcow2 disk images without running a guest system is required. This can be acheived by <code>Network Block Device …</code></p>
-        <br>
-        <a class="btn"
-           href="https://mayanksuman.in/posts/31_Jan_2021_mounting-qcow2-drive/#mounting-qcow2-drive">
-          Continue reading
-        </a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://mayanksuman.in/posts/22_Jan_2021_windows-10-guest-on-qemu/#windows-10-guest-on-qemu">Windows 10 guest on <span class="caps">QEMU</span></a></h2>
-    <p>
-      Posted on Fri 22 January 2021 in <a href="https://mayanksuman.in/category/software.html">Software</a>
-
-
-        &#8226; 2 min read
-    </p>
-  </header>
-  <div>
-      <p>I use Linux (Debian) as my daily driver. However, for some softwares only available on the Windows platform, I use <code>Windows 10 VM</code> in <code>QEMU</code> (managed using <code>virt-manager</code>). There is a myth about the <code>Windows 10</code> guest under <code>QEMU</code> that they are slow compared to other virtualization techniques/softwares (VirtualBox …</p>
-        <br>
-        <a class="btn"
-           href="https://mayanksuman.in/posts/22_Jan_2021_windows-10-guest-on-qemu/#windows-10-guest-on-qemu">
-          Continue reading
-        </a>
-  </div>
-</article>
-
-  <div class="pagination">
-    <a class="btn float-left" href="https://mayanksuman.in/author/mayank-suman2.html">
-      <i class="fa fa-angle-left"></i> Older Posts
-    </a>
-  </div>
-
-
 
     <footer>
 <p>&copy; Mayank Suman 2021</p>

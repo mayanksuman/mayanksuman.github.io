@@ -56,23 +56,23 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="Mayank Suman" />
-<meta name="description" content="Currently, most of the population is working from home, so having a good video conferencing setup has become important. I have setup droidcam for getting video input from phone/ipad and obs-studio for managing different audio/video source in Debian using the following steps: At first install droidcam in PC …" />
+<meta name="description" content="Python is an example of language design done well. The language is equally suited for learning as the first computer language (for kids) and running enterprise-level code (as done in many startups and established companies) at the same time. However, this incredible approachability of the language leads to very low …" />
 <meta name="keywords" content="">
 
 
 <meta property="og:site_name" content="Mayank Suman's Blog"/>
-<meta property="og:title" content="Setting up droidcam and obs-studio cam in Debian"/>
-<meta property="og:description" content="Currently, most of the population is working from home, so having a good video conferencing setup has become important. I have setup droidcam for getting video input from phone/ipad and obs-studio for managing different audio/video source in Debian using the following steps: At first install droidcam in PC …"/>
+<meta property="og:title" content="Starting up a series of Python language"/>
+<meta property="og:description" content="Python is an example of language design done well. The language is equally suited for learning as the first computer language (for kids) and running enterprise-level code (as done in many startups and established companies) at the same time. However, this incredible approachability of the language leads to very low …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://mayanksuman.in/posts/30_Jul_2020_setting-up-droidcam-and-obs-studio-cam-in-debian/"/>
+<meta property="og:url" content="https://mayanksuman.in/posts/30_Jul_2020_starting-up-a-series-of-python-language/"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2020-07-30 00:00:00+05:30"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://mayanksuman.in/author/mayank-suman.html">
-<meta property="article:section" content="software"/>
+<meta property="article:section" content="Programming"/>
 <meta property="og:image" content="https://mayanksuman.in/images/profile.png">
 
-  <title>Mayank Suman's Blog &ndash; Setting up droidcam and obs-studio cam in Debian</title>
+  <title>Mayank Suman's Blog &ndash; Starting up a series of Python language</title>
 
 </head>
 <body >
@@ -147,53 +147,59 @@
 <article class="single">
   <header>
       
-    <h1 id="setting-up-droidcam-and-obs-studio-cam-in-debian">Setting up droidcam and obs-studio cam in&nbsp;Debian</h1>
+    <h1 id="starting-up-a-series-of-python-language">Starting up a series of Python&nbsp;language</h1>
     <p>
-      Posted on Thu 30 July 2020 in <a href="https://mayanksuman.in/category/software.html">software</a>
+      Posted on Thu 30 July 2020 in <a href="https://mayanksuman.in/category/programming.html">Programming</a>
 
-        &#8226; 1 min read &#8226;
+        &#8226; 2 min read &#8226;
       
     </p>
   </header>
 
 
   <div>
-    <p>Currently, most of the population is working from home, so having a good video conferencing setup has become important. I have setup droidcam for getting video input from phone/ipad and obs-studio for managing different audio/video source in Debian using the following steps:</p>
-<ol>
-<li>At first install <code>droidcam</code> in <span class="caps">PC</span> using software from <a href="https://www.dev47apps.com/droidcam/linux/">here</a>. <code>droidcam</code> should also be installed on phone/ipad using app store.</li>
-<li>Install obs-studio by the command <code>sudo apt install obs-studio</code>.</li>
-</ol>
-<p>For using the output of obs-studio into video-conferencing software, <code>obs-v4l2sink</code> should be installed and properly configured.</p>
-<ol>
-<li>Install <code>v4l2loopback</code> kernel module by <code>sudo apt install v4l2loopback-dkms</code></li>
-<li>Install deb file for <code>obs-v4l2sink</code> downloaded from <a href="https://github.com/CatxFish/obs-v4l2sink/releases">their release page</a>.</li>
-<li>Make a link for <code>obs-v4l2sink</code> plugin in right folder by <code>sudo ln -s /usr/lib/obs-plugins/v4l2sink.so /usr/lib/x86_64-linux-gnu/obs-plugins/v4l2sink.so</code></li>
-<li>Open <code>/etc/modprobe.d/droidcam.conf</code> and edit it so that content looks like</li>
-</ol>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="err">options v4l2loopback_dc width=1280 height=720 card_label="Droidcam"</span>
-<span class="err">options v4l2loopback width=1280 height=720 devices=1 video_nr=10 card_label="obs_studio_cam"  exclusive_caps=1</span>
-<span class="err">options snd-aloop enable=1,1 index=3,4</span>
+    <p>Python is an example of language design done well. The language is equally suited for learning as the first computer language (for kids) and running enterprise-level code (as done in many startups and established companies) at the same time. However, this incredible approachability of the language leads to very low quality of code (due non-pythonic way of writing code) and many misinterpretations about it. This series about generic python show use-cases and examples of pythonic code, which are clear and effective.</p>
+<p>Let us start with <code>Zen of Python</code> by Tim Peters, which can be accessed by code <code>import this</code> in python interpreter. The principles are:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
 </code></pre></div>
 </td></tr></table>
-<ol start="5">
-<li>Add <code>v4l2loopback</code> to autoload modules by editing <code>/etc/modules-load.d/droidcam.conf</code>, so that its content is</li>
-</ol>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="err">videodev</span>
-<span class="err">v4l2loopback_dc</span>
-<span class="err">v4l2loopback</span>
-<span class="err">snd-aloop</span>
-</code></pre></div>
-</td></tr></table>
-<ol start="6">
-<li>Update initramfs by <code>sudo update-initramfs -u</code>.</li>
-<li>Reboot the system and enjoy video output from obs-studio in your video conferencing session.</li>
-</ol>
-<p>Update (20/04/2021): Camera functionality is now built into <code>obs-studio</code> 26.1+. Out of box, it works with almost all popular video conferencing systems. However, for <code>skype</code>, please limit the camera output resolution to 1280x720.</p>
+<p>We will use these principles as general guidance in this series.</p>
   </div>
 
 

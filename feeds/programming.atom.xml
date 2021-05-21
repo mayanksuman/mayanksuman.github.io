@@ -58,4 +58,45 @@
 &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__call__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Hi! Check out this text."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Here &lt;code&gt;print&lt;/code&gt; function is assigned to variable &lt;code&gt;p&lt;/code&gt; and then called using syntax &lt;code&gt;p(...)&lt;/code&gt; similar to &lt;code&gt;print(...)&lt;/code&gt;. It should be noted that the last line is specific to python only. In python almost every thing is a object. Functions are special object that &lt;code&gt;__call__&lt;/code&gt; data structure function (or member) defined for them. This &lt;code&gt;__call__&lt;/code&gt; member function have all the logic for the parent function; hence calling &lt;code&gt;print(...)&lt;/code&gt; is same as &lt;code&gt;print.__call__(...)&lt;/code&gt;.&lt;/p&gt;</content><category term="Programming"></category><category term="first-class functions"></category><category term="python"></category><category term="luajit"></category><category term="javascript"></category></entry></feed>
+&lt;p&gt;Here &lt;code&gt;print&lt;/code&gt; function is assigned to variable &lt;code&gt;p&lt;/code&gt; and then called using syntax &lt;code&gt;p(...)&lt;/code&gt; similar to &lt;code&gt;print(...)&lt;/code&gt;. It should be noted that the last line is specific to python only. In python almost every thing is a object. Functions are special object that &lt;code&gt;__call__&lt;/code&gt; data structure function (or member) defined for them. This &lt;code&gt;__call__&lt;/code&gt; member function have all the logic for the parent function; hence calling &lt;code&gt;print(...)&lt;/code&gt; is same as &lt;code&gt;print.__call__(...)&lt;/code&gt;.&lt;/p&gt;</content><category term="Programming"></category><category term="first-class functions"></category><category term="python"></category><category term="luajit"></category><category term="javascript"></category></entry><entry><title>Starting up a series of Python language</title><link href="https://mayanksuman.in/posts/30_Jul_2020_starting-up-a-series-of-python-language/" rel="alternate"></link><published>2020-07-30T00:00:00+05:30</published><updated>2020-07-30T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2020-07-30:/posts/30_Jul_2020_starting-up-a-series-of-python-language/</id><summary type="html">&lt;p&gt;Python is an example of language design done well. The language is equally suited for learning as the first computer language (for kids) and running enterprise-level code (as done in many startups and established companies) at the same time. However, this incredible approachability of the language leads to very low …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Python is an example of language design done well. The language is equally suited for learning as the first computer language (for kids) and running enterprise-level code (as done in many startups and established companies) at the same time. However, this incredible approachability of the language leads to very low quality of code (due non-pythonic way of writing code) and many misinterpretations about it. This series about generic python show use-cases and examples of pythonic code, which are clear and effective.&lt;/p&gt;
+&lt;p&gt;Let us start with &lt;code&gt;Zen of Python&lt;/code&gt; by Tim Peters, which can be accessed by code &lt;code&gt;import this&lt;/code&gt; in python interpreter. The principles are:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;We will use these principles as general guidance in this series.&lt;/p&gt;</content><category term="Programming"></category></entry></feed>
