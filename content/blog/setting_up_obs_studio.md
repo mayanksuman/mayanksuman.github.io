@@ -1,6 +1,9 @@
 ---
 layout: post
+date: 30-07-2020
 title: Setting up droidcam and obs-studio cam in Debian
+category: software
+tag: debian, obs-studio
 ---
 
 Currently, most of the population is working from home, so having a good video conferencing setup has become important. I have setup droidcam for getting video input from phone/ipad and obs-studio for managing different audio/video source in Debian using the following steps:

@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Windows 10 guest on QEMU
+date: 22-01-2021
+category: Software
+tag: win10, qemu
 ---
 
 I use Linux (Debian) as my daily driver. However, for some softwares only available on the Windows platform, I use `Windows 10 VM` in `QEMU` (managed using `virt-manager`). There is a myth about the `Windows 10` guest under `QEMU` that they are slow compared to other virtualization techniques/softwares (VirtualBox, VMWare, and others). Surely, the default values in `virt-manager` do not result in the most performant Windows virtual machine out of box. Still, with the following tips one can get a very performant virtual machine setup (with low computational load additionally):

@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Access data in lvm2 drive
+date: 10-01-2021
+category: Software
+tag: filesystem
 ---
 
 Prerequisite: The system should have `lvm2` installed. On debian this can be

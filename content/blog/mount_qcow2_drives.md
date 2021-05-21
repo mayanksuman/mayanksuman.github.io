@@ -1,6 +1,9 @@
 ---
 layout: post
-title: Access files in qcow2 drive
+title: Mounting qcow2 drive
+date: 31-01-2021
+category: Software
+tag: filesystem, qemu
 ---
 
 The qcow2 (or QEMU copy-on-write) is a virtual disk image format primarly used by QEMU for guest systems. In many circustances, such as reseting passwords, editting or recovering files etc., mouting a qcow2 disk images without running a guest system is required. This can be acheived by `Network Block Device` module (or `nbd`) on host linux system. At first, we need to define maximum number of partitions expected for the qcow2 disk and then the disk can be mouted with following commands:

@@ -1,11 +1,15 @@
 ---
 layout: post
 title: Starting up a series of Python language
+date: 30-07-2020
+category: Programming
+tag: python
 ---
 
 Python is an example of language design done well. The language is equally suited for learning as the first computer language (for kids) and running enterprise-level code (as done in many startups and established companies) at the same time. However, this incredible approachability of the language leads to very low quality of code (due non-pythonic way of writing code) and many misinterpretations about it. This series about generic python show use-cases and examples of pythonic code, which are clear and effective.
 
 Let us start with `Zen of Python` by Tim Peters, which can be accessed by code `import this` in python interpreter. The principles are:
+
 ```text
 Beautiful is better than ugly.
 Explicit is better than implicit.

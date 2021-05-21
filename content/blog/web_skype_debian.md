@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Setting up Skype for web in Debian
+date: 21-03-2020
+category: software
+tag: debian, skype
 ---
 
 I do not prefer having closed source software on my Debian machine.
