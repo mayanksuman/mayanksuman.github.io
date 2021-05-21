@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/all.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-05-21T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>Closure Functions</title><link href="https://mayanksuman.in/posts/21_May_2021_closure-functions/" rel="alternate"></link><published>2021-05-21T00:00:00+05:30</published><updated>2021-05-21T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-05-21:/posts/21_May_2021_closure-functions/</id><summary type="html">&lt;p&gt;Closure are higher-order functions which return lower-order function (usually first-order function) with its environment. Defining closure functions is possible in languages which has &lt;a href="https://mayanksuman.in/posts/20_May_2021_first-class-functions/"&gt;first-class functions&lt;/a&gt; like Python, JavaScript, Lua, Scheme, and others.&lt;/p&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;divisiblity_check&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;divisor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;"""Factory for producing functions that check divisiblity with …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><content type="html">&lt;p&gt;Closure are higher-order functions which return lower-order function (usually first-order function) with its environment. Defining closure functions is possible in languages which has &lt;a href="https://mayanksuman.in/posts/20_May_2021_first-class-functions/"&gt;first-class functions&lt;/a&gt; like Python, JavaScript, Lua, Scheme, and others.&lt;/p&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;divisiblity_check&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;divisor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;"""Factory for producing functions that check divisiblity with divisor."""&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;inner_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;divident&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;divident&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;divisor&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;inner_func&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;This closure function (&lt;code&gt;divisiblity_check&lt;/code&gt;) is return another function as evident by syntax. It should be noted that environment for inner function (&lt;strong&gt;&lt;em&gt;i.e.&lt;/em&gt;&lt;/strong&gt;, the variable &lt;code&gt;divisor&lt;/code&gt;) is also saved with the returned function. Hence, following line of codes work:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;div_by_7&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;divisiblity_check&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;div_by_19&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;divisiblity_check&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;div_by_7&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;38&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# return false&lt;/span&gt;
+&lt;span class="n"&gt;div_by_19&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;38&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# return true&lt;/span&gt;
+&lt;span class="n"&gt;div_by_7&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# return true&lt;/span&gt;
+&lt;span class="n"&gt;div_by_19&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# return false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Here, although the functions &lt;code&gt;div_by_7&lt;/code&gt; and &lt;code&gt;div_by_19&lt;/code&gt; are returned by same closure function; however they have different environment attached to them and hence produce different results. The example closure function (&lt;strong&gt;&lt;em&gt;i.e.&lt;/em&gt;&lt;/strong&gt;, &lt;code&gt;divisiblity_check&lt;/code&gt;) can also be defined using anonymous function.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;divisiblity_check&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;divisor&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;"""Factory for producing functions that check divisiblity with divisor."""&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;divident&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;divident&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;divisor&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;This usage is sometimes called anonymous closure function.&lt;/p&gt;</content><category term="Programming"></category><category term="first-class functions"></category><category term="python"></category><category term="luajit"></category><category term="javascript"></category></entry><entry><title>First Class Functions</title><link href="https://mayanksuman.in/posts/20_May_2021_first-class-functions/" rel="alternate"></link><published>2021-05-20T00:00:00+05:30</published><updated>2021-05-20T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-05-20:/posts/20_May_2021_first-class-functions/</id><summary type="html">&lt;p&gt;In most programming languages, type, object, entity, or value is considered first-class object and hence can be returned from a function, modified or assigned to a variable. If a programming language considers functions as first-class object, then the programming language is said to have first-class functions. Hence, in such programming …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In most programming languages, type, object, entity, or value is considered first-class object and hence can be returned from a function, modified or assigned to a variable. If a programming language considers functions as first-class object, then the programming language is said to have first-class functions. Hence, in such programming languages (like Python, JavaScript and others), a function can be assigned to variable, modified or returned from a higher order function. Usually such languages also supports anonymous functions.&lt;/p&gt;
+&lt;p&gt;First-class function is one of the necessity for functional programming; hence all functional programming languages (such as Haskell, Scala, Clojure etc.) have first-class functions.&lt;/p&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;print&lt;/span&gt;
+&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Hi! Check out this text."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__call__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Hi! Check out this text."&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Here &lt;code&gt;print&lt;/code&gt; function is assigned to variable &lt;code&gt;p&lt;/code&gt; and then called using syntax &lt;code&gt;p(...)&lt;/code&gt; similar to &lt;code&gt;print(...)&lt;/code&gt;. It should be noted that the last line is specific to python only. In python almost every thing is a object. Functions are special object that &lt;code&gt;__call__&lt;/code&gt; data structure function (or member) defined for them. This &lt;code&gt;__call__&lt;/code&gt; member function have all the logic for the parent function; hence calling &lt;code&gt;print(...)&lt;/code&gt; is same as &lt;code&gt;print.__call__(...)&lt;/code&gt;.&lt;/p&gt;</content><category term="Programming"></category><category term="first-class functions"></category><category term="python"></category><category term="luajit"></category><category term="javascript"></category></entry><entry><title>Setting up droidcam and obs-studio cam in Debian</title><link href="https://mayanksuman.in/posts/30_Jul_2020_setting-up-droidcam-and-obs-studio-cam-in-debian/" rel="alternate"></link><published>2020-07-30T00:00:00+05:30</published><updated>2020-07-30T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2020-07-30:/posts/30_Jul_2020_setting-up-droidcam-and-obs-studio-cam-in-debian/</id><summary type="html">&lt;p&gt;Currently, most of the population is working from home, so having a good video conferencing setup has become important. I have setup droidcam for getting video input from phone/ipad and obs-studio for managing different audio/video source in Debian using the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;At first install &lt;code&gt;droidcam&lt;/code&gt; in &lt;span class="caps"&gt;PC …&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;Currently, most of the population is working from home, so having a good video conferencing setup has become important. I have setup droidcam for getting video input from phone/ipad and obs-studio for managing different audio/video source in Debian using the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;At first install &lt;code&gt;droidcam&lt;/code&gt; in &lt;span class="caps"&gt;PC&lt;/span&gt; using software from &lt;a href="https://www.dev47apps.com/droidcam/linux/"&gt;here&lt;/a&gt;. &lt;code&gt;droidcam&lt;/code&gt; should also be installed on phone/ipad using app store.&lt;/li&gt;
+&lt;li&gt;Install obs-studio by the command &lt;code&gt;sudo apt install obs-studio&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For using the output of obs-studio into video-conferencing software, &lt;code&gt;obs-v4l2sink&lt;/code&gt; should be installed and properly configured.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install &lt;code&gt;v4l2loopback&lt;/code&gt; kernel module by &lt;code&gt;sudo apt install v4l2loopback-dkms&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install deb file for &lt;code&gt;obs-v4l2sink&lt;/code&gt; downloaded from &lt;a href="https://github.com/CatxFish/obs-v4l2sink/releases"&gt;their release page&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Make a link for &lt;code&gt;obs-v4l2sink&lt;/code&gt; plugin in right folder by &lt;code&gt;sudo ln -s /usr/lib/obs-plugins/v4l2sink.so /usr/lib/x86_64-linux-gnu/obs-plugins/v4l2sink.so&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Open &lt;code&gt;/etc/modprobe.d/droidcam.conf&lt;/code&gt; and edit it so that content looks like&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;options v4l2loopback_dc width=1280 height=720 card_label="Droidcam"&lt;/span&gt;
+&lt;span class="err"&gt;options v4l2loopback width=1280 height=720 devices=1 video_nr=10 card_label="obs_studio_cam"  exclusive_caps=1&lt;/span&gt;
+&lt;span class="err"&gt;options snd-aloop enable=1,1 index=3,4&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;Add &lt;code&gt;v4l2loopback&lt;/code&gt; to autoload modules by editing &lt;code&gt;/etc/modules-load.d/droidcam.conf&lt;/code&gt;, so that its content is&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;videodev&lt;/span&gt;
+&lt;span class="err"&gt;v4l2loopback_dc&lt;/span&gt;
+&lt;span class="err"&gt;v4l2loopback&lt;/span&gt;
+&lt;span class="err"&gt;snd-aloop&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;Update initramfs by &lt;code&gt;sudo update-initramfs -u&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Reboot the system and enjoy video output from obs-studio in your video conferencing session.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Update (20/04/2021): Camera functionality is now built into &lt;code&gt;obs-studio&lt;/code&gt; 26.1+. Out of box, it works with almost all popular video conferencing systems. However, for &lt;code&gt;skype&lt;/code&gt;, please limit the camera output resolution to 1280x720.&lt;/p&gt;</content><category term="blog"></category></entry></feed>
