@@ -1,35 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/all.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-10-01T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>Access data in lvm2 drive</title><link href="https://mayanksuman.in/posts/01_Oct_2021_access-data-in-lvm2-drive/" rel="alternate"></link><published>2021-10-01T00:00:00+05:30</published><updated>2021-10-01T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-10-01:/posts/01_Oct_2021_access-data-in-lvm2-drive/</id><summary type="html">&lt;p&gt;Prerequisite: The system should have &lt;code&gt;lvm2&lt;/code&gt; installed. On debian this can be
-achieved by &lt;code&gt;sudo apt install lvm2&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;For mounting a &lt;code&gt;lvm2&lt;/code&gt; drive, we need to activate the associated &lt;span class="caps"&gt;LVM&lt;/span&gt; group. The following command can list all available &lt;span class="caps"&gt;LVM&lt;/span&gt; group:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo vgscan
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Scanning will show the name of different …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Prerequisite: The system should have &lt;code&gt;lvm2&lt;/code&gt; installed. On debian this can be
-achieved by &lt;code&gt;sudo apt install lvm2&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;For mounting a &lt;code&gt;lvm2&lt;/code&gt; drive, we need to activate the associated &lt;span class="caps"&gt;LVM&lt;/span&gt; group. The following command can list all available &lt;span class="caps"&gt;LVM&lt;/span&gt; group:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo vgscan
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;Scanning will show the name of different &lt;span class="caps"&gt;LVM&lt;/span&gt; volumes. More details about any of
-&lt;span class="caps"&gt;LVM&lt;/span&gt; volume can be obtained by &lt;code&gt;vgs&lt;/code&gt; or &lt;code&gt;vgdisplay&lt;/code&gt; commands.
-A particular &lt;span class="caps"&gt;LVM&lt;/span&gt; volume can be activated by &lt;code&gt;vgchange&lt;/code&gt; command. Successful
-activating of &lt;span class="caps"&gt;LVM&lt;/span&gt; volume with make device files in &lt;code&gt;/dev&lt;/code&gt; for each drive in
-the volume.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo vgchange -ay &amp;lt;lvm_volume_name&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;The required drive can be mounted in any folder by using &lt;code&gt;mount&lt;/code&gt; command.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo mount /dev/&amp;lt;lvm_volume_name&amp;gt;/&amp;lt;lvm_drive_name&amp;gt; target_folder
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;After accessing the required file, the drive can be unmounted by
-&lt;code&gt;sudo umount target_folder&lt;/code&gt;. The &lt;span class="caps"&gt;LVM&lt;/span&gt; group is deactivated with
-following command:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo vgchange -an
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;&lt;span class="caps"&gt;LVM&lt;/span&gt; group should always be deactivated before removing the concerned removable drive.&lt;/p&gt;</content><category term="Software"></category></entry><entry><title>Closure Functions</title><link href="https://mayanksuman.in/posts/21_May_2021_closure-functions/" rel="alternate"></link><published>2021-05-21T00:00:00+05:30</published><updated>2021-05-21T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-05-21:/posts/21_May_2021_closure-functions/</id><summary type="html">&lt;p&gt;Closure are higher-order functions which return lower-order function (usually first-order function) with its environment. Defining closure functions is possible in languages which has &lt;a href="https://mayanksuman.in/posts/20_May_2021_first-class-functions/"&gt;first-class functions&lt;/a&gt; like Python, JavaScript, Lua, Scheme, and others.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/all.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-05-21T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>Closure Functions</title><link href="https://mayanksuman.in/posts/21_May_2021_closure-functions/" rel="alternate"></link><published>2021-05-21T00:00:00+05:30</published><updated>2021-05-21T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-05-21:/posts/21_May_2021_closure-functions/</id><summary type="html">&lt;p&gt;Closure are higher-order functions which return lower-order function (usually first-order function) with its environment. Defining closure functions is possible in languages which has &lt;a href="https://mayanksuman.in/posts/20_May_2021_first-class-functions/"&gt;first-class functions&lt;/a&gt; like Python, JavaScript, Lua, Scheme, and others.&lt;/p&gt;
 &lt;h2&gt;Example&lt;/h2&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
@@ -116,7 +86,37 @@ following command:&lt;/p&gt;
 &lt;li&gt;After installation, install additional drivers from &lt;code&gt;VirtIO&lt;/code&gt; driver disk. Additionally, install other &lt;a href="https://www.spice-space.org/download.html"&gt;&lt;code&gt;SPICE&lt;/code&gt; drivers&lt;/a&gt;, specially &lt;code&gt;spice-guest-tools&lt;/code&gt; and &lt;code&gt;Spice WEBDAV Daemon&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Debloat it with &lt;a href="https://github.com/Sycnex/Windows10Debloater"&gt;Windows 10 Debloater&lt;/a&gt; and enhance your privacy with &lt;a href="https://www.oo-software.com/en/shutup10"&gt;O&amp;amp;O ShutUp10&lt;/a&gt;. Please ensure that before running &lt;code&gt;Windows10Debloater&lt;/code&gt;, execution policy in &lt;code&gt;Powershell&lt;/code&gt; (Administrator) is unrestrictive (&lt;code&gt;Set-ExecutionPolicy Unrestricted&lt;/code&gt;). Don’t forget to change the execution policy afterward (&lt;code&gt;Set-ExecutionPolicy restricted&lt;/code&gt;).&lt;/li&gt;
 &lt;li&gt;Additional Tip: For sharing files from Linux host, you have two options a) by &lt;span class="caps"&gt;USB&lt;/span&gt; redirection of attached pen drive b) by WebDAV. For using WebDAV, &lt;code&gt;Spice WebDAV Daemon&lt;/code&gt; should be installed in Windows guest. Add a new channel hardware with target name &lt;code&gt;org.spice-space.webdav.0&lt;/code&gt;. Start the Windows guest and connect it with &lt;code&gt;remote-viewer&lt;/code&gt; (&lt;code&gt;remote-viewer spice://127.0.0.1:5900&lt;/code&gt;) and then use &lt;code&gt;File &amp;gt; Preferences&lt;/code&gt; to select the folder to be shared. If this does not work, ensure that on the host machine (Linux), the user is a member of &lt;code&gt;libvirt&lt;/code&gt; or other appropriate groups, and on the guest virtual machine (Windows), &lt;code&gt;Spice WebDAV&lt;/code&gt; service is running.&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Software"></category></entry><entry><title>Setting up droidcam and obs-studio cam in Debian</title><link href="https://mayanksuman.in/posts/30_Jul_2020_setting-up-droidcam-and-obs-studio-cam-in-debian/" rel="alternate"></link><published>2020-07-30T00:00:00+05:30</published><updated>2020-07-30T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2020-07-30:/posts/30_Jul_2020_setting-up-droidcam-and-obs-studio-cam-in-debian/</id><summary type="html">&lt;p&gt;Currently, most of the population is working from home, so having a good video conferencing setup has become important. I have setup droidcam for getting video input from phone/ipad and obs-studio for managing different audio/video source in Debian using the following steps:&lt;/p&gt;
+&lt;/ol&gt;</content><category term="Software"></category></entry><entry><title>Access data in lvm2 drive</title><link href="https://mayanksuman.in/posts/10_Jan_2021_access-data-in-lvm2-drive/" rel="alternate"></link><published>2021-01-10T00:00:00+05:30</published><updated>2021-01-10T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-01-10:/posts/10_Jan_2021_access-data-in-lvm2-drive/</id><summary type="html">&lt;p&gt;Prerequisite: The system should have &lt;code&gt;lvm2&lt;/code&gt; installed. On debian this can be
+achieved by &lt;code&gt;sudo apt install lvm2&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For mounting a &lt;code&gt;lvm2&lt;/code&gt; drive, we need to activate the associated &lt;span class="caps"&gt;LVM&lt;/span&gt; group. The following command can list all available &lt;span class="caps"&gt;LVM&lt;/span&gt; group:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo vgscan
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Scanning will show the name of different …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Prerequisite: The system should have &lt;code&gt;lvm2&lt;/code&gt; installed. On debian this can be
+achieved by &lt;code&gt;sudo apt install lvm2&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For mounting a &lt;code&gt;lvm2&lt;/code&gt; drive, we need to activate the associated &lt;span class="caps"&gt;LVM&lt;/span&gt; group. The following command can list all available &lt;span class="caps"&gt;LVM&lt;/span&gt; group:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo vgscan
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Scanning will show the name of different &lt;span class="caps"&gt;LVM&lt;/span&gt; volumes. More details about any of
+&lt;span class="caps"&gt;LVM&lt;/span&gt; volume can be obtained by &lt;code&gt;vgs&lt;/code&gt; or &lt;code&gt;vgdisplay&lt;/code&gt; commands.
+A particular &lt;span class="caps"&gt;LVM&lt;/span&gt; volume can be activated by &lt;code&gt;vgchange&lt;/code&gt; command. Successful
+activating of &lt;span class="caps"&gt;LVM&lt;/span&gt; volume with make device files in &lt;code&gt;/dev&lt;/code&gt; for each drive in
+the volume.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo vgchange -ay &amp;lt;lvm_volume_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;The required drive can be mounted in any folder by using &lt;code&gt;mount&lt;/code&gt; command.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo mount /dev/&amp;lt;lvm_volume_name&amp;gt;/&amp;lt;lvm_drive_name&amp;gt; target_folder
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;After accessing the required file, the drive can be unmounted by
+&lt;code&gt;sudo umount target_folder&lt;/code&gt;. The &lt;span class="caps"&gt;LVM&lt;/span&gt; group is deactivated with
+following command:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo vgchange -an
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;&lt;span class="caps"&gt;LVM&lt;/span&gt; group should always be deactivated before removing the concerned removable drive.&lt;/p&gt;</content><category term="Software"></category></entry><entry><title>Setting up droidcam and obs-studio cam in Debian</title><link href="https://mayanksuman.in/posts/30_Jul_2020_setting-up-droidcam-and-obs-studio-cam-in-debian/" rel="alternate"></link><published>2020-07-30T00:00:00+05:30</published><updated>2020-07-30T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2020-07-30:/posts/30_Jul_2020_setting-up-droidcam-and-obs-studio-cam-in-debian/</id><summary type="html">&lt;p&gt;Currently, most of the population is working from home, so having a good video conferencing setup has become important. I have setup droidcam for getting video input from phone/ipad and obs-studio for managing different audio/video source in Debian using the following steps:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;At first install &lt;code&gt;droidcam&lt;/code&gt; in &lt;span class="caps"&gt;PC …&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;Currently, most of the population is working from home, so having a good video conferencing setup has become important. I have setup droidcam for getting video input from phone/ipad and obs-studio for managing different audio/video source in Debian using the following steps:&lt;/p&gt;
 &lt;ol&gt;
