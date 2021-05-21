@@ -18,6 +18,7 @@ FAVICON = SITEURL + "/images/favicon.ico"
 PATH = 'content'
 
 TIMEZONE = 'Asia/Kolkata'
+DEFAULT_DATE_FORMAT = '%d-%m-%Y'
 
 I18N_TEMPLATES_LANG = 'en'
 DEFAULT_LANG = 'en'
@@ -47,7 +48,7 @@ SOCIAL = (
     ('stack-overflow', 'https://www.stackoverflow.com/users/8694152/ms'),
 )
 
-STATIC_PATHS = ['pages/cv.pdf', 'images']
+STATIC_PATHS = ['about/cv.pdf', 'images']
 
 DEFAULT_PAGINATION = 5
 
