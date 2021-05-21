@@ -13,7 +13,7 @@ SSH_PORT=22
 SSH_USER=root
 SSH_TARGET_DIR=/var/www
 
-GITHUB_PAGES_BRANCH=master
+GITHUB_PAGES_BRANCH=html_pages
 
 
 DEBUG ?= 0
