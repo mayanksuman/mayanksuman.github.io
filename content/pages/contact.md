@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Contact
-date: 2020-02-09
 disable_comments: true
 disable_share: true
 ---

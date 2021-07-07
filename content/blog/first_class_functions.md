@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 20-05-2021
+date: 2021-05-20
 title: First Class Functions
 Category: Programming
 Tags: first-class functions, python, luajit, javascript
