@@ -55,7 +55,7 @@ COPYRIGHT_YEAR = datetime.now().year
 COPYRIGHT_NAME = AUTHOR
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+RELATIVE_URLS = True
 
 # Register jupyter notebook as additional markup format
 MARKUP = ("md", "ipynb")
@@ -81,7 +81,7 @@ MARKDOWN = {
     'extension_configs': {
         'markdown.extensions.codehilite': {'css_class': 'highlight', 'linenums': True},
         'markdown.extensions.sane_lists': {},
-        'markdown.extensions.extra': {},
+        'markdown.extensions.extra': {'footnotes': {'UNIQUE_IDS': True}},
         'markdown.extensions.meta': {},
     },
     'output_format': 'html5',
