@@ -47,7 +47,8 @@ SOCIAL = (
     ('stack-overflow', 'https://www.stackoverflow.com/users/8694152/ms'),
 )
 
-STATIC_PATHS = ['about/cv.pdf', 'images']
+STATIC_PATHS = ['extra/CNAME', 'about/cv.pdf', 'images']
+EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 
 DEFAULT_PAGINATION = 5
 
