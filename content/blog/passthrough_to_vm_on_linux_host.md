@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Pass-through to VM on Linux Host
+title: Pass through to VM on Linux Host
 date: 2021-07-07
 category: Virtual Machine
 tag: windows_vm
 ---
 
-Before enabling pass-through we need to enable IOMMU
+Before enabling pass through we need to enable IOMMU
 ([input–output memory management unit](https://en.wikipedia.org/wiki/Input–output_memory_management_unit))
 by adding following kernel parameters in `/etc/default/grub`.
 
@@ -16,7 +16,7 @@ by adding following kernel parameters in `/etc/default/grub`.
 Additionally add `iommmu=pt` parameter to prevent linux kernel from touching
 devices which cannot be passed through.
 Update grub by `sudo update-grub` command and
-reboot the system. After reboot, check that the device to be pass-throughed
+reboot the system. After reboot, check that the device to be passed through
 (usually GPU) has separate IOMMU group by inspecting the output
 of following shell script.
 
@@ -33,7 +33,7 @@ done;
 
 Sometimes, a number of sub-devices can be attached to a device in that case,
 please ensure that all of sub-devices belong to same IOMMU group and all of
-them should be pass-throughed together.
+them should be passed through together.
 
 Sample output:
 
@@ -47,7 +47,7 @@ IOMMU Group 9:
 	02:00.0 Network controller [0280]: Intel Corporation Wi-Fi 6 AX200 [8086:2723] (rev 1a)
 ```
 
-For enabling pass-through on the device, note its vendorID:productID and add
+For enabling pass through on the device, note its vendorID:productID and add
 `vfio-pci` parameter to kernel parameters. For instance to forward
 Network controller from the above example the parameter should be
 
@@ -55,7 +55,7 @@ Network controller from the above example the parameter should be
 vfio-pci.ids=8086:2723
 ```
 
-If you want to pass-through IOMMU Group 8, then add following parameter
+If you want to pass through IOMMU Group 8, then add following parameter
 
 ```sh
 vfio-pci.ids=10de:2191,10de:1aeb,10de:1aec,10de:1aed
