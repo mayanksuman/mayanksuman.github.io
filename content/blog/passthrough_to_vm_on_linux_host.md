@@ -36,7 +36,8 @@ please ensure that all of sub-devices belong to same IOMMU group and all of
 them should be pass-throughed together.
 
 Sample output:
-```
+
+```sh
 IOMMU Group 8:
 	01:00.0 VGA compatible controller [0300]: NVIDIA Corporation TU116M [GeForce GTX 1660 Ti Mobile] [10de:2191] (rev a1)
 	01:00.1 Audio device [0403]: NVIDIA Corporation TU116 High Definition Audio Controller [10de:1aeb] (rev a1)
@@ -50,11 +51,13 @@ For enabling pass-through on the device, note its vendorID:productID and add
 `vfio-pci` parameter to kernel parameters. For instance to forward
 Network controller from the above example the parameter should be
 
-```
+```sh
 vfio-pci.ids=8086:2723
 ```
+
 If you want to pass-through IOMMU Group 8, then add following parameter
-```
+
+```sh
 vfio-pci.ids=10de:2191,10de:1aeb,10de:1aec,10de:1aed
 ```
 
@@ -81,4 +84,3 @@ and its sub-devices. Turn on VM to enjoy NVIDIA GPU with it.
 **Note**: The host linux system will not use any device with `vfio-pci` module.
 To get the access to device, please remove the `vfio-pci` related kernel
 parameter. You can keep IOMMU on as it has [added advantage](https://en.wikipedia.org/wiki/Input-output_memory_management_unit#Advantages).
-
