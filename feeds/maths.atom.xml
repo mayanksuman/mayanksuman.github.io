@@ -7,15 +7,13 @@
 &lt;li&gt;Proposition: interesting claim; however have lesser importance than theorem.&lt;/li&gt;
 &lt;li&gt;Theorem: most important claim that says something definitive for the subject, hence, often take more effort to prove than a proposition or lemma.&lt;/li&gt;
 &lt;li&gt;Corollary: quick consequence of theorem or proposition that was proved recently in the text.&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Maths"></category></entry><entry><title>Natural Numbers</title><link href="https://mayanksuman.in/posts/25_Jun_2021_natural-numbers/" rel="alternate"></link><published>2021-06-25T00:00:00+05:30</published><updated>2021-06-25T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-06-25:/posts/25_Jun_2021_natural-numbers/</id><summary type="html">&lt;h2&gt;Definition&lt;/h2&gt;
-&lt;p&gt;Natural numbers are numbers that follows Peano axioms.&lt;/p&gt;
+&lt;/ol&gt;</content><category term="Maths"></category></entry><entry><title>Natural Numbers</title><link href="https://mayanksuman.in/posts/25_Jun_2021_natural-numbers/" rel="alternate"></link><published>2021-06-25T00:00:00+05:30</published><updated>2021-06-25T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-06-25:/posts/25_Jun_2021_natural-numbers/</id><summary type="html">&lt;p&gt;Natural numbers are numbers that follows Peano axioms.&lt;/p&gt;
 &lt;h3&gt;Peano Axiom&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;1 is a natural number.&lt;/li&gt;
 &lt;li&gt;If &lt;span class="math"&gt;\(n\)&lt;/span&gt; is a natural number then &lt;span class="math"&gt;\(n++\)&lt;/span&gt; is also a natural number.&lt;/li&gt;
 &lt;li&gt;1 is not a successor of any natural number. Hence, &lt;span class="math"&gt;\(n++\neq 1\)&lt;/span&gt; for every natural number &lt;span class="math"&gt;\(n\)&lt;/span&gt;.&lt;/li&gt;
-&lt;li&gt;For two natural …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;h2&gt;Definition&lt;/h2&gt;
-&lt;p&gt;Natural numbers are numbers that follows Peano axioms.&lt;/p&gt;
+&lt;li&gt;For two natural numbers …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;Natural numbers are numbers that follows Peano axioms.&lt;/p&gt;
 &lt;h3&gt;Peano Axiom&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;1 is a natural number.&lt;/li&gt;
@@ -28,24 +26,28 @@
 &lt;p&gt;From Peano Axioms only one operation (&lt;em&gt;i.e.&lt;/em&gt; increment) is defined on natural number. The repeated application of this operation can used to define other operations on natural numbers like addition and multiplication.&lt;/p&gt;
 &lt;h3&gt;Addition&lt;/h3&gt;
 &lt;p&gt;Definition: For a natural number &lt;span class="math"&gt;\(m\)&lt;/span&gt;, we define &lt;span class="math"&gt;\(m++ = m+1\)&lt;/span&gt; and by induction if this addition operation can be defined for &lt;span class="math"&gt;\(n++\)&lt;/span&gt; as &lt;span class="math"&gt;\(m+n++ = (m+n)++ = m+(n+1)\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Based on this definition of addition, following properties of addition can be established:
-1. Addition is commutative. &lt;em&gt;i.e.&lt;/em&gt; &lt;span class="math"&gt;\(n+m = m+n\)&lt;/span&gt;
-2. Addition is associative. &lt;em&gt;i.e.&lt;/em&gt; &lt;span class="math"&gt;\((a+b)+c = a+(b+c)\)&lt;/span&gt;
-3. Cancellation law: if &lt;span class="math"&gt;\(a+b=a+c\)&lt;/span&gt;, then &lt;span class="math"&gt;\(b=c\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Based on this definition of addition, following properties of addition can be established:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Addition is commutative. &lt;em&gt;i.e.&lt;/em&gt; &lt;span class="math"&gt;\(n+m = m+n\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Addition is associative. &lt;em&gt;i.e.&lt;/em&gt; &lt;span class="math"&gt;\((a+b)+c = a+(b+c)\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Cancellation law: if &lt;span class="math"&gt;\(a+b=a+c\)&lt;/span&gt;, then &lt;span class="math"&gt;\(b=c\)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;These properties can be proved by using principle of mathematical induction (the last Peano axiom). Moreover, the operation of addition also lead to ordering in natural number.&lt;/p&gt;
 &lt;h4&gt;Definition of zero and whole number&lt;/h4&gt;
 &lt;p&gt;Zero (written as 0) is a number whose successor is 1 and for any natural number &lt;span class="math"&gt;\(a\)&lt;/span&gt;, &lt;span class="math"&gt;\(a+0=a\)&lt;/span&gt;. If we include 0 in the set of natural number then the set is called whole number.&lt;/p&gt;
 &lt;h4&gt;Ordering of natural numbers&lt;/h4&gt;
 &lt;p&gt;Definition: Let &lt;span class="math"&gt;\(n\)&lt;/span&gt; and &lt;span class="math"&gt;\(m\)&lt;/span&gt; are natural numbers. We say that &lt;span class="math"&gt;\(n\)&lt;/span&gt; is equal or greater than &lt;span class="math"&gt;\(m\)&lt;/span&gt; and write it &lt;span class="math"&gt;\(n\geq m\)&lt;/span&gt; (or &lt;span class="math"&gt;\(m\leq n\)&lt;/span&gt;), iff we have &lt;span class="math"&gt;\(n=m+a\)&lt;/span&gt; for some whole number &lt;span class="math"&gt;\(a\)&lt;/span&gt;. We say that &lt;span class="math"&gt;\(n\)&lt;/span&gt; is strictly greater than &lt;span class="math"&gt;\(m\)&lt;/span&gt; (written as &lt;span class="math"&gt;\(n&amp;gt;m\)&lt;/span&gt;) iff &lt;span class="math"&gt;\(n\geq m\)&lt;/span&gt; and &lt;span class="math"&gt;\(n\neq m\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Using mathematical induction, following properties of ordering in whole numbers can be established (&lt;span class="math"&gt;\(a\)&lt;/span&gt;, &lt;span class="math"&gt;\(b\)&lt;/span&gt;, and &lt;span class="math"&gt;\(c\)&lt;/span&gt; are whole numbers):
-1. Order is reflexive. &lt;span class="math"&gt;\(a\geq a\)&lt;/span&gt;
-2. Order is transitive. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\geq c\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a\geq c\)&lt;/span&gt;.
-3. Order is anti-symmetric. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\geq a\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a=b\)&lt;/span&gt;.
-4. Addition preserves order. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a+c \geq b+c\)&lt;/span&gt;.
-5. &lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt; iff &lt;span class="math"&gt;\(a++\geq b\)&lt;/span&gt;.
-6. &lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt; iff &lt;span class="math"&gt;\(b = a + d\)&lt;/span&gt; for some natural number d.&lt;/p&gt;
-&lt;p&gt;Proposition 1: Trichotomy of order for whole numbers: If &lt;span class="math"&gt;\(a\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\)&lt;/span&gt; are whole numbers then exatly one of the following statements is true: &lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt;, &lt;span class="math"&gt;\(a=b\)&lt;/span&gt;, or &lt;span class="math"&gt;\(a&amp;gt;b\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Proposition 2: Strong principle of mathematical induction: let &lt;span class="math"&gt;\(m_0\)&lt;/span&gt; be a whole number, and let &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; be a property pertaining to an arbitrary whole number &lt;span class="math"&gt;\(m\)&lt;/span&gt;. Suppose that for each &lt;span class="math"&gt;\(m\geq m_0\)&lt;/span&gt;, we have the following implication: if &lt;span class="math"&gt;\(P(m')\)&lt;/span&gt; is true for all natural numbers &lt;span class="math"&gt;\(m_0\geq m' \geq m\)&lt;/span&gt;, then &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; is also true. (In particular, this means that &lt;span class="math"&gt;\(P(m_0)\)&lt;/span&gt; is true, since in this case the hypothesis is vacuous.) Then we can conclude that &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; is true for all natural numbers &lt;span class="math"&gt;\(m\geq m_0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Using mathematical induction, following properties of ordering in whole numbers can be established (&lt;span class="math"&gt;\(a\)&lt;/span&gt;, &lt;span class="math"&gt;\(b\)&lt;/span&gt;, and &lt;span class="math"&gt;\(c\)&lt;/span&gt; are whole numbers):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Order is reflexive. &lt;span class="math"&gt;\(a\geq a\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Order is transitive. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\geq c\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a\geq c\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Order is anti-symmetric. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\geq a\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a=b\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Addition preserves order. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a+c \geq b+c\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt; iff &lt;span class="math"&gt;\(a++\geq b\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt; iff &lt;span class="math"&gt;\(b = a + d\)&lt;/span&gt; for some natural number d.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 1&lt;/strong&gt;: Trichotomy of order for whole numbers: If &lt;span class="math"&gt;\(a\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\)&lt;/span&gt; are whole numbers then exatly one of the following statements is true: &lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt;, &lt;span class="math"&gt;\(a=b\)&lt;/span&gt;, or &lt;span class="math"&gt;\(a&amp;gt;b\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 2&lt;/strong&gt;: Strong principle of mathematical induction: let &lt;span class="math"&gt;\(m_0\)&lt;/span&gt; be a whole number, and let &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; be a property pertaining to an arbitrary whole number &lt;span class="math"&gt;\(m\)&lt;/span&gt;. Suppose that for each &lt;span class="math"&gt;\(m\geq m_0\)&lt;/span&gt;, we have the following implication: if &lt;span class="math"&gt;\(P(m')\)&lt;/span&gt; is true for all natural numbers &lt;span class="math"&gt;\(m_0\geq m' \geq m\)&lt;/span&gt;, then &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; is also true. (In particular, this means that &lt;span class="math"&gt;\(P(m_0)\)&lt;/span&gt; is true, since in this case the hypothesis is vacuous.) Then we can conclude that &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; is true for all natural numbers &lt;span class="math"&gt;\(m\geq m_0\)&lt;/span&gt;.&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",

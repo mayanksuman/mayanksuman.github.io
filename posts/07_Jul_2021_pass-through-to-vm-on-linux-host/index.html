@@ -56,13 +56,13 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="Mayank Suman" />
-<meta name="description" content="Before enabling pass-through we need to enable IOMMU (input–output memory management unit) by adding following kernel parameters in /etc/default/grub. For intel systems: intel_iommu=on For AMD system, IOMMU is by default enabled. Additionally add iommmu=pt parameter to prevent linux kernel from touching devices which cannot be …" />
+<meta name="description" content="Before enabling pass through we need to enable IOMMU (input–output memory management unit) by adding following kernel parameters in /etc/default/grub. For intel systems: intel_iommu=on For AMD system, IOMMU is by default enabled. Additionally add iommmu=pt parameter to prevent linux kernel from touching devices which cannot …" />
 <meta name="keywords" content="">
 
 
 <meta property="og:site_name" content="Mayank Suman's Blog"/>
-<meta property="og:title" content="Pass-through to VM on Linux Host"/>
-<meta property="og:description" content="Before enabling pass-through we need to enable IOMMU (input–output memory management unit) by adding following kernel parameters in /etc/default/grub. For intel systems: intel_iommu=on For AMD system, IOMMU is by default enabled. Additionally add iommmu=pt parameter to prevent linux kernel from touching devices which cannot be …"/>
+<meta property="og:title" content="Pass through to VM on Linux Host"/>
+<meta property="og:description" content="Before enabling pass through we need to enable IOMMU (input–output memory management unit) by adding following kernel parameters in /etc/default/grub. For intel systems: intel_iommu=on For AMD system, IOMMU is by default enabled. Additionally add iommmu=pt parameter to prevent linux kernel from touching devices which cannot …"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://mayanksuman.in/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/"/>
 <meta property="og:type" content="article"/>
@@ -72,7 +72,7 @@
 <meta property="article:section" content="Virtual Machine"/>
 <meta property="og:image" content="https://mayanksuman.in/images/profile.png">
 
-  <title>Mayank Suman's Blog &ndash; Pass-through to VM on Linux Host</title>
+  <title>Mayank Suman's Blog &ndash; Pass through to VM on Linux Host</title>
 
 </head>
 <body >
@@ -147,7 +147,7 @@
 <article class="single">
   <header>
       
-    <h1 id="pass-through-to-vm-on-linux-host">Pass-through to <span class="caps">VM</span> on Linux&nbsp;Host</h1>
+    <h1 id="pass-through-to-vm-on-linux-host">Pass through to <span class="caps">VM</span> on Linux&nbsp;Host</h1>
     <p>
       Posted on Wed 07 July 2021 in <a href="https://mayanksuman.in/category/virtual-machine.html">Virtual Machine</a>
 
@@ -158,7 +158,7 @@
 
 
   <div>
-    <p>Before enabling pass-through we need to enable <span class="caps">IOMMU</span>
+    <p>Before enabling pass through we need to enable <span class="caps">IOMMU</span>
 (<a href="https://en.wikipedia.org/wiki/Input–output_memory_management_unit">input–output memory management unit</a>)
 by adding following kernel parameters in <code>/etc/default/grub</code>.</p>
 <ul>
@@ -168,7 +168,7 @@ by adding following kernel parameters in <code>/etc/default/grub</code>.</p>
 <p>Additionally add <code>iommmu=pt</code> parameter to prevent linux kernel from touching
 devices which cannot be passed through.
 Update grub by <code>sudo update-grub</code> command and
-reboot the system. After reboot, check that the device to be pass-throughed
+reboot the system. After reboot, check that the device to be passed through
 (usually <span class="caps">GPU</span>) has separate <span class="caps">IOMMU</span> group by inspecting the output
 of following shell script.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -190,7 +190,7 @@ of following shell script.</p>
 </td></tr></table>
 <p>Sometimes, a number of sub-devices can be attached to a device in that case,
 please ensure that all of sub-devices belong to same <span class="caps">IOMMU</span> group and all of
-them should be pass-throughed together.</p>
+them should be passed through together.</p>
 <p>Sample output:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -207,13 +207,13 @@ IOMMU Group <span class="m">9</span>:
     <span class="m">02</span>:00.0 Network controller <span class="o">[</span><span class="m">0280</span><span class="o">]</span>: Intel Corporation Wi-Fi <span class="m">6</span> AX200 <span class="o">[</span><span class="m">8086</span>:2723<span class="o">]</span> <span class="o">(</span>rev 1a<span class="o">)</span>
 </code></pre></div>
 </td></tr></table>
-<p>For enabling pass-through on the device, note its vendorID:productID and add
+<p>For enabling pass through on the device, note its vendorID:productID and add
 <code>vfio-pci</code> parameter to kernel parameters. For instance to forward
 Network controller from the above example the parameter should be</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>vfio-pci.ids<span class="o">=</span><span class="m">8086</span>:2723
 </code></pre></div>
 </td></tr></table>
-<p>If you want to pass-through <span class="caps">IOMMU</span> Group 8, then add following parameter</p>
+<p>If you want to pass through <span class="caps">IOMMU</span> Group 8, then add following parameter</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>vfio-pci.ids<span class="o">=</span>10de:2191,10de:1aeb,10de:1aec,10de:1aed
 </code></pre></div>
 </td></tr></table>

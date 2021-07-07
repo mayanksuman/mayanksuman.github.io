@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/all.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-07-07T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>Pass-through to VM on Linux Host</title><link href="https://mayanksuman.in/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/" rel="alternate"></link><published>2021-07-07T00:00:00+05:30</published><updated>2021-07-07T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-07-07:/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/</id><summary type="html">&lt;p&gt;Before enabling pass-through we need to enable &lt;span class="caps"&gt;IOMMU&lt;/span&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/all.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-07-07T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>Pass through to VM on Linux Host</title><link href="https://mayanksuman.in/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/" rel="alternate"></link><published>2021-07-07T00:00:00+05:30</published><updated>2021-07-07T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-07-07:/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/</id><summary type="html">&lt;p&gt;Before enabling pass through we need to enable &lt;span class="caps"&gt;IOMMU&lt;/span&gt;
 (&lt;a href="https://en.wikipedia.org/wiki/Input–output_memory_management_unit"&gt;input–output memory management unit&lt;/a&gt;)
 by adding following kernel parameters in &lt;code&gt;/etc/default/grub&lt;/code&gt;.&lt;/p&gt;
 &lt;ul&gt;
@@ -7,7 +7,7 @@ by adding following kernel parameters in &lt;code&gt;/etc/default/grub&lt;/code&
 &lt;li&gt;For &lt;span class="caps"&gt;AMD&lt;/span&gt; system, &lt;span class="caps"&gt;IOMMU&lt;/span&gt; is by default enabled.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Additionally add &lt;code&gt;iommmu=pt&lt;/code&gt; parameter to prevent linux kernel from touching
-devices which cannot be …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Before enabling pass-through we need to enable &lt;span class="caps"&gt;IOMMU&lt;/span&gt;
+devices which cannot …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Before enabling pass through we need to enable &lt;span class="caps"&gt;IOMMU&lt;/span&gt;
 (&lt;a href="https://en.wikipedia.org/wiki/Input–output_memory_management_unit"&gt;input–output memory management unit&lt;/a&gt;)
 by adding following kernel parameters in &lt;code&gt;/etc/default/grub&lt;/code&gt;.&lt;/p&gt;
 &lt;ul&gt;
@@ -17,7 +17,7 @@ by adding following kernel parameters in &lt;code&gt;/etc/default/grub&lt;/code&
 &lt;p&gt;Additionally add &lt;code&gt;iommmu=pt&lt;/code&gt; parameter to prevent linux kernel from touching
 devices which cannot be passed through.
 Update grub by &lt;code&gt;sudo update-grub&lt;/code&gt; command and
-reboot the system. After reboot, check that the device to be pass-throughed
+reboot the system. After reboot, check that the device to be passed through
 (usually &lt;span class="caps"&gt;GPU&lt;/span&gt;) has separate &lt;span class="caps"&gt;IOMMU&lt;/span&gt; group by inspecting the output
 of following shell script.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
@@ -39,7 +39,7 @@ of following shell script.&lt;/p&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Sometimes, a number of sub-devices can be attached to a device in that case,
 please ensure that all of sub-devices belong to same &lt;span class="caps"&gt;IOMMU&lt;/span&gt; group and all of
-them should be pass-throughed together.&lt;/p&gt;
+them should be passed through together.&lt;/p&gt;
 &lt;p&gt;Sample output:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
@@ -56,13 +56,13 @@ IOMMU Group &lt;span class="m"&gt;9&lt;/span&gt;:
     &lt;span class="m"&gt;02&lt;/span&gt;:00.0 Network controller &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;0280&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: Intel Corporation Wi-Fi &lt;span class="m"&gt;6&lt;/span&gt; AX200 &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;8086&lt;/span&gt;:2723&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;rev 1a&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;For enabling pass-through on the device, note its vendorID:productID and add
+&lt;p&gt;For enabling pass through on the device, note its vendorID:productID and add
 &lt;code&gt;vfio-pci&lt;/code&gt; parameter to kernel parameters. For instance to forward
 Network controller from the above example the parameter should be&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vfio-pci.ids&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;8086&lt;/span&gt;:2723
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;If you want to pass-through &lt;span class="caps"&gt;IOMMU&lt;/span&gt; Group 8, then add following parameter&lt;/p&gt;
+&lt;p&gt;If you want to pass through &lt;span class="caps"&gt;IOMMU&lt;/span&gt; Group 8, then add following parameter&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vfio-pci.ids&lt;span class="o"&gt;=&lt;/span&gt;10de:2191,10de:1aeb,10de:1aec,10de:1aed
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -95,15 +95,13 @@ parameter. You can keep &lt;span class="caps"&gt;IOMMU&lt;/span&gt; on as it has
 &lt;li&gt;Proposition: interesting claim; however have lesser importance than theorem.&lt;/li&gt;
 &lt;li&gt;Theorem: most important claim that says something definitive for the subject, hence, often take more effort to prove than a proposition or lemma.&lt;/li&gt;
 &lt;li&gt;Corollary: quick consequence of theorem or proposition that was proved recently in the text.&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Maths"></category></entry><entry><title>Natural Numbers</title><link href="https://mayanksuman.in/posts/25_Jun_2021_natural-numbers/" rel="alternate"></link><published>2021-06-25T00:00:00+05:30</published><updated>2021-06-25T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-06-25:/posts/25_Jun_2021_natural-numbers/</id><summary type="html">&lt;h2&gt;Definition&lt;/h2&gt;
-&lt;p&gt;Natural numbers are numbers that follows Peano axioms.&lt;/p&gt;
+&lt;/ol&gt;</content><category term="Maths"></category></entry><entry><title>Natural Numbers</title><link href="https://mayanksuman.in/posts/25_Jun_2021_natural-numbers/" rel="alternate"></link><published>2021-06-25T00:00:00+05:30</published><updated>2021-06-25T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-06-25:/posts/25_Jun_2021_natural-numbers/</id><summary type="html">&lt;p&gt;Natural numbers are numbers that follows Peano axioms.&lt;/p&gt;
 &lt;h3&gt;Peano Axiom&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;1 is a natural number.&lt;/li&gt;
 &lt;li&gt;If &lt;span class="math"&gt;\(n\)&lt;/span&gt; is a natural number then &lt;span class="math"&gt;\(n++\)&lt;/span&gt; is also a natural number.&lt;/li&gt;
 &lt;li&gt;1 is not a successor of any natural number. Hence, &lt;span class="math"&gt;\(n++\neq 1\)&lt;/span&gt; for every natural number &lt;span class="math"&gt;\(n\)&lt;/span&gt;.&lt;/li&gt;
-&lt;li&gt;For two natural …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;h2&gt;Definition&lt;/h2&gt;
-&lt;p&gt;Natural numbers are numbers that follows Peano axioms.&lt;/p&gt;
+&lt;li&gt;For two natural numbers …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;Natural numbers are numbers that follows Peano axioms.&lt;/p&gt;
 &lt;h3&gt;Peano Axiom&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;1 is a natural number.&lt;/li&gt;
@@ -116,24 +114,28 @@ parameter. You can keep &lt;span class="caps"&gt;IOMMU&lt;/span&gt; on as it has
 &lt;p&gt;From Peano Axioms only one operation (&lt;em&gt;i.e.&lt;/em&gt; increment) is defined on natural number. The repeated application of this operation can used to define other operations on natural numbers like addition and multiplication.&lt;/p&gt;
 &lt;h3&gt;Addition&lt;/h3&gt;
 &lt;p&gt;Definition: For a natural number &lt;span class="math"&gt;\(m\)&lt;/span&gt;, we define &lt;span class="math"&gt;\(m++ = m+1\)&lt;/span&gt; and by induction if this addition operation can be defined for &lt;span class="math"&gt;\(n++\)&lt;/span&gt; as &lt;span class="math"&gt;\(m+n++ = (m+n)++ = m+(n+1)\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Based on this definition of addition, following properties of addition can be established:
-1. Addition is commutative. &lt;em&gt;i.e.&lt;/em&gt; &lt;span class="math"&gt;\(n+m = m+n\)&lt;/span&gt;
-2. Addition is associative. &lt;em&gt;i.e.&lt;/em&gt; &lt;span class="math"&gt;\((a+b)+c = a+(b+c)\)&lt;/span&gt;
-3. Cancellation law: if &lt;span class="math"&gt;\(a+b=a+c\)&lt;/span&gt;, then &lt;span class="math"&gt;\(b=c\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Based on this definition of addition, following properties of addition can be established:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Addition is commutative. &lt;em&gt;i.e.&lt;/em&gt; &lt;span class="math"&gt;\(n+m = m+n\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Addition is associative. &lt;em&gt;i.e.&lt;/em&gt; &lt;span class="math"&gt;\((a+b)+c = a+(b+c)\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Cancellation law: if &lt;span class="math"&gt;\(a+b=a+c\)&lt;/span&gt;, then &lt;span class="math"&gt;\(b=c\)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;These properties can be proved by using principle of mathematical induction (the last Peano axiom). Moreover, the operation of addition also lead to ordering in natural number.&lt;/p&gt;
 &lt;h4&gt;Definition of zero and whole number&lt;/h4&gt;
 &lt;p&gt;Zero (written as 0) is a number whose successor is 1 and for any natural number &lt;span class="math"&gt;\(a\)&lt;/span&gt;, &lt;span class="math"&gt;\(a+0=a\)&lt;/span&gt;. If we include 0 in the set of natural number then the set is called whole number.&lt;/p&gt;
 &lt;h4&gt;Ordering of natural numbers&lt;/h4&gt;
 &lt;p&gt;Definition: Let &lt;span class="math"&gt;\(n\)&lt;/span&gt; and &lt;span class="math"&gt;\(m\)&lt;/span&gt; are natural numbers. We say that &lt;span class="math"&gt;\(n\)&lt;/span&gt; is equal or greater than &lt;span class="math"&gt;\(m\)&lt;/span&gt; and write it &lt;span class="math"&gt;\(n\geq m\)&lt;/span&gt; (or &lt;span class="math"&gt;\(m\leq n\)&lt;/span&gt;), iff we have &lt;span class="math"&gt;\(n=m+a\)&lt;/span&gt; for some whole number &lt;span class="math"&gt;\(a\)&lt;/span&gt;. We say that &lt;span class="math"&gt;\(n\)&lt;/span&gt; is strictly greater than &lt;span class="math"&gt;\(m\)&lt;/span&gt; (written as &lt;span class="math"&gt;\(n&amp;gt;m\)&lt;/span&gt;) iff &lt;span class="math"&gt;\(n\geq m\)&lt;/span&gt; and &lt;span class="math"&gt;\(n\neq m\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Using mathematical induction, following properties of ordering in whole numbers can be established (&lt;span class="math"&gt;\(a\)&lt;/span&gt;, &lt;span class="math"&gt;\(b\)&lt;/span&gt;, and &lt;span class="math"&gt;\(c\)&lt;/span&gt; are whole numbers):
-1. Order is reflexive. &lt;span class="math"&gt;\(a\geq a\)&lt;/span&gt;
-2. Order is transitive. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\geq c\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a\geq c\)&lt;/span&gt;.
-3. Order is anti-symmetric. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\geq a\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a=b\)&lt;/span&gt;.
-4. Addition preserves order. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a+c \geq b+c\)&lt;/span&gt;.
-5. &lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt; iff &lt;span class="math"&gt;\(a++\geq b\)&lt;/span&gt;.
-6. &lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt; iff &lt;span class="math"&gt;\(b = a + d\)&lt;/span&gt; for some natural number d.&lt;/p&gt;
-&lt;p&gt;Proposition 1: Trichotomy of order for whole numbers: If &lt;span class="math"&gt;\(a\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\)&lt;/span&gt; are whole numbers then exatly one of the following statements is true: &lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt;, &lt;span class="math"&gt;\(a=b\)&lt;/span&gt;, or &lt;span class="math"&gt;\(a&amp;gt;b\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Proposition 2: Strong principle of mathematical induction: let &lt;span class="math"&gt;\(m_0\)&lt;/span&gt; be a whole number, and let &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; be a property pertaining to an arbitrary whole number &lt;span class="math"&gt;\(m\)&lt;/span&gt;. Suppose that for each &lt;span class="math"&gt;\(m\geq m_0\)&lt;/span&gt;, we have the following implication: if &lt;span class="math"&gt;\(P(m')\)&lt;/span&gt; is true for all natural numbers &lt;span class="math"&gt;\(m_0\geq m' \geq m\)&lt;/span&gt;, then &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; is also true. (In particular, this means that &lt;span class="math"&gt;\(P(m_0)\)&lt;/span&gt; is true, since in this case the hypothesis is vacuous.) Then we can conclude that &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; is true for all natural numbers &lt;span class="math"&gt;\(m\geq m_0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Using mathematical induction, following properties of ordering in whole numbers can be established (&lt;span class="math"&gt;\(a\)&lt;/span&gt;, &lt;span class="math"&gt;\(b\)&lt;/span&gt;, and &lt;span class="math"&gt;\(c\)&lt;/span&gt; are whole numbers):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Order is reflexive. &lt;span class="math"&gt;\(a\geq a\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Order is transitive. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\geq c\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a\geq c\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Order is anti-symmetric. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\geq a\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a=b\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Addition preserves order. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a+c \geq b+c\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt; iff &lt;span class="math"&gt;\(a++\geq b\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt; iff &lt;span class="math"&gt;\(b = a + d\)&lt;/span&gt; for some natural number d.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 1&lt;/strong&gt;: Trichotomy of order for whole numbers: If &lt;span class="math"&gt;\(a\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\)&lt;/span&gt; are whole numbers then exatly one of the following statements is true: &lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt;, &lt;span class="math"&gt;\(a=b\)&lt;/span&gt;, or &lt;span class="math"&gt;\(a&amp;gt;b\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 2&lt;/strong&gt;: Strong principle of mathematical induction: let &lt;span class="math"&gt;\(m_0\)&lt;/span&gt; be a whole number, and let &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; be a property pertaining to an arbitrary whole number &lt;span class="math"&gt;\(m\)&lt;/span&gt;. Suppose that for each &lt;span class="math"&gt;\(m\geq m_0\)&lt;/span&gt;, we have the following implication: if &lt;span class="math"&gt;\(P(m')\)&lt;/span&gt; is true for all natural numbers &lt;span class="math"&gt;\(m_0\geq m' \geq m\)&lt;/span&gt;, then &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; is also true. (In particular, this means that &lt;span class="math"&gt;\(P(m_0)\)&lt;/span&gt; is true, since in this case the hypothesis is vacuous.) Then we can conclude that &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; is true for all natural numbers &lt;span class="math"&gt;\(m\geq m_0\)&lt;/span&gt;.&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",

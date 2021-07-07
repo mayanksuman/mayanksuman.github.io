@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog - Virtual Machine</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/virtual-machine.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-07-07T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>Pass-through to VM on Linux Host</title><link href="https://mayanksuman.in/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/" rel="alternate"></link><published>2021-07-07T00:00:00+05:30</published><updated>2021-07-07T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-07-07:/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/</id><summary type="html">&lt;p&gt;Before enabling pass-through we need to enable &lt;span class="caps"&gt;IOMMU&lt;/span&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog - Virtual Machine</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/virtual-machine.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-07-07T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>Pass through to VM on Linux Host</title><link href="https://mayanksuman.in/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/" rel="alternate"></link><published>2021-07-07T00:00:00+05:30</published><updated>2021-07-07T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-07-07:/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/</id><summary type="html">&lt;p&gt;Before enabling pass through we need to enable &lt;span class="caps"&gt;IOMMU&lt;/span&gt;
 (&lt;a href="https://en.wikipedia.org/wiki/Input–output_memory_management_unit"&gt;input–output memory management unit&lt;/a&gt;)
 by adding following kernel parameters in &lt;code&gt;/etc/default/grub&lt;/code&gt;.&lt;/p&gt;
 &lt;ul&gt;
@@ -7,7 +7,7 @@ by adding following kernel parameters in &lt;code&gt;/etc/default/grub&lt;/code&
 &lt;li&gt;For &lt;span class="caps"&gt;AMD&lt;/span&gt; system, &lt;span class="caps"&gt;IOMMU&lt;/span&gt; is by default enabled.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Additionally add &lt;code&gt;iommmu=pt&lt;/code&gt; parameter to prevent linux kernel from touching
-devices which cannot be …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Before enabling pass-through we need to enable &lt;span class="caps"&gt;IOMMU&lt;/span&gt;
+devices which cannot …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Before enabling pass through we need to enable &lt;span class="caps"&gt;IOMMU&lt;/span&gt;
 (&lt;a href="https://en.wikipedia.org/wiki/Input–output_memory_management_unit"&gt;input–output memory management unit&lt;/a&gt;)
 by adding following kernel parameters in &lt;code&gt;/etc/default/grub&lt;/code&gt;.&lt;/p&gt;
 &lt;ul&gt;
@@ -17,7 +17,7 @@ by adding following kernel parameters in &lt;code&gt;/etc/default/grub&lt;/code&
 &lt;p&gt;Additionally add &lt;code&gt;iommmu=pt&lt;/code&gt; parameter to prevent linux kernel from touching
 devices which cannot be passed through.
 Update grub by &lt;code&gt;sudo update-grub&lt;/code&gt; command and
-reboot the system. After reboot, check that the device to be pass-throughed
+reboot the system. After reboot, check that the device to be passed through
 (usually &lt;span class="caps"&gt;GPU&lt;/span&gt;) has separate &lt;span class="caps"&gt;IOMMU&lt;/span&gt; group by inspecting the output
 of following shell script.&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
@@ -39,7 +39,7 @@ of following shell script.&lt;/p&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Sometimes, a number of sub-devices can be attached to a device in that case,
 please ensure that all of sub-devices belong to same &lt;span class="caps"&gt;IOMMU&lt;/span&gt; group and all of
-them should be pass-throughed together.&lt;/p&gt;
+them should be passed through together.&lt;/p&gt;
 &lt;p&gt;Sample output:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
@@ -56,13 +56,13 @@ IOMMU Group &lt;span class="m"&gt;9&lt;/span&gt;:
     &lt;span class="m"&gt;02&lt;/span&gt;:00.0 Network controller &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;0280&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: Intel Corporation Wi-Fi &lt;span class="m"&gt;6&lt;/span&gt; AX200 &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;8086&lt;/span&gt;:2723&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;rev 1a&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;For enabling pass-through on the device, note its vendorID:productID and add
+&lt;p&gt;For enabling pass through on the device, note its vendorID:productID and add
 &lt;code&gt;vfio-pci&lt;/code&gt; parameter to kernel parameters. For instance to forward
 Network controller from the above example the parameter should be&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vfio-pci.ids&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;8086&lt;/span&gt;:2723
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;If you want to pass-through &lt;span class="caps"&gt;IOMMU&lt;/span&gt; Group 8, then add following parameter&lt;/p&gt;
+&lt;p&gt;If you want to pass through &lt;span class="caps"&gt;IOMMU&lt;/span&gt; Group 8, then add following parameter&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vfio-pci.ids&lt;span class="o"&gt;=&lt;/span&gt;10de:2191,10de:1aeb,10de:1aec,10de:1aed
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
