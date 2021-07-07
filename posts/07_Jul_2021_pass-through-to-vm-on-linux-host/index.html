@@ -198,23 +198,23 @@ them should be pass-throughed together.</p>
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="err">IOMMU Group 8:</span>
-<span class="err">    01:00.0 VGA compatible controller [0300]: NVIDIA Corporation TU116M [GeForce GTX 1660 Ti Mobile] [10de:2191] (rev a1)</span>
-<span class="err">    01:00.1 Audio device [0403]: NVIDIA Corporation TU116 High Definition Audio Controller [10de:1aeb] (rev a1)</span>
-<span class="err">    01:00.2 USB controller [0c03]: NVIDIA Corporation TU116 USB 3.1 Host Controller [10de:1aec] (rev a1)</span>
-<span class="err">    01:00.3 Serial bus controller [0c80]: NVIDIA Corporation TU116 USB Type-C UCSI Controller [10de:1aed] (rev a1)</span>
-<span class="err">IOMMU Group 9:</span>
-<span class="err">    02:00.0 Network controller [0280]: Intel Corporation Wi-Fi 6 AX200 [8086:2723] (rev 1a)</span>
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>IOMMU Group <span class="m">8</span>:
+    <span class="m">01</span>:00.0 VGA compatible controller <span class="o">[</span><span class="m">0300</span><span class="o">]</span>: NVIDIA Corporation TU116M <span class="o">[</span>GeForce GTX <span class="m">1660</span> Ti Mobile<span class="o">]</span> <span class="o">[</span>10de:2191<span class="o">]</span> <span class="o">(</span>rev a1<span class="o">)</span>
+    <span class="m">01</span>:00.1 Audio device <span class="o">[</span><span class="m">0403</span><span class="o">]</span>: NVIDIA Corporation TU116 High Definition Audio Controller <span class="o">[</span>10de:1aeb<span class="o">]</span> <span class="o">(</span>rev a1<span class="o">)</span>
+    <span class="m">01</span>:00.2 USB controller <span class="o">[</span>0c03<span class="o">]</span>: NVIDIA Corporation TU116 USB <span class="m">3</span>.1 Host Controller <span class="o">[</span>10de:1aec<span class="o">]</span> <span class="o">(</span>rev a1<span class="o">)</span>
+    <span class="m">01</span>:00.3 Serial bus controller <span class="o">[</span>0c80<span class="o">]</span>: NVIDIA Corporation TU116 USB Type-C UCSI Controller <span class="o">[</span>10de:1aed<span class="o">]</span> <span class="o">(</span>rev a1<span class="o">)</span>
+IOMMU Group <span class="m">9</span>:
+    <span class="m">02</span>:00.0 Network controller <span class="o">[</span><span class="m">0280</span><span class="o">]</span>: Intel Corporation Wi-Fi <span class="m">6</span> AX200 <span class="o">[</span><span class="m">8086</span>:2723<span class="o">]</span> <span class="o">(</span>rev 1a<span class="o">)</span>
 </code></pre></div>
 </td></tr></table>
 <p>For enabling pass-through on the device, note its vendorID:productID and add
 <code>vfio-pci</code> parameter to kernel parameters. For instance to forward
 Network controller from the above example the parameter should be</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="err">vfio-pci.ids=8086:2723</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>vfio-pci.ids<span class="o">=</span><span class="m">8086</span>:2723
 </code></pre></div>
 </td></tr></table>
 <p>If you want to pass-through <span class="caps">IOMMU</span> Group 8, then add following parameter</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="err">vfio-pci.ids=10de:2191,10de:1aeb,10de:1aec,10de:1aed</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>vfio-pci.ids<span class="o">=</span>10de:2191,10de:1aeb,10de:1aec,10de:1aed
 </code></pre></div>
 </td></tr></table>
 <p>Then add <code>vfio-pci</code> module to initramfs by adding to

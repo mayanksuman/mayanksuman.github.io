@@ -47,23 +47,23 @@ them should be pass-throughed together.&lt;/p&gt;
 4
 5
 6
-7&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;IOMMU Group 8:&lt;/span&gt;
-&lt;span class="err"&gt;    01:00.0 VGA compatible controller [0300]: NVIDIA Corporation TU116M [GeForce GTX 1660 Ti Mobile] [10de:2191] (rev a1)&lt;/span&gt;
-&lt;span class="err"&gt;    01:00.1 Audio device [0403]: NVIDIA Corporation TU116 High Definition Audio Controller [10de:1aeb] (rev a1)&lt;/span&gt;
-&lt;span class="err"&gt;    01:00.2 USB controller [0c03]: NVIDIA Corporation TU116 USB 3.1 Host Controller [10de:1aec] (rev a1)&lt;/span&gt;
-&lt;span class="err"&gt;    01:00.3 Serial bus controller [0c80]: NVIDIA Corporation TU116 USB Type-C UCSI Controller [10de:1aed] (rev a1)&lt;/span&gt;
-&lt;span class="err"&gt;IOMMU Group 9:&lt;/span&gt;
-&lt;span class="err"&gt;    02:00.0 Network controller [0280]: Intel Corporation Wi-Fi 6 AX200 [8086:2723] (rev 1a)&lt;/span&gt;
+7&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;IOMMU Group &lt;span class="m"&gt;8&lt;/span&gt;:
+    &lt;span class="m"&gt;01&lt;/span&gt;:00.0 VGA compatible controller &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;0300&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: NVIDIA Corporation TU116M &lt;span class="o"&gt;[&lt;/span&gt;GeForce GTX &lt;span class="m"&gt;1660&lt;/span&gt; Ti Mobile&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;10de:2191&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;rev a1&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="m"&gt;01&lt;/span&gt;:00.1 Audio device &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;0403&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: NVIDIA Corporation TU116 High Definition Audio Controller &lt;span class="o"&gt;[&lt;/span&gt;10de:1aeb&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;rev a1&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="m"&gt;01&lt;/span&gt;:00.2 USB controller &lt;span class="o"&gt;[&lt;/span&gt;0c03&lt;span class="o"&gt;]&lt;/span&gt;: NVIDIA Corporation TU116 USB &lt;span class="m"&gt;3&lt;/span&gt;.1 Host Controller &lt;span class="o"&gt;[&lt;/span&gt;10de:1aec&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;rev a1&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="m"&gt;01&lt;/span&gt;:00.3 Serial bus controller &lt;span class="o"&gt;[&lt;/span&gt;0c80&lt;span class="o"&gt;]&lt;/span&gt;: NVIDIA Corporation TU116 USB Type-C UCSI Controller &lt;span class="o"&gt;[&lt;/span&gt;10de:1aed&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;rev a1&lt;span class="o"&gt;)&lt;/span&gt;
+IOMMU Group &lt;span class="m"&gt;9&lt;/span&gt;:
+    &lt;span class="m"&gt;02&lt;/span&gt;:00.0 Network controller &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;0280&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: Intel Corporation Wi-Fi &lt;span class="m"&gt;6&lt;/span&gt; AX200 &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;8086&lt;/span&gt;:2723&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;rev 1a&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;For enabling pass-through on the device, note its vendorID:productID and add
 &lt;code&gt;vfio-pci&lt;/code&gt; parameter to kernel parameters. For instance to forward
 Network controller from the above example the parameter should be&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;vfio-pci.ids=8086:2723&lt;/span&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vfio-pci.ids&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;8086&lt;/span&gt;:2723
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;If you want to pass-through &lt;span class="caps"&gt;IOMMU&lt;/span&gt; Group 8, then add following parameter&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;vfio-pci.ids=10de:2191,10de:1aeb,10de:1aec,10de:1aed&lt;/span&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;vfio-pci.ids&lt;span class="o"&gt;=&lt;/span&gt;10de:2191,10de:1aeb,10de:1aec,10de:1aed
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;Then add &lt;code&gt;vfio-pci&lt;/code&gt; module to initramfs by adding to
