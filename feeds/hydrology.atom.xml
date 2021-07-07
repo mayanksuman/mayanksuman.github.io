@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog - Hydrology</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/hydrology.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-05-22T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>23 Unsolved Problems in Hydrology</title><link href="https://mayanksuman.in/posts/22_May_2021_23-unsolved-problems-in-hydrology/" rel="alternate"></link><published>2021-05-22T00:00:00+05:30</published><updated>2021-05-22T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-05-22:/posts/22_May_2021_23-unsolved-problems-in-hydrology/</id><summary type="html">&lt;p&gt;Similar to Hilbert’s 23 problems in mathematics, International Association of
+Hydrological Sciences (&lt;span class="caps"&gt;IAHS&lt;/span&gt;) compiled some of the most significant Unsolved
+problems in hydrology (&lt;span class="caps"&gt;UPH&lt;/span&gt;) with the help of community. The list of following 23
+problems were published in a 2019 paper.&lt;sup id="fnref:2-1"&gt;&lt;a class="footnote-ref" href="#fn:2-1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h3&gt;Time variability and change&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://mayanksuman.in/posts/22_May_2021_changes-in-regional-hydrological-cycle/"&gt;Is the hydrological …&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;Similar to Hilbert’s 23 problems in mathematics, International Association of
+Hydrological Sciences (&lt;span class="caps"&gt;IAHS&lt;/span&gt;) compiled some of the most significant Unsolved
+problems in hydrology (&lt;span class="caps"&gt;UPH&lt;/span&gt;) with the help of community. The list of following 23
+problems were published in a 2019 paper.&lt;sup id="fnref:2-1"&gt;&lt;a class="footnote-ref" href="#fn:2-1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h3&gt;Time variability and change&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://mayanksuman.in/posts/22_May_2021_changes-in-regional-hydrological-cycle/"&gt;Is the hydrological cycle regionally accelerating/decelerating under climate
+and environmental change, and are there tipping points (irreversible changes)?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;How will cold region runoﬀ and groundwater change in a warmer climate
+(e.g. with glacier melt and permafrost thaw)?&lt;/li&gt;
+&lt;li&gt;What are the mechanisms by which climate change and water use alter
+ephemeral rivers and groundwater in (semi-) arid regions?&lt;/li&gt;
+&lt;li&gt;What are the impacts of land cover change and soil disturbances on water
+and energy ﬂuxes at the land surface, and on the resulting groundwater recharge?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Space variability and scaling&lt;/h3&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;What causes spatial heterogeneity and homogeneity in runoﬀ, evaporation,
+subsurface water and material ﬂuxes (carbon and other nutrients,
+sediments), and in their sensitivity to their controls (e.g. snow fall regime,
+aridity, reaction coeﬃcients)?&lt;/li&gt;
+&lt;li&gt;What are the hydrologic laws at the catchment scale and how do they
+change with scale?&lt;/li&gt;
+&lt;li&gt;Why is most ﬂow preferential across multiple scales and how does such
+behaviour co-evolve with the critical zone?&lt;/li&gt;
+&lt;li&gt;Why do streams respond so quickly to precipitation inputs when storm
+ﬂow is so old, and what is the transit time distribution of water in the
+terrestrial water cycle?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Variability of extremes&lt;/h3&gt;
+&lt;ol start="9"&gt;
+&lt;li&gt;How do ﬂood-rich and drought-rich periods arise, are they changing, and if
+so why?&lt;/li&gt;
+&lt;li&gt;Why are runoﬀ extremes in some catchments more sensitive to land-use/
+cover and geomorphic change than in others?&lt;/li&gt;
+&lt;li&gt;Why, how and when do rain-on-snow events produce exceptional runoff?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Interfaces in hydrology&lt;/h3&gt;
+&lt;ol start="12"&gt;
+&lt;li&gt;What are the processes that control hillslope–riparian–stream–
+groundwater interactions and when do the compartments connect?&lt;/li&gt;
+&lt;li&gt;What are the processes controlling the ﬂuxes of groundwater across
+boundaries (e.g. groundwater recharge, inter-catchment ﬂuxes and
+discharge to oceans)?&lt;/li&gt;
+&lt;li&gt;What factors contribute to the long-term persistence of sources
+responsible for the degradation of water quality?&lt;/li&gt;
+&lt;li&gt;What are the extent, fate and impact of contaminants of emerging
+concern and how are microbial pathogens removed or inactivated in the subsurface?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Measurements and data&lt;/h3&gt;
+&lt;ol start="16"&gt;
+&lt;li&gt;How can we use innovative technologies to measure surface and
+subsurface properties, states and ﬂuxes at a range of spatial and temporal scales?&lt;/li&gt;
+&lt;li&gt;What is the relative value of traditional hydrological observations vs soft
+data (qualitative observations from lay persons, data mining etc.), and
+under what conditions can we substitute space for time?&lt;/li&gt;
+&lt;li&gt;How can we extract information from available data on human and water
+systems in order to inform the building process of socio-hydrological
+models and conceptualisations?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Modelling methods&lt;/h3&gt;
+&lt;ol start="19"&gt;
+&lt;li&gt;How can hydrological models be adapted to be able to extrapolate to
+changing conditions, including changing vegetation dynamics?&lt;/li&gt;
+&lt;li&gt;How can we disentangle and reduce model structural/parameter/input
+uncertainty in hydrological prediction?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Interfaces with society&lt;/h3&gt;
+&lt;ol start="21"&gt;
+&lt;li&gt;How can the (un)certainty in hydrological predictions be communicated
+to decision makers and the general public?&lt;/li&gt;
+&lt;li&gt;What are the synergies and tradeoﬀs between societal goals related to
+water management (e.g. water–environment–energy–food–health)?&lt;/li&gt;
+&lt;li&gt;What is the role of water in migration, urbanisation and the dynamics of
+human civilisations, and what are the implications for contemporary water management?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="footnote"&gt;
+&lt;hr/&gt;
+&lt;ol&gt;
+&lt;li id="fn:2-1"&gt;
+&lt;p&gt;Blöschl, G., Bierkens, M.F., Chambel, A., Cudennec, C., Destouni, G., Fiori, A., Kirchner, J.W., McDonnell, J.J., Savenije, H.H., Sivapalan, M. and Stumpp, C., 2019. Twenty-three unsolved problems in hydrology (&lt;span class="caps"&gt;UPH&lt;/span&gt;)–a community perspective. Hydrological sciences journal, 64(10), pp.1141-1158. &lt;a class="footnote-backref" href="#fnref:2-1" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="Hydrology"></category><category term="climate change"></category><category term="uph"></category><category term="Research Problem"></category></entry><entry><title>Changes in regional hydrological cycle</title><link href="https://mayanksuman.in/posts/22_May_2021_changes-in-regional-hydrological-cycle/" rel="alternate"></link><published>2021-05-22T00:00:00+05:30</published><updated>2021-05-22T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-05-22:/posts/22_May_2021_changes-in-regional-hydrological-cycle/</id><content type="html">&lt;p&gt;Question:&lt;/p&gt;
+&lt;p&gt;Is the hydrological cycle regionally accelerating/decelerating under climate
+and environmental change, and are there tipping points (irreversible changes)?&lt;/p&gt;
+&lt;p&gt;Literature:&lt;/p&gt;</content><category term="Hydrology"></category><category term="climate change"></category><category term="uph"></category><category term="Research Problem"></category></entry></feed>

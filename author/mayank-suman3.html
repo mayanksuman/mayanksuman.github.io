@@ -41,8 +41,8 @@
     <link href="https://mayanksuman.in/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Mayank Suman's Blog Atom">
 
 
-    <link rel="shortcut icon" href="https://mayanksuman.in/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="https://mayanksuman.in/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="http://localhost:8000/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="http://localhost:8000/images/favicon.ico" type="image/x-icon">
 
 
     <!-- Chrome, Firefox OS and Opera -->
@@ -63,18 +63,16 @@
 <meta property="og:description" content="Mayank Suman's Notes and Random Ideas"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://mayanksuman.in"/>
-<meta property="og:image" content="https://mayanksuman.in/images/profile.png">
+<meta property="og:image" content="http://localhost:8000/images/profile.png">
 
-
-
-  <title>Mayank Suman's Blog &ndash; About&nbsp;me</title>
+  <title>Mayank Suman's Blog &ndash; Posts by Mayank Suman:</title>
 
 </head>
 <body >
   <aside>
     <div>
       <a href="https://mayanksuman.in">
-        <img src="https://mayanksuman.in/images/profile.png" alt="Mayank Suman" title="Mayank Suman">
+        <img src="http://localhost:8000/images/profile.png" alt="Mayank Suman" title="Mayank Suman">
       </a>
 
       <h1>
@@ -92,8 +90,8 @@
 
               <li>
                 <a target="_self"
-                   href="https://mayanksuman.in/pages/about-me.html#about-me">
-                  About&nbsp;me
+                   href="https://mayanksuman.in/pages/about.html#about">
+                  About
                 </a>
               </li>
               <li>
@@ -139,22 +137,130 @@
 
     </nav>
 
-<article class="single">
+
+
+<article>
   <header>
-    
-    <h1 id="about-me">About&nbsp;me</h1>
+    <h2><a href="https://mayanksuman.in/posts/10_Jan_2021_access-data-in-lvm2-drive/#access-data-in-lvm2-drive">Access data in lvm2&nbsp;drive</a></h2>
+    <p>
+      Posted on Sun 10 January 2021 in <a href="https://mayanksuman.in/category/software.html">Software</a>
+
+
+        &#8226; 1 min read
+    </p>
   </header>
   <div>
-<p>I am researcher studying/modeling climate change impacts on hydrological systems, statistical analysis of hydrological time series, and application of wavelet transformation and copula theory in hydroclimatic analysis.</p>
-<p>I have recently submitted my Ph.D. Thesis titled “Analysis and Modeling of Climate Change Impact on Hydrological Extreme Events across India” (work carried out under the supervision of <a href="http://www.facweb.iitkgp.ac.in/~rajibmaity/">Prof. Rajib Maity</a>, Department of Civil Engineering, Indian Institute of Technology Kharagpur). Earlier, I have received my B.Tech. degree in Civil Engineering from the National Institute of Technology Hamirpur, India, in 2013, and M.Tech. degree in Hydraulics and Water Resources from Department of Civil Engineering <span class="caps">IIT</span> Kharagpur, India, in 2015.</p>
-<p>More academic details and my list of publication are available in <a href="https://mayanksuman.in/about/cv.pdf">my Curriculum Vitae</a>.</p>
-<h3>Apart from being a researcher, I am also</h3>
-<ul>
-<li>An avid Open Source enthusiast and hence, regular contributor to multiple Open Source project. I am also <code>Arctic Code Vault Contributor</code> for 2020 Github Code Archive Program. More details are available at <a href="https://github.com/mayanksuman">my github account</a>.</li>
-<li>A marital artist. I hold First Degree Black Belt (Shodan) in Kyokyushin-kan Karate.</li>
-</ul>
-<p><a href="https://mayanksuman.in/pages/contact.html">Contact me</a>.</p>  </div>
+      <p>Prerequisite: The system should have <code>lvm2</code> installed. On debian this can be
+achieved by <code>sudo apt install lvm2</code>.</p>
+<p>For mounting a <code>lvm2</code> drive, we need to activate the associated <span class="caps">LVM</span> group. The following command can list all available <span class="caps">LVM</span> group:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo vgscan
+</code></pre></div>
+</td></tr></table>
+<p>Scanning will show the name of different …</p>
+        <br>
+        <a class="btn"
+           href="https://mayanksuman.in/posts/10_Jan_2021_access-data-in-lvm2-drive/#access-data-in-lvm2-drive">
+          Continue reading
+        </a>
+  </div>
+  <hr />
 </article>
+<article>
+  <header>
+    <h2><a href="https://mayanksuman.in/posts/30_Jul_2020_setting-up-droidcam-and-obs-studio-cam-in-debian/#setting-up-droidcam-and-obs-studio-cam-in-debian">Setting up droidcam and obs-studio cam in&nbsp;Debian</a></h2>
+    <p>
+      Posted on Thu 30 July 2020 in <a href="https://mayanksuman.in/category/software.html">software</a>
+
+
+        &#8226; 1 min read
+    </p>
+  </header>
+  <div>
+      <p>Currently, most of the population is working from home, so having a good video conferencing setup has become important. I have setup droidcam for getting video input from phone/ipad and obs-studio for managing different audio/video source in Debian using the following steps:</p>
+<ol>
+<li>At first install <code>droidcam</code> in <span class="caps">PC …</span></li></ol>
+        <br>
+        <a class="btn"
+           href="https://mayanksuman.in/posts/30_Jul_2020_setting-up-droidcam-and-obs-studio-cam-in-debian/#setting-up-droidcam-and-obs-studio-cam-in-debian">
+          Continue reading
+        </a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://mayanksuman.in/posts/30_Jul_2020_starting-up-a-series-of-python-language/#starting-up-a-series-of-python-language">Starting up a series of Python&nbsp;language</a></h2>
+    <p>
+      Posted on Thu 30 July 2020 in <a href="https://mayanksuman.in/category/programming.html">Programming</a>
+
+
+        &#8226; 2 min read
+    </p>
+  </header>
+  <div>
+      <p>Python is an example of language design done well. The language is equally suited for learning as the first computer language (for kids) and running enterprise-level code (as done in many startups and established companies) at the same time. However, this incredible approachability of the language leads to very low …</p>
+        <br>
+        <a class="btn"
+           href="https://mayanksuman.in/posts/30_Jul_2020_starting-up-a-series-of-python-language/#starting-up-a-series-of-python-language">
+          Continue reading
+        </a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://mayanksuman.in/posts/21_Mar_2020_setting-up-skype-for-web-in-debian/#setting-up-skype-for-web-in-debian">Setting up Skype for web in&nbsp;Debian</a></h2>
+    <p>
+      Posted on Sat 21 March 2020 in <a href="https://mayanksuman.in/category/software.html">software</a>
+
+
+        &#8226; 1 min read
+    </p>
+  </header>
+  <div>
+      <p>I do not prefer having closed source software on my Debian machine.
+However, due to the popularity of Skype, the package <code>skypeforlinux</code> was installed on my Debian system.
+Finally, I am able to get rid of the binary blob by using the web version of the service.
+If you also …</p>
+        <br>
+        <a class="btn"
+           href="https://mayanksuman.in/posts/21_Mar_2020_setting-up-skype-for-web-in-debian/#setting-up-skype-for-web-in-debian">
+          Continue reading
+        </a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://mayanksuman.in/posts/09_Feb_2020_about-me/#about-me">About&nbsp;me</a></h2>
+    <p>
+      Posted on Sun 09 February 2020 in <a href="https://mayanksuman.in/category/about.html">about</a>
+
+
+        &#8226; 1 min read
+    </p>
+  </header>
+  <div>
+      <p>I am researcher studying/modeling climate change impacts on hydrological systems, statistical analysis of hydrological time series, and application of wavelet transformation and copula theory in hydroclimatic analysis.</p>
+<p>I have recently submitted my Ph.D. Thesis titled “Analysis and Modeling of Climate Change Impact on Hydrological Extreme Events across India …</p>
+        <br>
+        <a class="btn"
+           href="https://mayanksuman.in/posts/09_Feb_2020_about-me/#about-me">
+          Continue reading
+        </a>
+  </div>
+</article>
+
+  <div class="pagination">
+    <a class="btn float-left" href="https://mayanksuman.in/author/mayank-suman4.html">
+      <i class="fa fa-angle-left"></i> Older Posts
+    </a>
+    <a class="btn float-right" href="https://mayanksuman.in/author/mayank-suman2.html">
+      Newer Posts <i class="fa fa-angle-right"></i>
+    </a>
+  </div>
+
+
 
     <footer>
 <p>&copy; Mayank Suman 2021</p>
@@ -180,7 +286,7 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
   "@type" : "Blog",
   "name": " Mayank Suman's Blog ",
   "url" : "https://mayanksuman.in",
-  "image": "https://mayanksuman.in/images/profile.png",
+  "image": "http://localhost:8000/images/profile.png",
   "description": "Mayank Suman's Notes and Random Ideas"
 }
 </script>

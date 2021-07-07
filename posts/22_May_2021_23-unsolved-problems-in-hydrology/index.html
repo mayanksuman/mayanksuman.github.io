@@ -56,27 +56,26 @@
     <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="Mayank Suman" />
-<meta name="description" content="Closure are higher-order functions which return lower-order function (usually first-order function) with its environment. Defining closure functions is possible in languages which has first-class functions like Python, JavaScript, Lua, Scheme, and others. Example 1 2 3 4 5 6def divisiblity_check(divisor): &#34;&#34;&#34;Factory for producing functions that check divisiblity with …" />
-<meta name="keywords" content="first-class functions, python, luajit, javascript">
+<meta name="description" content="Similar to Hilbert’s 23 problems in mathematics, International Association of Hydrological Sciences (IAHS) compiled some of the most significant Unsolved problems in hydrology (UPH) with the help of community. The list of following 23 problems were published in a 2019 paper.1 Time variability and change Is the hydrological …" />
+<meta name="keywords" content="climate change, uph, Research Problem">
 
 
 <meta property="og:site_name" content="Mayank Suman's Blog"/>
-<meta property="og:title" content="Closure Functions"/>
-<meta property="og:description" content="Closure are higher-order functions which return lower-order function (usually first-order function) with its environment. Defining closure functions is possible in languages which has first-class functions like Python, JavaScript, Lua, Scheme, and others. Example 1 2 3 4 5 6def divisiblity_check(divisor): &#34;&#34;&#34;Factory for producing functions that check divisiblity with …"/>
+<meta property="og:title" content="23 Unsolved Problems in Hydrology"/>
+<meta property="og:description" content="Similar to Hilbert’s 23 problems in mathematics, International Association of Hydrological Sciences (IAHS) compiled some of the most significant Unsolved problems in hydrology (UPH) with the help of community. The list of following 23 problems were published in a 2019 paper.1 Time variability and change Is the hydrological …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://mayanksuman.in/posts/21_May_2021_closure-functions/"/>
+<meta property="og:url" content="https://mayanksuman.in/posts/22_May_2021_23-unsolved-problems-in-hydrology/"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2021-05-21 00:00:00+05:30"/>
+<meta property="article:published_time" content="2021-05-22 00:00:00+05:30"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://mayanksuman.in/author/mayank-suman.html">
-<meta property="article:section" content="Programming"/>
-<meta property="article:tag" content="first-class functions"/>
-<meta property="article:tag" content="python"/>
-<meta property="article:tag" content="luajit"/>
-<meta property="article:tag" content="javascript"/>
+<meta property="article:section" content="Hydrology"/>
+<meta property="article:tag" content="climate change"/>
+<meta property="article:tag" content="uph"/>
+<meta property="article:tag" content="Research Problem"/>
 <meta property="og:image" content="http://localhost:8000/images/profile.png">
 
-  <title>Mayank Suman's Blog &ndash; Closure Functions</title>
+  <title>Mayank Suman's Blog &ndash; 23 Unsolved Problems in Hydrology</title>
 
 </head>
 <body >
@@ -151,65 +150,106 @@
 <article class="single">
   <header>
       
-    <h1 id="closure-functions">Closure&nbsp;Functions</h1>
+    <h1 id="23-unsolved-problems-in-hydrology">23 Unsolved Problems in&nbsp;Hydrology</h1>
     <p>
-      Posted on Fri 21 May 2021 in <a href="https://mayanksuman.in/category/programming.html">Programming</a>
+      Posted on Sat 22 May 2021 in <a href="https://mayanksuman.in/category/hydrology.html">Hydrology</a>
 
-        &#8226; 1 min read &#8226;
+        &#8226; 3 min read &#8226;
       
       <span class="tag-cloud">
-      <a href="https://mayanksuman.in/tag/first-class-functions.html">first-class functions</a>
-      <a href="https://mayanksuman.in/tag/python.html">python</a>
-      <a href="https://mayanksuman.in/tag/luajit.html">luajit</a>
-      <a href="https://mayanksuman.in/tag/javascript.html">javascript</a>
+      <a href="https://mayanksuman.in/tag/climate-change.html">climate change</a>
+      <a href="https://mayanksuman.in/tag/uph.html">uph</a>
+      <a href="https://mayanksuman.in/tag/research-problem.html">Research Problem</a>
       </span>
     </p>
   </header>
 
 
   <div>
-    <p>Closure are higher-order functions which return lower-order function (usually first-order function) with its environment. Defining closure functions is possible in languages which has <a href="https://mayanksuman.in/posts/20_May_2021_first-class-functions/">first-class functions</a> like Python, JavaScript, Lua, Scheme, and others.</p>
-<h2>Example</h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">divisiblity_check</span><span class="p">(</span><span class="n">divisor</span><span class="p">):</span>
-    <span class="sd">"""Factory for producing functions that check divisiblity with divisor."""</span>
-    <span class="k">def</span> <span class="nf">inner_func</span><span class="p">(</span><span class="n">divident</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">divident</span> <span class="o">%</span> <span class="n">divisor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">inner_func</span>
-</code></pre></div>
-</td></tr></table>
-<p>This closure function (<code>divisiblity_check</code>) is return another function as evident by syntax. It should be noted that environment for inner function (<strong><em>i.e.</em></strong>, the variable <code>divisor</code>) is also saved with the returned function. Hence, following line of codes work:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">div_by_7</span> <span class="o">=</span> <span class="n">divisiblity_check</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">div_by_19</span> <span class="o">=</span> <span class="n">divisiblity_check</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span>
-
-<span class="n">div_by_7</span><span class="p">(</span><span class="mi">38</span><span class="p">)</span>  <span class="c1"># return false</span>
-<span class="n">div_by_19</span><span class="p">(</span><span class="mi">38</span><span class="p">)</span> <span class="c1"># return true</span>
-<span class="n">div_by_7</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span>  <span class="c1"># return true</span>
-<span class="n">div_by_19</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span> <span class="c1"># return false</span>
-</code></pre></div>
-</td></tr></table>
-<p>Here, although the functions <code>div_by_7</code> and <code>div_by_19</code> are returned by same closure function; however they have different environment attached to them and hence produce different results. The example closure function (<strong><em>i.e.</em></strong>, <code>divisiblity_check</code>) can also be defined using anonymous function.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">divisiblity_check</span><span class="p">(</span><span class="n">divisor</span><span class="p">):</span>
-    <span class="sd">"""Factory for producing functions that check divisiblity with divisor."""</span>
-
-    <span class="k">return</span> <span class="k">lambda</span> <span class="n">divident</span><span class="p">:</span> <span class="p">(</span><span class="n">divident</span> <span class="o">%</span> <span class="n">divisor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-<p>This usage is sometimes called anonymous closure function.</p>
+    <p>Similar to Hilbert’s 23 problems in mathematics, International Association of
+Hydrological Sciences (<span class="caps">IAHS</span>) compiled some of the most significant Unsolved
+problems in hydrology (<span class="caps">UPH</span>) with the help of community. The list of following 23
+problems were published in a 2019 paper.<sup id="fnref:2-1"><a class="footnote-ref" href="#fn:2-1">1</a></sup></p>
+<h3>Time variability and change</h3>
+<ol>
+<li><a href="https://mayanksuman.in/posts/22_May_2021_changes-in-regional-hydrological-cycle/">Is the hydrological cycle regionally accelerating/decelerating under climate
+and environmental change, and are there tipping points (irreversible changes)?</a></li>
+<li>How will cold region runoﬀ and groundwater change in a warmer climate
+(e.g. with glacier melt and permafrost thaw)?</li>
+<li>What are the mechanisms by which climate change and water use alter
+ephemeral rivers and groundwater in (semi-) arid regions?</li>
+<li>What are the impacts of land cover change and soil disturbances on water
+and energy ﬂuxes at the land surface, and on the resulting groundwater recharge?</li>
+</ol>
+<h3>Space variability and scaling</h3>
+<ol start="5">
+<li>What causes spatial heterogeneity and homogeneity in runoﬀ, evaporation,
+subsurface water and material ﬂuxes (carbon and other nutrients,
+sediments), and in their sensitivity to their controls (e.g. snow fall regime,
+aridity, reaction coeﬃcients)?</li>
+<li>What are the hydrologic laws at the catchment scale and how do they
+change with scale?</li>
+<li>Why is most ﬂow preferential across multiple scales and how does such
+behaviour co-evolve with the critical zone?</li>
+<li>Why do streams respond so quickly to precipitation inputs when storm
+ﬂow is so old, and what is the transit time distribution of water in the
+terrestrial water cycle?</li>
+</ol>
+<h3>Variability of extremes</h3>
+<ol start="9">
+<li>How do ﬂood-rich and drought-rich periods arise, are they changing, and if
+so why?</li>
+<li>Why are runoﬀ extremes in some catchments more sensitive to land-use/
+cover and geomorphic change than in others?</li>
+<li>Why, how and when do rain-on-snow events produce exceptional runoff?</li>
+</ol>
+<h3>Interfaces in hydrology</h3>
+<ol start="12">
+<li>What are the processes that control hillslope–riparian–stream–
+groundwater interactions and when do the compartments connect?</li>
+<li>What are the processes controlling the ﬂuxes of groundwater across
+boundaries (e.g. groundwater recharge, inter-catchment ﬂuxes and
+discharge to oceans)?</li>
+<li>What factors contribute to the long-term persistence of sources
+responsible for the degradation of water quality?</li>
+<li>What are the extent, fate and impact of contaminants of emerging
+concern and how are microbial pathogens removed or inactivated in the subsurface?</li>
+</ol>
+<h3>Measurements and data</h3>
+<ol start="16">
+<li>How can we use innovative technologies to measure surface and
+subsurface properties, states and ﬂuxes at a range of spatial and temporal scales?</li>
+<li>What is the relative value of traditional hydrological observations vs soft
+data (qualitative observations from lay persons, data mining etc.), and
+under what conditions can we substitute space for time?</li>
+<li>How can we extract information from available data on human and water
+systems in order to inform the building process of socio-hydrological
+models and conceptualisations?</li>
+</ol>
+<h3>Modelling methods</h3>
+<ol start="19">
+<li>How can hydrological models be adapted to be able to extrapolate to
+changing conditions, including changing vegetation dynamics?</li>
+<li>How can we disentangle and reduce model structural/parameter/input
+uncertainty in hydrological prediction?</li>
+</ol>
+<h3>Interfaces with society</h3>
+<ol start="21">
+<li>How can the (un)certainty in hydrological predictions be communicated
+to decision makers and the general public?</li>
+<li>What are the synergies and tradeoﬀs between societal goals related to
+water management (e.g. water–environment–energy–food–health)?</li>
+<li>What is the role of water in migration, urbanisation and the dynamics of
+human civilisations, and what are the implications for contemporary water management?</li>
+</ol>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:2-1">
+<p>Blöschl, G., Bierkens, M.F., Chambel, A., Cudennec, C., Destouni, G., Fiori, A., Kirchner, J.W., McDonnell, J.J., Savenije, H.H., Sivapalan, M. and Stumpp, C., 2019. Twenty-three unsolved problems in hydrology (<span class="caps">UPH</span>)–a community perspective. Hydrological sciences journal, 64(10), pp.1141-1158. <a class="footnote-backref" href="#fnref:2-1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+</ol>
+</div>
   </div>
 
 

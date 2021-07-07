@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog - blog</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/blog.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-05-30T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>Data Analytics Basics</title><link href="https://mayanksuman.in/posts/30_May_2021_data-analytics-basics/" rel="alternate"></link><published>2021-05-30T00:00:00+05:30</published><updated>2021-05-30T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-05-30:/posts/30_May_2021_data-analytics-basics/</id><summary type="html">&lt;p&gt;Data is collection of facts that cane used to draw conclusions, make prediction and assist in decision-making.&lt;/p&gt;
+&lt;h2&gt;Role in industry&lt;/h2&gt;
+&lt;p&gt;Data science: the science of working with data. Three part: Machine learning, statistics, and analytics.
+Data Scientist: Creating new way of modeling and understanding the unknown by using raw data …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Data is collection of facts that cane used to draw conclusions, make prediction and assist in decision-making.&lt;/p&gt;
+&lt;h2&gt;Role in industry&lt;/h2&gt;
+&lt;p&gt;Data science: the science of working with data. Three part: Machine learning, statistics, and analytics.
+Data Scientist: Creating new way of modeling and understanding the unknown by using raw data.&lt;/p&gt;
+&lt;p&gt;Data analysis: collection, transformation and organization of data in order to draw conclusions, make prediction and drive informed decision-making. Six steps of data analysis: ask, prepare, process, analyze, share, and act.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ask: Business Challenge/Objective/Question&lt;/li&gt;
+&lt;li&gt;Prepare: Data generation, collection, storage, and data management&lt;/li&gt;
+&lt;li&gt;Process: Data cleaning/data integrity&lt;/li&gt;
+&lt;li&gt;Analyze: Data exploration, visualization, and analysis&lt;/li&gt;
+&lt;li&gt;Share: Communicating and interpreting results&lt;/li&gt;
+&lt;li&gt;Act:  Putting your insights to work to solve the problem&lt;/li&gt;
+&lt;li&gt;Evaluate: Checking if action based on data analysis is working.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Ecosystem: a group of elements that interact with each other.
+Data Ecosystem: Various elements that interact with each other in order to produce, manage, store, organize, analyze and share data.&lt;/p&gt;
+&lt;h2&gt;Key analytical skills&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Curiosity&lt;/li&gt;
+&lt;li&gt;Understanding Context&lt;/li&gt;
+&lt;li&gt;Having a technical mindset&lt;/li&gt;
+&lt;li&gt;Data design&lt;/li&gt;
+&lt;li&gt;Data Strategy&lt;/li&gt;
+&lt;/ol&gt;</content><category term="blog"></category></entry></feed>

@@ -1,5 +1,319 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/all.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-05-21T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>Closure Functions</title><link href="https://mayanksuman.in/posts/21_May_2021_closure-functions/" rel="alternate"></link><published>2021-05-21T00:00:00+05:30</published><updated>2021-05-21T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-05-21:/posts/21_May_2021_closure-functions/</id><summary type="html">&lt;p&gt;Closure are higher-order functions which return lower-order function (usually first-order function) with its environment. Defining closure functions is possible in languages which has &lt;a href="https://mayanksuman.in/posts/20_May_2021_first-class-functions/"&gt;first-class functions&lt;/a&gt; like Python, JavaScript, Lua, Scheme, and others.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/all.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-07-07T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>Pass-through to VM on Linux Host</title><link href="https://mayanksuman.in/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/" rel="alternate"></link><published>2021-07-07T00:00:00+05:30</published><updated>2021-07-07T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-07-07:/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/</id><summary type="html">&lt;p&gt;Before enabling pass-through we need to enable &lt;span class="caps"&gt;IOMMU&lt;/span&gt;
+(&lt;a href="https://en.wikipedia.org/wiki/Input–output_memory_management_unit"&gt;input–output memory management unit&lt;/a&gt;)
+by adding following kernel parameters in &lt;code&gt;/etc/default/grub&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For intel systems: &lt;code&gt;intel_iommu=on&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;For &lt;span class="caps"&gt;AMD&lt;/span&gt; system, &lt;span class="caps"&gt;IOMMU&lt;/span&gt; is by default enabled.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Additionally add &lt;code&gt;iommmu=pt&lt;/code&gt; parameter to prevent linux kernel from touching
+devices which cannot be …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Before enabling pass-through we need to enable &lt;span class="caps"&gt;IOMMU&lt;/span&gt;
+(&lt;a href="https://en.wikipedia.org/wiki/Input–output_memory_management_unit"&gt;input–output memory management unit&lt;/a&gt;)
+by adding following kernel parameters in &lt;code&gt;/etc/default/grub&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For intel systems: &lt;code&gt;intel_iommu=on&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;For &lt;span class="caps"&gt;AMD&lt;/span&gt; system, &lt;span class="caps"&gt;IOMMU&lt;/span&gt; is by default enabled.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Additionally add &lt;code&gt;iommmu=pt&lt;/code&gt; parameter to prevent linux kernel from touching
+devices which cannot be passed through.
+Update grub by &lt;code&gt;sudo update-grub&lt;/code&gt; command and
+reboot the system. After reboot, check that the device to be pass-throughed
+(usually &lt;span class="caps"&gt;GPU&lt;/span&gt;) has separate &lt;span class="caps"&gt;IOMMU&lt;/span&gt; group by inspecting the output
+of following shell script.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="nb"&gt;shopt&lt;/span&gt; -s nullglob
+&lt;span class="k"&gt;for&lt;/span&gt; g in &lt;span class="sb"&gt;`&lt;/span&gt;find /sys/kernel/iommu_groups/* -maxdepth &lt;span class="m"&gt;0&lt;/span&gt; -type d &lt;span class="p"&gt;|&lt;/span&gt; sort -V&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;"IOMMU Group &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;g&lt;/span&gt;&lt;span class="p"&gt;##*/&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;:"&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; d in &lt;span class="nv"&gt;$g&lt;/span&gt;/devices/*&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+        &lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\t&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;lspci -nns &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="p"&gt;##*/&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+    &lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Sometimes, a number of sub-devices can be attached to a device in that case,
+please ensure that all of sub-devices belong to same &lt;span class="caps"&gt;IOMMU&lt;/span&gt; group and all of
+them should be pass-throughed together.&lt;/p&gt;
+&lt;p&gt;Sample output:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;IOMMU Group 8:&lt;/span&gt;
+&lt;span class="err"&gt;    01:00.0 VGA compatible controller [0300]: NVIDIA Corporation TU116M [GeForce GTX 1660 Ti Mobile] [10de:2191] (rev a1)&lt;/span&gt;
+&lt;span class="err"&gt;    01:00.1 Audio device [0403]: NVIDIA Corporation TU116 High Definition Audio Controller [10de:1aeb] (rev a1)&lt;/span&gt;
+&lt;span class="err"&gt;    01:00.2 USB controller [0c03]: NVIDIA Corporation TU116 USB 3.1 Host Controller [10de:1aec] (rev a1)&lt;/span&gt;
+&lt;span class="err"&gt;    01:00.3 Serial bus controller [0c80]: NVIDIA Corporation TU116 USB Type-C UCSI Controller [10de:1aed] (rev a1)&lt;/span&gt;
+&lt;span class="err"&gt;IOMMU Group 9:&lt;/span&gt;
+&lt;span class="err"&gt;    02:00.0 Network controller [0280]: Intel Corporation Wi-Fi 6 AX200 [8086:2723] (rev 1a)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;For enabling pass-through on the device, note its vendorID:productID and add
+&lt;code&gt;vfio-pci&lt;/code&gt; parameter to kernel parameters. For instance to forward
+Network controller from the above example the parameter should be&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;vfio-pci.ids=8086:2723&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;If you want to pass-through &lt;span class="caps"&gt;IOMMU&lt;/span&gt; Group 8, then add following parameter&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;vfio-pci.ids=10de:2191,10de:1aeb,10de:1aec,10de:1aed&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Then add &lt;code&gt;vfio-pci&lt;/code&gt; module to initramfs by adding to
+&lt;code&gt;/etc/initramfs-tools/modules&lt;/code&gt; file. Regenerate the initramfs by
+&lt;code&gt;sudo update-initramfs -u&lt;/code&gt; command and regenerate the grub configuration by
+&lt;code&gt;sudo update-grub&lt;/code&gt;. Reboot the system.&lt;/p&gt;
+&lt;p&gt;After reboot, ensure that the concerned device have &lt;code&gt;vfio-pci&lt;/code&gt; as active
+module by &lt;code&gt;lspci -nnk -d vendorID:productID&lt;/code&gt;. For instance, the correct output
+for &lt;span class="caps"&gt;NVIDIA&lt;/span&gt; &lt;span class="caps"&gt;GPU&lt;/span&gt; card from &lt;span class="caps"&gt;IOMMU&lt;/span&gt; group 8 should be (output of &lt;code&gt;lspci -nnk -d 10de:2191&lt;/code&gt;)&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="mi"&gt;01&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;00.0&lt;/span&gt; &lt;span class="n"&gt;VGA&lt;/span&gt; &lt;span class="n"&gt;compatible&lt;/span&gt; &lt;span class="n"&gt;controller&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0300&lt;/span&gt;&lt;span class="o"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;NVIDIA&lt;/span&gt; &lt;span class="n"&gt;Corporation&lt;/span&gt; &lt;span class="n"&gt;TU116M&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;GeForce&lt;/span&gt; &lt;span class="n"&gt;GTX&lt;/span&gt; &lt;span class="mi"&gt;1660&lt;/span&gt; &lt;span class="n"&gt;Ti&lt;/span&gt; &lt;span class="n"&gt;Mobile&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="n"&gt;de&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2191&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rev&lt;/span&gt; &lt;span class="n"&gt;a1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;Subsystem&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ASUSTeK&lt;/span&gt; &lt;span class="n"&gt;Computer&lt;/span&gt; &lt;span class="n"&gt;Inc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;TU116M&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;GeForce&lt;/span&gt; &lt;span class="n"&gt;GTX&lt;/span&gt; &lt;span class="mi"&gt;1660&lt;/span&gt; &lt;span class="n"&gt;Ti&lt;/span&gt; &lt;span class="n"&gt;Mobile&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1043&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="n"&gt;ef&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;Kernel&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;vfio&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pci&lt;/span&gt;
+    &lt;span class="n"&gt;Kernel&lt;/span&gt; &lt;span class="n"&gt;modules&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;nvidia&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Now, we are ready to pass this device to virtual machine (&lt;span class="caps"&gt;VM&lt;/span&gt;). Open properties
+of &lt;span class="caps"&gt;VM&lt;/span&gt; in &lt;code&gt;virt-manager&lt;/code&gt; and add ‘&lt;span class="caps"&gt;PCI&lt;/span&gt; Host Device’ hardware for the &lt;span class="caps"&gt;NVIDIA&lt;/span&gt; &lt;span class="caps"&gt;GPU&lt;/span&gt;
+and its sub-devices. Turn on &lt;span class="caps"&gt;VM&lt;/span&gt; to enjoy &lt;span class="caps"&gt;NVIDIA&lt;/span&gt; &lt;span class="caps"&gt;GPU&lt;/span&gt; with it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: The host linux system will not use any device with &lt;code&gt;vfio-pci&lt;/code&gt; module.
+To get the access to device, please remove the &lt;code&gt;vfio-pci&lt;/code&gt; related kernel
+parameter. You can keep &lt;span class="caps"&gt;IOMMU&lt;/span&gt; on as it has &lt;a href="https://en.wikipedia.org/wiki/Input-output_memory_management_unit#Advantages"&gt;added advantage&lt;/a&gt;.&lt;/p&gt;</content><category term="Virtual Machine"></category></entry><entry><title>Different types of mathematical claims</title><link href="https://mayanksuman.in/posts/25_Jun_2021_different-types-of-mathematical-claims/" rel="alternate"></link><published>2021-06-25T00:00:00+05:30</published><updated>2021-06-25T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-06-25:/posts/25_Jun_2021_different-types-of-mathematical-claims/</id><summary type="html">&lt;p&gt;Lemma, proposition, theorem or corollary are different types of mathematical claims with different levels of importance and difficulty. Logically, these claims are same as all of them need a valid proof to be deemed true.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Lemma: easily proved and least interesting claim that can be used to prove other claims …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;Lemma, proposition, theorem or corollary are different types of mathematical claims with different levels of importance and difficulty. Logically, these claims are same as all of them need a valid proof to be deemed true.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Lemma: easily proved and least interesting claim that can be used to prove other claims like proposition or theorem.&lt;/li&gt;
+&lt;li&gt;Proposition: interesting claim; however have lesser importance than theorem.&lt;/li&gt;
+&lt;li&gt;Theorem: most important claim that says something definitive for the subject, hence, often take more effort to prove than a proposition or lemma.&lt;/li&gt;
+&lt;li&gt;Corollary: quick consequence of theorem or proposition that was proved recently in the text.&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Maths"></category></entry><entry><title>Natural Numbers</title><link href="https://mayanksuman.in/posts/25_Jun_2021_natural-numbers/" rel="alternate"></link><published>2021-06-25T00:00:00+05:30</published><updated>2021-06-25T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-06-25:/posts/25_Jun_2021_natural-numbers/</id><summary type="html">&lt;h2&gt;Definition&lt;/h2&gt;
+&lt;p&gt;Natural numbers are numbers that follows Peano axioms.&lt;/p&gt;
+&lt;h3&gt;Peano Axiom&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;1 is a natural number.&lt;/li&gt;
+&lt;li&gt;If &lt;span class="math"&gt;\(n\)&lt;/span&gt; is a natural number then &lt;span class="math"&gt;\(n++\)&lt;/span&gt; is also a natural number.&lt;/li&gt;
+&lt;li&gt;1 is not a successor of any natural number. Hence, &lt;span class="math"&gt;\(n++\neq 1\)&lt;/span&gt; for every natural number &lt;span class="math"&gt;\(n\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;For two natural …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;h2&gt;Definition&lt;/h2&gt;
+&lt;p&gt;Natural numbers are numbers that follows Peano axioms.&lt;/p&gt;
+&lt;h3&gt;Peano Axiom&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;1 is a natural number.&lt;/li&gt;
+&lt;li&gt;If &lt;span class="math"&gt;\(n\)&lt;/span&gt; is a natural number then &lt;span class="math"&gt;\(n++\)&lt;/span&gt; is also a natural number.&lt;/li&gt;
+&lt;li&gt;1 is not a successor of any natural number. Hence, &lt;span class="math"&gt;\(n++\neq 1\)&lt;/span&gt; for every natural number &lt;span class="math"&gt;\(n\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;For two natural numbers &lt;span class="math"&gt;\(m\)&lt;/span&gt; and &lt;span class="math"&gt;\(n\)&lt;/span&gt;: if &lt;span class="math"&gt;\(m\neq n\)&lt;/span&gt; then &lt;span class="math"&gt;\(m++\neq n++\)&lt;/span&gt; or if &lt;span class="math"&gt;\(m=n\)&lt;/span&gt; then &lt;span class="math"&gt;\(m++=n++\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;Principle of mathematical induction: Let &lt;span class="math"&gt;\(P(n)\)&lt;/span&gt; be any property pertaining to natural number &lt;span class="math"&gt;\(n\)&lt;/span&gt;. Suppose that &lt;span class="math"&gt;\(P(1)\)&lt;/span&gt; is true and suppose that whenever &lt;span class="math"&gt;\(P(n)\)&lt;/span&gt; is true, &lt;span class="math"&gt;\(P(n++)\)&lt;/span&gt; is also true. Then &lt;span class="math"&gt;\(P(n)\)&lt;/span&gt; is true for every natural number &lt;span class="math"&gt;\(n\)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Operations of Natural numbers&lt;/h2&gt;
+&lt;p&gt;From Peano Axioms only one operation (&lt;em&gt;i.e.&lt;/em&gt; increment) is defined on natural number. The repeated application of this operation can used to define other operations on natural numbers like addition and multiplication.&lt;/p&gt;
+&lt;h3&gt;Addition&lt;/h3&gt;
+&lt;p&gt;Definition: For a natural number &lt;span class="math"&gt;\(m\)&lt;/span&gt;, we define &lt;span class="math"&gt;\(m++ = m+1\)&lt;/span&gt; and by induction if this addition operation can be defined for &lt;span class="math"&gt;\(n++\)&lt;/span&gt; as &lt;span class="math"&gt;\(m+n++ = (m+n)++ = m+(n+1)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Based on this definition of addition, following properties of addition can be established:
+1. Addition is commutative. &lt;em&gt;i.e.&lt;/em&gt; &lt;span class="math"&gt;\(n+m = m+n\)&lt;/span&gt;
+2. Addition is associative. &lt;em&gt;i.e.&lt;/em&gt; &lt;span class="math"&gt;\((a+b)+c = a+(b+c)\)&lt;/span&gt;
+3. Cancellation law: if &lt;span class="math"&gt;\(a+b=a+c\)&lt;/span&gt;, then &lt;span class="math"&gt;\(b=c\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;These properties can be proved by using principle of mathematical induction (the last Peano axiom). Moreover, the operation of addition also lead to ordering in natural number.&lt;/p&gt;
+&lt;h4&gt;Definition of zero and whole number&lt;/h4&gt;
+&lt;p&gt;Zero (written as 0) is a number whose successor is 1 and for any natural number &lt;span class="math"&gt;\(a\)&lt;/span&gt;, &lt;span class="math"&gt;\(a+0=a\)&lt;/span&gt;. If we include 0 in the set of natural number then the set is called whole number.&lt;/p&gt;
+&lt;h4&gt;Ordering of natural numbers&lt;/h4&gt;
+&lt;p&gt;Definition: Let &lt;span class="math"&gt;\(n\)&lt;/span&gt; and &lt;span class="math"&gt;\(m\)&lt;/span&gt; are natural numbers. We say that &lt;span class="math"&gt;\(n\)&lt;/span&gt; is equal or greater than &lt;span class="math"&gt;\(m\)&lt;/span&gt; and write it &lt;span class="math"&gt;\(n\geq m\)&lt;/span&gt; (or &lt;span class="math"&gt;\(m\leq n\)&lt;/span&gt;), iff we have &lt;span class="math"&gt;\(n=m+a\)&lt;/span&gt; for some whole number &lt;span class="math"&gt;\(a\)&lt;/span&gt;. We say that &lt;span class="math"&gt;\(n\)&lt;/span&gt; is strictly greater than &lt;span class="math"&gt;\(m\)&lt;/span&gt; (written as &lt;span class="math"&gt;\(n&amp;gt;m\)&lt;/span&gt;) iff &lt;span class="math"&gt;\(n\geq m\)&lt;/span&gt; and &lt;span class="math"&gt;\(n\neq m\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Using mathematical induction, following properties of ordering in whole numbers can be established (&lt;span class="math"&gt;\(a\)&lt;/span&gt;, &lt;span class="math"&gt;\(b\)&lt;/span&gt;, and &lt;span class="math"&gt;\(c\)&lt;/span&gt; are whole numbers):
+1. Order is reflexive. &lt;span class="math"&gt;\(a\geq a\)&lt;/span&gt;
+2. Order is transitive. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\geq c\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a\geq c\)&lt;/span&gt;.
+3. Order is anti-symmetric. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\geq a\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a=b\)&lt;/span&gt;.
+4. Addition preserves order. If &lt;span class="math"&gt;\(a\geq b\)&lt;/span&gt;, then &lt;span class="math"&gt;\(a+c \geq b+c\)&lt;/span&gt;.
+5. &lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt; iff &lt;span class="math"&gt;\(a++\geq b\)&lt;/span&gt;.
+6. &lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt; iff &lt;span class="math"&gt;\(b = a + d\)&lt;/span&gt; for some natural number d.&lt;/p&gt;
+&lt;p&gt;Proposition 1: Trichotomy of order for whole numbers: If &lt;span class="math"&gt;\(a\)&lt;/span&gt; and &lt;span class="math"&gt;\(b\)&lt;/span&gt; are whole numbers then exatly one of the following statements is true: &lt;span class="math"&gt;\(a&amp;lt;b\)&lt;/span&gt;, &lt;span class="math"&gt;\(a=b\)&lt;/span&gt;, or &lt;span class="math"&gt;\(a&amp;gt;b\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Proposition 2: Strong principle of mathematical induction: let &lt;span class="math"&gt;\(m_0\)&lt;/span&gt; be a whole number, and let &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; be a property pertaining to an arbitrary whole number &lt;span class="math"&gt;\(m\)&lt;/span&gt;. Suppose that for each &lt;span class="math"&gt;\(m\geq m_0\)&lt;/span&gt;, we have the following implication: if &lt;span class="math"&gt;\(P(m')\)&lt;/span&gt; is true for all natural numbers &lt;span class="math"&gt;\(m_0\geq m' \geq m\)&lt;/span&gt;, then &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; is also true. (In particular, this means that &lt;span class="math"&gt;\(P(m_0)\)&lt;/span&gt; is true, since in this case the hypothesis is vacuous.) Then we can conclude that &lt;span class="math"&gt;\(P(m)\)&lt;/span&gt; is true for all natural numbers &lt;span class="math"&gt;\(m\geq m_0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Maths"></category></entry><entry><title>Data Analytics Basics</title><link href="https://mayanksuman.in/posts/30_May_2021_data-analytics-basics/" rel="alternate"></link><published>2021-05-30T00:00:00+05:30</published><updated>2021-05-30T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-05-30:/posts/30_May_2021_data-analytics-basics/</id><summary type="html">&lt;p&gt;Data is collection of facts that cane used to draw conclusions, make prediction and assist in decision-making.&lt;/p&gt;
+&lt;h2&gt;Role in industry&lt;/h2&gt;
+&lt;p&gt;Data science: the science of working with data. Three part: Machine learning, statistics, and analytics.
+Data Scientist: Creating new way of modeling and understanding the unknown by using raw data …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Data is collection of facts that cane used to draw conclusions, make prediction and assist in decision-making.&lt;/p&gt;
+&lt;h2&gt;Role in industry&lt;/h2&gt;
+&lt;p&gt;Data science: the science of working with data. Three part: Machine learning, statistics, and analytics.
+Data Scientist: Creating new way of modeling and understanding the unknown by using raw data.&lt;/p&gt;
+&lt;p&gt;Data analysis: collection, transformation and organization of data in order to draw conclusions, make prediction and drive informed decision-making. Six steps of data analysis: ask, prepare, process, analyze, share, and act.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ask: Business Challenge/Objective/Question&lt;/li&gt;
+&lt;li&gt;Prepare: Data generation, collection, storage, and data management&lt;/li&gt;
+&lt;li&gt;Process: Data cleaning/data integrity&lt;/li&gt;
+&lt;li&gt;Analyze: Data exploration, visualization, and analysis&lt;/li&gt;
+&lt;li&gt;Share: Communicating and interpreting results&lt;/li&gt;
+&lt;li&gt;Act:  Putting your insights to work to solve the problem&lt;/li&gt;
+&lt;li&gt;Evaluate: Checking if action based on data analysis is working.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Ecosystem: a group of elements that interact with each other.
+Data Ecosystem: Various elements that interact with each other in order to produce, manage, store, organize, analyze and share data.&lt;/p&gt;
+&lt;h2&gt;Key analytical skills&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Curiosity&lt;/li&gt;
+&lt;li&gt;Understanding Context&lt;/li&gt;
+&lt;li&gt;Having a technical mindset&lt;/li&gt;
+&lt;li&gt;Data design&lt;/li&gt;
+&lt;li&gt;Data Strategy&lt;/li&gt;
+&lt;/ol&gt;</content><category term="blog"></category></entry><entry><title>23 Unsolved Problems in Hydrology</title><link href="https://mayanksuman.in/posts/22_May_2021_23-unsolved-problems-in-hydrology/" rel="alternate"></link><published>2021-05-22T00:00:00+05:30</published><updated>2021-05-22T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-05-22:/posts/22_May_2021_23-unsolved-problems-in-hydrology/</id><summary type="html">&lt;p&gt;Similar to Hilbert’s 23 problems in mathematics, International Association of
+Hydrological Sciences (&lt;span class="caps"&gt;IAHS&lt;/span&gt;) compiled some of the most significant Unsolved
+problems in hydrology (&lt;span class="caps"&gt;UPH&lt;/span&gt;) with the help of community. The list of following 23
+problems were published in a 2019 paper.&lt;sup id="fnref:2-1"&gt;&lt;a class="footnote-ref" href="#fn:2-1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h3&gt;Time variability and change&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://mayanksuman.in/posts/22_May_2021_changes-in-regional-hydrological-cycle/"&gt;Is the hydrological …&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;Similar to Hilbert’s 23 problems in mathematics, International Association of
+Hydrological Sciences (&lt;span class="caps"&gt;IAHS&lt;/span&gt;) compiled some of the most significant Unsolved
+problems in hydrology (&lt;span class="caps"&gt;UPH&lt;/span&gt;) with the help of community. The list of following 23
+problems were published in a 2019 paper.&lt;sup id="fnref:2-1"&gt;&lt;a class="footnote-ref" href="#fn:2-1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h3&gt;Time variability and change&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://mayanksuman.in/posts/22_May_2021_changes-in-regional-hydrological-cycle/"&gt;Is the hydrological cycle regionally accelerating/decelerating under climate
+and environmental change, and are there tipping points (irreversible changes)?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;How will cold region runoﬀ and groundwater change in a warmer climate
+(e.g. with glacier melt and permafrost thaw)?&lt;/li&gt;
+&lt;li&gt;What are the mechanisms by which climate change and water use alter
+ephemeral rivers and groundwater in (semi-) arid regions?&lt;/li&gt;
+&lt;li&gt;What are the impacts of land cover change and soil disturbances on water
+and energy ﬂuxes at the land surface, and on the resulting groundwater recharge?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Space variability and scaling&lt;/h3&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;What causes spatial heterogeneity and homogeneity in runoﬀ, evaporation,
+subsurface water and material ﬂuxes (carbon and other nutrients,
+sediments), and in their sensitivity to their controls (e.g. snow fall regime,
+aridity, reaction coeﬃcients)?&lt;/li&gt;
+&lt;li&gt;What are the hydrologic laws at the catchment scale and how do they
+change with scale?&lt;/li&gt;
+&lt;li&gt;Why is most ﬂow preferential across multiple scales and how does such
+behaviour co-evolve with the critical zone?&lt;/li&gt;
+&lt;li&gt;Why do streams respond so quickly to precipitation inputs when storm
+ﬂow is so old, and what is the transit time distribution of water in the
+terrestrial water cycle?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Variability of extremes&lt;/h3&gt;
+&lt;ol start="9"&gt;
+&lt;li&gt;How do ﬂood-rich and drought-rich periods arise, are they changing, and if
+so why?&lt;/li&gt;
+&lt;li&gt;Why are runoﬀ extremes in some catchments more sensitive to land-use/
+cover and geomorphic change than in others?&lt;/li&gt;
+&lt;li&gt;Why, how and when do rain-on-snow events produce exceptional runoff?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Interfaces in hydrology&lt;/h3&gt;
+&lt;ol start="12"&gt;
+&lt;li&gt;What are the processes that control hillslope–riparian–stream–
+groundwater interactions and when do the compartments connect?&lt;/li&gt;
+&lt;li&gt;What are the processes controlling the ﬂuxes of groundwater across
+boundaries (e.g. groundwater recharge, inter-catchment ﬂuxes and
+discharge to oceans)?&lt;/li&gt;
+&lt;li&gt;What factors contribute to the long-term persistence of sources
+responsible for the degradation of water quality?&lt;/li&gt;
+&lt;li&gt;What are the extent, fate and impact of contaminants of emerging
+concern and how are microbial pathogens removed or inactivated in the subsurface?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Measurements and data&lt;/h3&gt;
+&lt;ol start="16"&gt;
+&lt;li&gt;How can we use innovative technologies to measure surface and
+subsurface properties, states and ﬂuxes at a range of spatial and temporal scales?&lt;/li&gt;
+&lt;li&gt;What is the relative value of traditional hydrological observations vs soft
+data (qualitative observations from lay persons, data mining etc.), and
+under what conditions can we substitute space for time?&lt;/li&gt;
+&lt;li&gt;How can we extract information from available data on human and water
+systems in order to inform the building process of socio-hydrological
+models and conceptualisations?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Modelling methods&lt;/h3&gt;
+&lt;ol start="19"&gt;
+&lt;li&gt;How can hydrological models be adapted to be able to extrapolate to
+changing conditions, including changing vegetation dynamics?&lt;/li&gt;
+&lt;li&gt;How can we disentangle and reduce model structural/parameter/input
+uncertainty in hydrological prediction?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Interfaces with society&lt;/h3&gt;
+&lt;ol start="21"&gt;
+&lt;li&gt;How can the (un)certainty in hydrological predictions be communicated
+to decision makers and the general public?&lt;/li&gt;
+&lt;li&gt;What are the synergies and tradeoﬀs between societal goals related to
+water management (e.g. water–environment–energy–food–health)?&lt;/li&gt;
+&lt;li&gt;What is the role of water in migration, urbanisation and the dynamics of
+human civilisations, and what are the implications for contemporary water management?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="footnote"&gt;
+&lt;hr/&gt;
+&lt;ol&gt;
+&lt;li id="fn:2-1"&gt;
+&lt;p&gt;Blöschl, G., Bierkens, M.F., Chambel, A., Cudennec, C., Destouni, G., Fiori, A., Kirchner, J.W., McDonnell, J.J., Savenije, H.H., Sivapalan, M. and Stumpp, C., 2019. Twenty-three unsolved problems in hydrology (&lt;span class="caps"&gt;UPH&lt;/span&gt;)–a community perspective. Hydrological sciences journal, 64(10), pp.1141-1158. &lt;a class="footnote-backref" href="#fnref:2-1" title="Jump back to footnote 1 in the text"&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="Hydrology"></category><category term="climate change"></category><category term="uph"></category><category term="Research Problem"></category></entry><entry><title>Changes in regional hydrological cycle</title><link href="https://mayanksuman.in/posts/22_May_2021_changes-in-regional-hydrological-cycle/" rel="alternate"></link><published>2021-05-22T00:00:00+05:30</published><updated>2021-05-22T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-05-22:/posts/22_May_2021_changes-in-regional-hydrological-cycle/</id><content type="html">&lt;p&gt;Question:&lt;/p&gt;
+&lt;p&gt;Is the hydrological cycle regionally accelerating/decelerating under climate
+and environmental change, and are there tipping points (irreversible changes)?&lt;/p&gt;
+&lt;p&gt;Literature:&lt;/p&gt;</content><category term="Hydrology"></category><category term="climate change"></category><category term="uph"></category><category term="Research Problem"></category></entry><entry><title>Closure Functions</title><link href="https://mayanksuman.in/posts/21_May_2021_closure-functions/" rel="alternate"></link><published>2021-05-21T00:00:00+05:30</published><updated>2021-05-21T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-05-21:/posts/21_May_2021_closure-functions/</id><summary type="html">&lt;p&gt;Closure are higher-order functions which return lower-order function (usually first-order function) with its environment. Defining closure functions is possible in languages which has &lt;a href="https://mayanksuman.in/posts/20_May_2021_first-class-functions/"&gt;first-class functions&lt;/a&gt; like Python, JavaScript, Lua, Scheme, and others.&lt;/p&gt;
 &lt;h2&gt;Example&lt;/h2&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2

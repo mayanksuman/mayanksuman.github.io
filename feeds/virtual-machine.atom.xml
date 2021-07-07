@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog - Virtual Machine</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/virtual-machine.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-07-07T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>Pass-through to VM on Linux Host</title><link href="https://mayanksuman.in/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/" rel="alternate"></link><published>2021-07-07T00:00:00+05:30</published><updated>2021-07-07T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-07-07:/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/</id><summary type="html">&lt;p&gt;Before enabling pass-through we need to enable &lt;span class="caps"&gt;IOMMU&lt;/span&gt;
+(&lt;a href="https://en.wikipedia.org/wiki/Input–output_memory_management_unit"&gt;input–output memory management unit&lt;/a&gt;)
+by adding following kernel parameters in &lt;code&gt;/etc/default/grub&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For intel systems: &lt;code&gt;intel_iommu=on&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;For &lt;span class="caps"&gt;AMD&lt;/span&gt; system, &lt;span class="caps"&gt;IOMMU&lt;/span&gt; is by default enabled.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Additionally add &lt;code&gt;iommmu=pt&lt;/code&gt; parameter to prevent linux kernel from touching
+devices which cannot be …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Before enabling pass-through we need to enable &lt;span class="caps"&gt;IOMMU&lt;/span&gt;
+(&lt;a href="https://en.wikipedia.org/wiki/Input–output_memory_management_unit"&gt;input–output memory management unit&lt;/a&gt;)
+by adding following kernel parameters in &lt;code&gt;/etc/default/grub&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For intel systems: &lt;code&gt;intel_iommu=on&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;For &lt;span class="caps"&gt;AMD&lt;/span&gt; system, &lt;span class="caps"&gt;IOMMU&lt;/span&gt; is by default enabled.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Additionally add &lt;code&gt;iommmu=pt&lt;/code&gt; parameter to prevent linux kernel from touching
+devices which cannot be passed through.
+Update grub by &lt;code&gt;sudo update-grub&lt;/code&gt; command and
+reboot the system. After reboot, check that the device to be pass-throughed
+(usually &lt;span class="caps"&gt;GPU&lt;/span&gt;) has separate &lt;span class="caps"&gt;IOMMU&lt;/span&gt; group by inspecting the output
+of following shell script.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="nb"&gt;shopt&lt;/span&gt; -s nullglob
+&lt;span class="k"&gt;for&lt;/span&gt; g in &lt;span class="sb"&gt;`&lt;/span&gt;find /sys/kernel/iommu_groups/* -maxdepth &lt;span class="m"&gt;0&lt;/span&gt; -type d &lt;span class="p"&gt;|&lt;/span&gt; sort -V&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;"IOMMU Group &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;g&lt;/span&gt;&lt;span class="p"&gt;##*/&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;:"&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; d in &lt;span class="nv"&gt;$g&lt;/span&gt;/devices/*&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+        &lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\t&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;lspci -nns &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="p"&gt;##*/&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+    &lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Sometimes, a number of sub-devices can be attached to a device in that case,
+please ensure that all of sub-devices belong to same &lt;span class="caps"&gt;IOMMU&lt;/span&gt; group and all of
+them should be pass-throughed together.&lt;/p&gt;
+&lt;p&gt;Sample output:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;IOMMU Group 8:&lt;/span&gt;
+&lt;span class="err"&gt;    01:00.0 VGA compatible controller [0300]: NVIDIA Corporation TU116M [GeForce GTX 1660 Ti Mobile] [10de:2191] (rev a1)&lt;/span&gt;
+&lt;span class="err"&gt;    01:00.1 Audio device [0403]: NVIDIA Corporation TU116 High Definition Audio Controller [10de:1aeb] (rev a1)&lt;/span&gt;
+&lt;span class="err"&gt;    01:00.2 USB controller [0c03]: NVIDIA Corporation TU116 USB 3.1 Host Controller [10de:1aec] (rev a1)&lt;/span&gt;
+&lt;span class="err"&gt;    01:00.3 Serial bus controller [0c80]: NVIDIA Corporation TU116 USB Type-C UCSI Controller [10de:1aed] (rev a1)&lt;/span&gt;
+&lt;span class="err"&gt;IOMMU Group 9:&lt;/span&gt;
+&lt;span class="err"&gt;    02:00.0 Network controller [0280]: Intel Corporation Wi-Fi 6 AX200 [8086:2723] (rev 1a)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;For enabling pass-through on the device, note its vendorID:productID and add
+&lt;code&gt;vfio-pci&lt;/code&gt; parameter to kernel parameters. For instance to forward
+Network controller from the above example the parameter should be&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;vfio-pci.ids=8086:2723&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;If you want to pass-through &lt;span class="caps"&gt;IOMMU&lt;/span&gt; Group 8, then add following parameter&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;vfio-pci.ids=10de:2191,10de:1aeb,10de:1aec,10de:1aed&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Then add &lt;code&gt;vfio-pci&lt;/code&gt; module to initramfs by adding to
+&lt;code&gt;/etc/initramfs-tools/modules&lt;/code&gt; file. Regenerate the initramfs by
+&lt;code&gt;sudo update-initramfs -u&lt;/code&gt; command and regenerate the grub configuration by
+&lt;code&gt;sudo update-grub&lt;/code&gt;. Reboot the system.&lt;/p&gt;
+&lt;p&gt;After reboot, ensure that the concerned device have &lt;code&gt;vfio-pci&lt;/code&gt; as active
+module by &lt;code&gt;lspci -nnk -d vendorID:productID&lt;/code&gt;. For instance, the correct output
+for &lt;span class="caps"&gt;NVIDIA&lt;/span&gt; &lt;span class="caps"&gt;GPU&lt;/span&gt; card from &lt;span class="caps"&gt;IOMMU&lt;/span&gt; group 8 should be (output of &lt;code&gt;lspci -nnk -d 10de:2191&lt;/code&gt;)&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="mi"&gt;01&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;00.0&lt;/span&gt; &lt;span class="n"&gt;VGA&lt;/span&gt; &lt;span class="n"&gt;compatible&lt;/span&gt; &lt;span class="n"&gt;controller&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0300&lt;/span&gt;&lt;span class="o"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;NVIDIA&lt;/span&gt; &lt;span class="n"&gt;Corporation&lt;/span&gt; &lt;span class="n"&gt;TU116M&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;GeForce&lt;/span&gt; &lt;span class="n"&gt;GTX&lt;/span&gt; &lt;span class="mi"&gt;1660&lt;/span&gt; &lt;span class="n"&gt;Ti&lt;/span&gt; &lt;span class="n"&gt;Mobile&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="n"&gt;de&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2191&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rev&lt;/span&gt; &lt;span class="n"&gt;a1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;Subsystem&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ASUSTeK&lt;/span&gt; &lt;span class="n"&gt;Computer&lt;/span&gt; &lt;span class="n"&gt;Inc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;TU116M&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;GeForce&lt;/span&gt; &lt;span class="n"&gt;GTX&lt;/span&gt; &lt;span class="mi"&gt;1660&lt;/span&gt; &lt;span class="n"&gt;Ti&lt;/span&gt; &lt;span class="n"&gt;Mobile&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1043&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="n"&gt;ef&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;Kernel&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;vfio&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pci&lt;/span&gt;
+    &lt;span class="n"&gt;Kernel&lt;/span&gt; &lt;span class="n"&gt;modules&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;nvidia&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;Now, we are ready to pass this device to virtual machine (&lt;span class="caps"&gt;VM&lt;/span&gt;). Open properties
+of &lt;span class="caps"&gt;VM&lt;/span&gt; in &lt;code&gt;virt-manager&lt;/code&gt; and add ‘&lt;span class="caps"&gt;PCI&lt;/span&gt; Host Device’ hardware for the &lt;span class="caps"&gt;NVIDIA&lt;/span&gt; &lt;span class="caps"&gt;GPU&lt;/span&gt;
+and its sub-devices. Turn on &lt;span class="caps"&gt;VM&lt;/span&gt; to enjoy &lt;span class="caps"&gt;NVIDIA&lt;/span&gt; &lt;span class="caps"&gt;GPU&lt;/span&gt; with it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: The host linux system will not use any device with &lt;code&gt;vfio-pci&lt;/code&gt; module.
+To get the access to device, please remove the &lt;code&gt;vfio-pci&lt;/code&gt; related kernel
+parameter. You can keep &lt;span class="caps"&gt;IOMMU&lt;/span&gt; on as it has &lt;a href="https://en.wikipedia.org/wiki/Input-output_memory_management_unit#Advantages"&gt;added advantage&lt;/a&gt;.&lt;/p&gt;</content><category term="Virtual Machine"></category></entry></feed>
