@@ -173,7 +173,7 @@ sudo cryptsetup -y luksFormat encrypted_volume.enc
 using <code>head -c 4kB /dev/urandom &gt; key_file_path;sync</code> or 
 <code>dd if=/dev/urandom of=key_file_path bs=1000 count=4;sync</code>. 
 Next while doing <code>luksFormat</code> with <code>cryptsetup</code> command, 
-add <code>--key-file key_file_path</code> in the command. For security, save the key file as
+add <code>--key-file key_file_path</code> in the command. For security, save the key file at a
 safe location with proper permission (for example <code>chmod 400 key_file_path</code>), because 
 losing or modifying key-file will mean loss of data in encrypted volume.</p>
 <p>It should be noted additional passphrase or key-files can be added to
@@ -220,7 +220,7 @@ cryptsetup luksHeaderRestore &lt;device&gt; --header-backup-file &lt;file&gt;
 </td></tr></table>
 <ol start="4">
 <li>After taking backup of <span class="caps">LUKS</span> Header, all pass-phrases and key-files can be removed from 
-encrypted device by <code>cryptsetup luksErase</code>. However, this operation may render the device 
+encrypted device by <code>cryptsetup luksErase</code>. However, this operation will render the device 
 unusable, so it is highly recommended that a backup of header is taken before. Such a 
 device can then be opened using <code>cryptsetup luksOpen --header=header_file_path</code> command.</li>
 <li>For an encrypted device, the command <code>cryptsetup -v isLuks &lt;device_path&gt;</code> give 
