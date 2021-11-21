@@ -170,13 +170,13 @@ sudo cryptsetup -y luksFormat encrypted_volume.enc
 </code></pre></div>
 </td></tr></table>
 <p>In case, if you want to use key file, you can generate a key-file with random bits 
-using <code>head -c 4kB &lt; /dev/urandom &gt; key_file_path;sync</code> or 
+using <code>head -c 4kB /dev/urandom &gt; key_file_path;sync</code> or 
 <code>dd if=/dev/urandom of=key_file_path bs=1000 count=4;sync</code>. 
 Next while doing <code>luksFormat</code> with <code>cryptsetup</code> command, 
 add <code>--key-file key_file_path</code> in the command. For security, save the key file as
 safe location with proper permission (for example <code>chmod 400 key_file_path</code>), because 
 losing or modifying key-file will mean loss of data in encrypted volume.</p>
-<p>It should be noted additional passphrase or key-files (maximum 8) can be added to
+<p>It should be noted additional passphrase or key-files can be added to
 <code>encrypted_volume.enc</code> with <code>cryptsetup luksAddKey</code> command. </p>
 <p>Now, open the volume inside file with cryptsetup and format it with <code>ext4</code> partition. </p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -202,7 +202,8 @@ sudo cryptsetup luksClose encrypted_vol
 <code>cryptsetup luksDump device_path</code>.</li>
 <li>If you do not want to enter passphrase everytime you open an encrypted drive, add a
 key-file to it using <code>cryptsetup luksAddKey</code> command, get the <span class="caps">UUID</span> for the encrypted 
-device by <code>sudo blkid</code> and then put following line in <code>/etc/crypttab</code>:</li>
+device by <code>sudo blkid</code> (or <code>cryptsetup luksDump</code> or <code>cryptsetup luksUUID</code>), and then 
+put following line in <code>/etc/crypttab</code>:</li>
 </ol>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>encrypted_vol <span class="nv">UUID</span><span class="o">=</span>encrypted_drive_UUID   key_file_path    luks
 </code></pre></div>
@@ -217,6 +218,12 @@ For backing and restoring header, following commands are used.</li>
 cryptsetup luksHeaderRestore &lt;device&gt; --header-backup-file &lt;file&gt;
 </code></pre></div>
 </td></tr></table>
+<ol start="4">
+<li>All pass-phrases and key-files can be removed from encrypted device by 
+<code>cryptsetup luksErase</code>. However, this operation may render the device unusable, so it is 
+highly recommended that a backup of header is taken before. Such a device can then be opened
+using <code>cryptsetup luksOpen --header=header_file_path</code> command.</li>
+</ol>
   </div>
 
 
