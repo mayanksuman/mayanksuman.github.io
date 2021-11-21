@@ -1,5 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog - Software</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/software.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-01-31T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>Mounting qcow2 drive</title><link href="https://mayanksuman.in/posts/31_Jan_2021_mounting-qcow2-drive/" rel="alternate"></link><published>2021-01-31T00:00:00+05:30</published><updated>2021-01-31T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-01-31:/posts/31_Jan_2021_mounting-qcow2-drive/</id><summary type="html">&lt;p&gt;The qcow2 (or &lt;span class="caps"&gt;QEMU&lt;/span&gt; copy-on-write) is a virtual disk image format primarly used by &lt;span class="caps"&gt;QEMU&lt;/span&gt; for guest systems. In many circustances, such as reseting passwords, editting or recovering files etc., mouting a qcow2 disk images without running a guest system is required. This can be acheived by &lt;code&gt;Network Block Device …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;The qcow2 (or &lt;span class="caps"&gt;QEMU&lt;/span&gt; copy-on-write) is a virtual disk image format primarly used by &lt;span class="caps"&gt;QEMU&lt;/span&gt; for guest systems. In many circustances, such as reseting passwords, editting or recovering files etc., mouting a qcow2 disk images without running a guest system is required. This can be acheived by &lt;code&gt;Network Block Device&lt;/code&gt; module (or &lt;code&gt;nbd&lt;/code&gt;) on host linux system. At first, we need to define maximum number of partitions expected for the qcow2 disk and then the disk can be mouted with following commands:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Mayank Suman's Blog - Software</title><link href="https://mayanksuman.in/" rel="alternate"></link><link href="https://mayanksuman.in/feeds/software.atom.xml" rel="self"></link><id>https://mayanksuman.in/</id><updated>2021-11-21T00:00:00+05:30</updated><subtitle>Research Scholar, IIT Kharagpur</subtitle><entry><title>Create Encrypted Volume inside File</title><link href="https://mayanksuman.in/posts/21_Nov_2021_create-encrypted-volume-inside-file/" rel="alternate"></link><published>2021-11-21T00:00:00+05:30</published><updated>2021-11-21T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-11-21:/posts/21_Nov_2021_create-encrypted-volume-inside-file/</id><summary type="html">&lt;p&gt;Prerequisite: The system should have &lt;code&gt;cryptsetup&lt;/code&gt; installed. On debian this can be
+achieved by &lt;code&gt;sudo apt install cryptsetup&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;At first creat the file that will act as encrypted drive/volume. Please ensure that 
+the file should be &amp;gt;=&lt;span class="caps"&gt;100MB&lt;/span&gt; in size. The file will then be formatted with 
+&lt;code&gt;cryptsetup&lt;/code&gt;. This step …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Prerequisite: The system should have &lt;code&gt;cryptsetup&lt;/code&gt; installed. On debian this can be
+achieved by &lt;code&gt;sudo apt install cryptsetup&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;At first creat the file that will act as encrypted drive/volume. Please ensure that 
+the file should be &amp;gt;=&lt;span class="caps"&gt;100MB&lt;/span&gt; in size. The file will then be formatted with 
+&lt;code&gt;cryptsetup&lt;/code&gt;. This step will demand either a passphrase or key file (following 
+example commands are for passphrase case).&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;fallocate -l 100M encrypted_volume.enc
+sudo cryptsetup -y luksFormat encrypted_volume.enc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;In case, if you want to use key file, you can generate a key-file with random bits 
+using &lt;code&gt;head -c 4kB &amp;lt; /dev/urandom &amp;gt; key_file_path;sync&lt;/code&gt; or 
+&lt;code&gt;dd if=/dev/urandom of=key_file_path bs=1000 count=4;sync&lt;/code&gt;. 
+Next while doing &lt;code&gt;luksFormat&lt;/code&gt; with &lt;code&gt;cryptsetup&lt;/code&gt; command, 
+add &lt;code&gt;--key-file key_file_path&lt;/code&gt; in the command. For security, save the key file as
+safe location with proper permission (for example &lt;code&gt;chmod 400 key_file_path&lt;/code&gt;), because 
+losing or modifying key-file will mean loss of data in encrypted volume.&lt;/p&gt;
+&lt;p&gt;It should be noted additional passphrase or key-files (maximum 8) can be added to
+&lt;code&gt;encrypted_volume.enc&lt;/code&gt; with &lt;code&gt;cryptsetup luksAddKey&lt;/code&gt; command. &lt;/p&gt;
+&lt;p&gt;Now, open the volume inside file with cryptsetup and format it with &lt;code&gt;ext4&lt;/code&gt; partition. &lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo cryptsetup luksOpen encrypted_volume.enc encrypted_vol 
+sudo mkfs -t ext4 /dev/mapper/encrypted_vol
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;You can go with other filesystem or even with &lt;code&gt;lvm2&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The volume can be mounted in any folder by using &lt;code&gt;mount&lt;/code&gt; command.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo mount /dev/mapper/encrypted_vol target_folder
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;After accessing the data in the volume, the volume should be unmounted and the mapping
+should be closed&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo umount /dev/mapper/encrypted_vol
+sudo cryptsetup luksClose encrypted_vol 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;h2&gt;Additional Tips&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;To get information about existing encrypted device, use the command 
+&lt;code&gt;cryptsetup luksDump device_path&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;If you do not want to enter passphrase everytime you open an encrypted drive, add a
+key-file to it using &lt;code&gt;cryptsetup luksAddKey&lt;/code&gt; command, get the &lt;span class="caps"&gt;UUID&lt;/span&gt; for the encrypted 
+device by &lt;code&gt;sudo blkid&lt;/code&gt; and then put following line in &lt;code&gt;/etc/crypttab&lt;/code&gt;:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;encrypted_vol &lt;span class="nv"&gt;UUID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;encrypted_drive_UUID   key_file_path    luks
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;For added safety, you can backup &lt;span class="caps"&gt;LUKS&lt;/span&gt; Header of encrypted drive. Backed up &lt;span class="caps"&gt;LUKS&lt;/span&gt; Header
+can come handy in cases when header in actual encrypted drive is corrupted or missing. 
+For backing and restoring header, following commands are used.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cryptsetup luksHeaderBackup &amp;lt;device&amp;gt; --header-backup-file &amp;lt;file&amp;gt;
+cryptsetup luksHeaderRestore &amp;lt;device&amp;gt; --header-backup-file &amp;lt;file&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</content><category term="Software"></category></entry><entry><title>Better sound quality in obs-studio</title><link href="https://mayanksuman.in/posts/30_Aug_2021_better-sound-quality-in-obs-studio/" rel="alternate"></link><published>2021-08-30T00:00:00+05:30</published><updated>2021-08-30T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-08-30:/posts/30_Aug_2021_better-sound-quality-in-obs-studio/</id><content type="html">&lt;p&gt;A extensive guide for audio mixing is presented at
+&lt;a href="https://indiscipline.github.io/post/voice-sound-reference/"&gt;https://indiscipline.github.io/post/voice-sound-reference/&lt;/a&gt;.&lt;/p&gt;</content><category term="Software"></category><category term="obs-studio"></category><category term="audio-recording"></category></entry><entry><title>Hardware-Accelerated Window capture (NVIDIA FBC) in OBS-Studio</title><link href="https://mayanksuman.in/posts/28_Aug_2021_hardware-accelerated-window-capture-nvidia-fbc-in-obs-studio/" rel="alternate"></link><published>2021-08-28T00:00:00+05:30</published><updated>2021-08-28T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-08-28:/posts/28_Aug_2021_hardware-accelerated-window-capture-nvidia-fbc-in-obs-studio/</id><summary type="html">&lt;p&gt;For getting hardware-accelerated window capture on obs-studio, first we need to patch the nvidia-driver in using &lt;a href="https://github.com/keylase/nvidia-patch"&gt;https://github.com/keylase/nvidia-patch&lt;/a&gt;. Please note that before applying the patch, please ensure that your driver version is supported. The installed driver version can be seen by issuing &lt;code&gt;nvidia-smi&lt;/code&gt; command.&lt;/p&gt;
+&lt;p&gt;Next, we need …&lt;/p&gt;</summary><content type="html">&lt;p&gt;For getting hardware-accelerated window capture on obs-studio, first we need to patch the nvidia-driver in using &lt;a href="https://github.com/keylase/nvidia-patch"&gt;https://github.com/keylase/nvidia-patch&lt;/a&gt;. Please note that before applying the patch, please ensure that your driver version is supported. The installed driver version can be seen by issuing &lt;code&gt;nvidia-smi&lt;/code&gt; command.&lt;/p&gt;
+&lt;p&gt;Next, we need to install a obs-studio plugin for Nvidia &lt;span class="caps"&gt;FBC&lt;/span&gt; &lt;span class="caps"&gt;API&lt;/span&gt;. The source code for the plugin is available at &lt;a href="https://gitlab.com/fzwoch/obs-nvfbc"&gt;https://gitlab.com/fzwoch/obs-nvfbc&lt;/a&gt;. Download the source code and build it. The compiled &lt;code&gt;nvfbc.so&lt;/code&gt; file is copied to &lt;code&gt;plugins/nvfbc/&lt;/code&gt; folder.&lt;/p&gt;
+&lt;p&gt;In &lt;span class="caps"&gt;OBS&lt;/span&gt;-Studio, a new source will appear for &lt;span class="caps"&gt;NVIDIA&lt;/span&gt; &lt;span class="caps"&gt;FBC&lt;/span&gt;. Enjoy the hardware-accelerated window capture.&lt;/p&gt;</content><category term="Software"></category><category term="obs-studio"></category><category term="nvidia"></category><category term="window-capture"></category></entry><entry><title>Mounting qcow2 drive</title><link href="https://mayanksuman.in/posts/31_Jan_2021_mounting-qcow2-drive/" rel="alternate"></link><published>2021-01-31T00:00:00+05:30</published><updated>2021-01-31T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-01-31:/posts/31_Jan_2021_mounting-qcow2-drive/</id><summary type="html">&lt;p&gt;The qcow2 (or &lt;span class="caps"&gt;QEMU&lt;/span&gt; copy-on-write) is a virtual disk image format primarly used by &lt;span class="caps"&gt;QEMU&lt;/span&gt; for guest systems. In many circustances, such as reseting passwords, editting or recovering files etc., mouting a qcow2 disk images without running a guest system is required. This can be acheived by &lt;code&gt;Network Block Device …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;The qcow2 (or &lt;span class="caps"&gt;QEMU&lt;/span&gt; copy-on-write) is a virtual disk image format primarly used by &lt;span class="caps"&gt;QEMU&lt;/span&gt; for guest systems. In many circustances, such as reseting passwords, editting or recovering files etc., mouting a qcow2 disk images without running a guest system is required. This can be acheived by &lt;code&gt;Network Block Device&lt;/code&gt; module (or &lt;code&gt;nbd&lt;/code&gt;) on host linux system. At first, we need to define maximum number of partitions expected for the qcow2 disk and then the disk can be mouted with following commands:&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
 2
 3

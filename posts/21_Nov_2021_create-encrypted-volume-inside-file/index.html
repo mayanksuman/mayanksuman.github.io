@@ -55,17 +55,24 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333333">
 
-    <meta name="author" content="Mayank Suman" />
-    <meta name="description" content="Mayank Suman's Notes and Random Ideas" />
+<meta name="author" content="Mayank Suman" />
+<meta name="description" content="Prerequisite: The system should have cryptsetup installed. On debian this can be achieved by sudo apt install cryptsetup. At first creat the file that will act as encrypted drive/volume. Please ensure that the file should be &gt;=100MB in size. The file will then be formatted with cryptsetup. This step …" />
+<meta name="keywords" content="">
+
+
 <meta property="og:site_name" content="Mayank Suman's Blog"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="Mayank Suman's Blog"/>
-<meta property="og:description" content="Mayank Suman's Notes and Random Ideas"/>
+<meta property="og:title" content="Create Encrypted Volume inside File"/>
+<meta property="og:description" content="Prerequisite: The system should have cryptsetup installed. On debian this can be achieved by sudo apt install cryptsetup. At first creat the file that will act as encrypted drive/volume. Please ensure that the file should be &gt;=100MB in size. The file will then be formatted with cryptsetup. This step …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://mayanksuman.in"/>
+<meta property="og:url" content="https://mayanksuman.in/posts/21_Nov_2021_create-encrypted-volume-inside-file/"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-11-21 00:00:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://mayanksuman.in/author/mayank-suman.html">
+<meta property="article:section" content="Software"/>
 <meta property="og:image" content="https://mayanksuman.in/images/profile.png">
 
-  <title>Mayank Suman's Blog</title>
+  <title>Mayank Suman's Blog &ndash; Create Encrypted Volume inside File</title>
 
 </head>
 <body >
@@ -137,128 +144,86 @@
 
     </nav>
 
-
-
-<article>
+<article class="single">
   <header>
-    <h2><a href="https://mayanksuman.in/posts/21_Nov_2021_create-encrypted-volume-inside-file/#create-encrypted-volume-inside-file">Create Encrypted Volume inside&nbsp;File</a></h2>
+      
+    <h1 id="create-encrypted-volume-inside-file">Create Encrypted Volume inside&nbsp;File</h1>
     <p>
       Posted on Sun 21 November 2021 in <a href="https://mayanksuman.in/category/software.html">Software</a>
 
-
-        &#8226; 2 min read
+        &#8226; 2 min read &#8226;
+      
     </p>
   </header>
+
+
   <div>
-      <p>Prerequisite: The system should have <code>cryptsetup</code> installed. On debian this can be
+    <p>Prerequisite: The system should have <code>cryptsetup</code> installed. On debian this can be
 achieved by <code>sudo apt install cryptsetup</code>.</p>
 <p>At first creat the file that will act as encrypted drive/volume. Please ensure that 
 the file should be &gt;=<span class="caps">100MB</span> in size. The file will then be formatted with 
-<code>cryptsetup</code>. This step …</p>
-        <br>
-        <a class="btn"
-           href="https://mayanksuman.in/posts/21_Nov_2021_create-encrypted-volume-inside-file/#create-encrypted-volume-inside-file">
-          Continue reading
-        </a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://mayanksuman.in/posts/30_Aug_2021_better-sound-quality-in-obs-studio/#better-sound-quality-in-obs-studio">Better sound quality in&nbsp;obs-studio</a></h2>
-    <p>
-      Posted on Mon 30 August 2021 in <a href="https://mayanksuman.in/category/software.html">Software</a>
-
-          &#8226; Tagged with
-              <a href="https://mayanksuman.in/tag/obs-studio.html">obs-studio</a>,              <a href="https://mayanksuman.in/tag/audio-recording.html">audio-recording</a>
-        &#8226; 1 min read
-    </p>
-  </header>
-  <div>
-      <p>A extensive guide for audio mixing is presented at
-<a href="https://indiscipline.github.io/post/voice-sound-reference/">https://indiscipline.github.io/post/voice-sound-reference/</a>.</p>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://mayanksuman.in/posts/28_Aug_2021_hardware-accelerated-window-capture-nvidia-fbc-in-obs-studio/#hardware-accelerated-window-capture-nvidia-fbc-in-obs-studio">Hardware-Accelerated Window capture (<span class="caps">NVIDIA</span> <span class="caps">FBC</span>) in <span class="caps">OBS</span>-Studio</a></h2>
-    <p>
-      Posted on Sat 28 August 2021 in <a href="https://mayanksuman.in/category/software.html">Software</a>
-
-          &#8226; Tagged with
-              <a href="https://mayanksuman.in/tag/obs-studio.html">obs-studio</a>,              <a href="https://mayanksuman.in/tag/nvidia.html">nvidia</a>,              <a href="https://mayanksuman.in/tag/window-capture.html">window-capture</a>
-        &#8226; 1 min read
-    </p>
-  </header>
-  <div>
-      <p>For getting hardware-accelerated window capture on obs-studio, first we need to patch the nvidia-driver in using <a href="https://github.com/keylase/nvidia-patch">https://github.com/keylase/nvidia-patch</a>. Please note that before applying the patch, please ensure that your driver version is supported. The installed driver version can be seen by issuing <code>nvidia-smi</code> command.</p>
-<p>Next, we need …</p>
-        <br>
-        <a class="btn"
-           href="https://mayanksuman.in/posts/28_Aug_2021_hardware-accelerated-window-capture-nvidia-fbc-in-obs-studio/#hardware-accelerated-window-capture-nvidia-fbc-in-obs-studio">
-          Continue reading
-        </a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://mayanksuman.in/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/#pass-through-to-vm-on-linux-host">Pass through to <span class="caps">VM</span> on Linux&nbsp;Host</a></h2>
-    <p>
-      Posted on Wed 07 July 2021 in <a href="https://mayanksuman.in/category/virtual-machine.html">Virtual Machine</a>
-
-
-        &#8226; 2 min read
-    </p>
-  </header>
-  <div>
-      <p>Before enabling pass through we need to enable <span class="caps">IOMMU</span>
-(<a href="https://en.wikipedia.org/wiki/Input–output_memory_management_unit">input–output memory management unit</a>)
-by adding following kernel parameters in <code>/etc/default/grub</code>.</p>
-<ul>
-<li>For intel systems: <code>intel_iommu=on</code></li>
-<li>For <span class="caps">AMD</span> system, <span class="caps">IOMMU</span> is by default enabled.</li>
-</ul>
-<p>Additionally add <code>iommmu=pt</code> parameter to prevent linux kernel from touching
-devices which cannot …</p>
-        <br>
-        <a class="btn"
-           href="https://mayanksuman.in/posts/07_Jul_2021_pass-through-to-vm-on-linux-host/#pass-through-to-vm-on-linux-host">
-          Continue reading
-        </a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://mayanksuman.in/posts/25_Jun_2021_different-types-of-mathematical-claims/#different-types-of-mathematical-claims">Different types of mathematical&nbsp;claims</a></h2>
-    <p>
-      Posted on Fri 25 June 2021 in <a href="https://mayanksuman.in/category/maths.html">Maths</a>
-
-
-        &#8226; 1 min read
-    </p>
-  </header>
-  <div>
-      <p>Lemma, proposition, theorem or corollary are different types of mathematical claims with different levels of importance and difficulty. Logically, these claims are same as all of them need a valid proof to be deemed true.</p>
+<code>cryptsetup</code>. This step will demand either a passphrase or key file (following 
+example commands are for passphrase case).</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>fallocate -l 100M encrypted_volume.enc
+sudo cryptsetup -y luksFormat encrypted_volume.enc
+</code></pre></div>
+</td></tr></table>
+<p>In case, if you want to use key file, you can generate a key-file with random bits 
+using <code>head -c 4kB &lt; /dev/urandom &gt; key_file_path;sync</code> or 
+<code>dd if=/dev/urandom of=key_file_path bs=1000 count=4;sync</code>. 
+Next while doing <code>luksFormat</code> with <code>cryptsetup</code> command, 
+add <code>--key-file key_file_path</code> in the command. For security, save the key file as
+safe location with proper permission (for example <code>chmod 400 key_file_path</code>), because 
+losing or modifying key-file will mean loss of data in encrypted volume.</p>
+<p>It should be noted additional passphrase or key-files (maximum 8) can be added to
+<code>encrypted_volume.enc</code> with <code>cryptsetup luksAddKey</code> command. </p>
+<p>Now, open the volume inside file with cryptsetup and format it with <code>ext4</code> partition. </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo cryptsetup luksOpen encrypted_volume.enc encrypted_vol 
+sudo mkfs -t ext4 /dev/mapper/encrypted_vol
+</code></pre></div>
+</td></tr></table>
+<p>You can go with other filesystem or even with <code>lvm2</code>.</p>
+<p>The volume can be mounted in any folder by using <code>mount</code> command.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo mount /dev/mapper/encrypted_vol target_folder
+</code></pre></div>
+</td></tr></table>
+<p>After accessing the data in the volume, the volume should be unmounted and the mapping
+should be closed</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo umount /dev/mapper/encrypted_vol
+sudo cryptsetup luksClose encrypted_vol 
+</code></pre></div>
+</td></tr></table>
+<h2>Additional Tips</h2>
 <ol>
-<li>Lemma: easily proved and least interesting claim that can be used to prove other claims …</li></ol>
-        <br>
-        <a class="btn"
-           href="https://mayanksuman.in/posts/25_Jun_2021_different-types-of-mathematical-claims/#different-types-of-mathematical-claims">
-          Continue reading
-        </a>
+<li>To get information about existing encrypted device, use the command 
+<code>cryptsetup luksDump device_path</code>.</li>
+<li>If you do not want to enter passphrase everytime you open an encrypted drive, add a
+key-file to it using <code>cryptsetup luksAddKey</code> command, get the <span class="caps">UUID</span> for the encrypted 
+device by <code>sudo blkid</code> and then put following line in <code>/etc/crypttab</code>:</li>
+</ol>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>encrypted_vol <span class="nv">UUID</span><span class="o">=</span>encrypted_drive_UUID   key_file_path    luks
+</code></pre></div>
+</td></tr></table>
+<ol start="3">
+<li>For added safety, you can backup <span class="caps">LUKS</span> Header of encrypted drive. Backed up <span class="caps">LUKS</span> Header
+can come handy in cases when header in actual encrypted drive is corrupted or missing. 
+For backing and restoring header, following commands are used.</li>
+</ol>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cryptsetup luksHeaderBackup &lt;device&gt; --header-backup-file &lt;file&gt;
+cryptsetup luksHeaderRestore &lt;device&gt; --header-backup-file &lt;file&gt;
+</code></pre></div>
+</td></tr></table>
   </div>
+
+
+
+
+
 </article>
-
-  <div class="pagination">
-    <a class="btn float-left" href="https://mayanksuman.in/index2.html">
-      <i class="fa fa-angle-left"></i> Older Posts
-    </a>
-  </div>
-
-
 
     <footer>
 <p>&copy; Mayank Suman 2021</p>
