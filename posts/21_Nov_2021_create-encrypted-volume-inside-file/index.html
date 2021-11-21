@@ -184,9 +184,9 @@ losing or modifying key-file will mean loss of data in encrypted volume.</p>
 sudo mkfs -t ext4 /dev/mapper/encrypted_vol
 </code></pre></div>
 </td></tr></table>
-<p>You can go with other filesystem or even with <code>lvm2</code>.</p>
-<p>The volume can be mounted in any folder by using <code>mount</code> command.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo mount /dev/mapper/encrypted_vol target_folder
+<p>You can go with other filesystem or even with <code>lvm2</code>. The volume can be mounted in any
+folder by using <code>mount</code> command.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo mount -t ext4 /dev/mapper/encrypted_vol target_folder
 </code></pre></div>
 </td></tr></table>
 <p>After accessing the data in the volume, the volume should be unmounted and the mapping
@@ -219,10 +219,16 @@ cryptsetup luksHeaderRestore &lt;device&gt; --header-backup-file &lt;file&gt;
 </code></pre></div>
 </td></tr></table>
 <ol start="4">
-<li>All pass-phrases and key-files can be removed from encrypted device by 
-<code>cryptsetup luksErase</code>. However, this operation may render the device unusable, so it is 
-highly recommended that a backup of header is taken before. Such a device can then be opened
-using <code>cryptsetup luksOpen --header=header_file_path</code> command.</li>
+<li>After taking backup of <span class="caps">LUKS</span> Header, all pass-phrases and key-files can be removed from 
+encrypted device by <code>cryptsetup luksErase</code>. However, this operation may render the device 
+unusable, so it is highly recommended that a backup of header is taken before. Such a 
+device can then be opened using <code>cryptsetup luksOpen --header=header_file_path</code> command.</li>
+<li>For an encrypted device, the command <code>cryptsetup -v isLuks &lt;device_path&gt;</code> give 
+<code>command successful</code> message (hence, it reveals that device is encrypted with <span class="caps">LUKS</span>). If 
+you want to avoid detection, take a backup of header and then run 
+<code>wipefs -a &lt;device_path&gt;</code> to remove all information about filesystem in encrypted 
+device. After this step, the encrypted drive can only be opened using 
+<code>cryptsetup luksOpen --header=header_file_path</code> command.</li>
 </ol>
   </div>
 

@@ -29,9 +29,9 @@ losing or modifying key-file will mean loss of data in encrypted volume.&lt;/p&
 sudo mkfs -t ext4 /dev/mapper/encrypted_vol
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;You can go with other filesystem or even with &lt;code&gt;lvm2&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;The volume can be mounted in any folder by using &lt;code&gt;mount&lt;/code&gt; command.&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo mount /dev/mapper/encrypted_vol target_folder
+&lt;p&gt;You can go with other filesystem or even with &lt;code&gt;lvm2&lt;/code&gt;. The volume can be mounted in any
+folder by using &lt;code&gt;mount&lt;/code&gt; command.&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo mount -t ext4 /dev/mapper/encrypted_vol target_folder
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;After accessing the data in the volume, the volume should be unmounted and the mapping
@@ -64,10 +64,16 @@ cryptsetup luksHeaderRestore &amp;lt;device&amp;gt; --header-backup-file &amp;lt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;ol start="4"&gt;
-&lt;li&gt;All pass-phrases and key-files can be removed from encrypted device by 
-&lt;code&gt;cryptsetup luksErase&lt;/code&gt;. However, this operation may render the device unusable, so it is 
-highly recommended that a backup of header is taken before. Such a device can then be opened
-using &lt;code&gt;cryptsetup luksOpen --header=header_file_path&lt;/code&gt; command.&lt;/li&gt;
+&lt;li&gt;After taking backup of &lt;span class="caps"&gt;LUKS&lt;/span&gt; Header, all pass-phrases and key-files can be removed from 
+encrypted device by &lt;code&gt;cryptsetup luksErase&lt;/code&gt;. However, this operation may render the device 
+unusable, so it is highly recommended that a backup of header is taken before. Such a 
+device can then be opened using &lt;code&gt;cryptsetup luksOpen --header=header_file_path&lt;/code&gt; command.&lt;/li&gt;
+&lt;li&gt;For an encrypted device, the command &lt;code&gt;cryptsetup -v isLuks &amp;lt;device_path&amp;gt;&lt;/code&gt; give 
+&lt;code&gt;command successful&lt;/code&gt; message (hence, it reveals that device is encrypted with &lt;span class="caps"&gt;LUKS&lt;/span&gt;). If 
+you want to avoid detection, take a backup of header and then run 
+&lt;code&gt;wipefs -a &amp;lt;device_path&amp;gt;&lt;/code&gt; to remove all information about filesystem in encrypted 
+device. After this step, the encrypted drive can only be opened using 
+&lt;code&gt;cryptsetup luksOpen --header=header_file_path&lt;/code&gt; command.&lt;/li&gt;
 &lt;/ol&gt;</content><category term="Software"></category></entry><entry><title>Better sound quality in obs-studio</title><link href="https://mayanksuman.in/posts/30_Aug_2021_better-sound-quality-in-obs-studio/" rel="alternate"></link><published>2021-08-30T00:00:00+05:30</published><updated>2021-08-30T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-08-30:/posts/30_Aug_2021_better-sound-quality-in-obs-studio/</id><content type="html">&lt;p&gt;A extensive guide for audio mixing is presented at
 &lt;a href="https://indiscipline.github.io/post/voice-sound-reference/"&gt;https://indiscipline.github.io/post/voice-sound-reference/&lt;/a&gt;.&lt;/p&gt;</content><category term="Software"></category><category term="obs-studio"></category><category term="audio-recording"></category></entry><entry><title>Hardware-Accelerated Window capture (NVIDIA FBC) in OBS-Studio</title><link href="https://mayanksuman.in/posts/28_Aug_2021_hardware-accelerated-window-capture-nvidia-fbc-in-obs-studio/" rel="alternate"></link><published>2021-08-28T00:00:00+05:30</published><updated>2021-08-28T00:00:00+05:30</updated><author><name>Mayank Suman</name></author><id>tag:mayanksuman.in,2021-08-28:/posts/28_Aug_2021_hardware-accelerated-window-capture-nvidia-fbc-in-obs-studio/</id><summary type="html">&lt;p&gt;For getting hardware-accelerated window capture on obs-studio, first we need to patch the nvidia-driver in using &lt;a href="https://github.com/keylase/nvidia-patch"&gt;https://github.com/keylase/nvidia-patch&lt;/a&gt;. Please note that before applying the patch, please ensure that your driver version is supported. The installed driver version can be seen by issuing &lt;code&gt;nvidia-smi&lt;/code&gt; command.&lt;/p&gt;
 &lt;p&gt;Next, we need …&lt;/p&gt;</summary><content type="html">&lt;p&gt;For getting hardware-accelerated window capture on obs-studio, first we need to patch the nvidia-driver in using &lt;a href="https://github.com/keylase/nvidia-patch"&gt;https://github.com/keylase/nvidia-patch&lt;/a&gt;. Please note that before applying the patch, please ensure that your driver version is supported. The installed driver version can be seen by issuing &lt;code&gt;nvidia-smi&lt;/code&gt; command.&lt;/p&gt;
