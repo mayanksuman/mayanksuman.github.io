@@ -5,9 +5,9 @@ disable_comments: true
 disable_share: true
 ---
 
-I am researcher studying/modeling climate change impacts on hydrological systems, statistical analysis of hydrological time series, and application of wavelet transformation and copula theory in hydroclimatic analysis.
+I am currently working as Assistant Professor at Department of Civil and Infrastructure Engineering, IIT Jodhpur. My research interest lies in studying/modeling climate change impacts on hydrological systems, statistical analysis of hydrological time series, and application of wavelet transformation and copula theory in hydroclimatic analysis.
 
-I have recently completed my Ph.D. on title "Analysis and Modeling of Climate Change Impact on Hydrological Extreme Events across India" (work carried out under the supervision of [Prof. Rajib Maity](http://www.facweb.iitkgp.ac.in/~rajibmaity/), Department of Civil Engineering, Indian Institute of Technology Kharagpur). Earlier, I have received my B.Tech. degree in Civil Engineering from the National Institute of Technology Hamirpur, India, in 2013, and M.Tech. degree in Hydraulics and Water Resources Engineering from Department of Civil Engineering IIT Kharagpur, India, in 2015.
+My Ph.D. thesis was titled "Analysis and Modeling of Climate Change Impact on Hydrological Extreme Events across India" (work carried out under the supervision of [Prof. Rajib Maity](http://www.facweb.iitkgp.ac.in/~rajibmaity/), Department of Civil Engineering, Indian Institute of Technology Kharagpur). I received my M.Tech. degree in Hydraulics and Water Resources Engineering from Department of Civil Engineering IIT Kharagpur, India, in 2015, and, B.Tech. degree in Civil Engineering from the National Institute of Technology Hamirpur, India, in 2013.
 
 More academic details and my list of publication are available in [my Curriculum Vitae]({static}/about/cv.pdf).
 
@@ -19,5 +19,7 @@ More academic details and my list of publication are available in [my Curriculum
 ## Why this site?
 
 This site is meant to my Zettlekasten. Most of the articles are actually my notes or ideas, that I gather with time. However, some of these might be useful to others.
+
+Please note that the any view expressed on this site is personal.
 
 [Contact me]({filename}/pages/contact.md).
