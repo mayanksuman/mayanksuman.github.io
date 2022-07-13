@@ -55,17 +55,24 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333333">
 
-    <meta name="author" content="Mayank Suman" />
-    <meta name="description" content="Mayank Suman's Notes and Random Ideas" />
+<meta name="author" content="Mayank Suman" />
+<meta name="description" content="This is an experimental feature of BlueZ bluetooth stack. To enable the feature edit bluetooth.service and put the ExecStart to be /usr/libexec/bluetooth/bluetoothd --experimental. The file bluetooth.service is present in /lib/systemd/system/ on debian. Otherwise, the file can be edited by issuing command sudo systemctl …" />
+<meta name="keywords" content="">
+
+
 <meta property="og:site_name" content="Mayank Suman's Blog"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="Mayank Suman's Blog"/>
-<meta property="og:description" content="Mayank Suman's Notes and Random Ideas"/>
+<meta property="og:title" content="Enable battery level reporting for bluetooth devices on linux"/>
+<meta property="og:description" content="This is an experimental feature of BlueZ bluetooth stack. To enable the feature edit bluetooth.service and put the ExecStart to be /usr/libexec/bluetooth/bluetoothd --experimental. The file bluetooth.service is present in /lib/systemd/system/ on debian. Otherwise, the file can be edited by issuing command sudo systemctl …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://www.mayanksuman.in"/>
+<meta property="og:url" content="https://www.mayanksuman.in/posts/10_Jul_2022_enable-battery-level-reporting-for-bluetooth-devices-on-linux/"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2022-07-10 00:00:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://www.mayanksuman.in/author/mayank-suman.html">
+<meta property="article:section" content="Software"/>
 <meta property="og:image" content="https://www.mayanksuman.in/images/profile.png">
 
-  <title>Mayank Suman's Blog &ndash; Category Software</title>
+  <title>Mayank Suman's Blog &ndash; Enable battery level reporting for bluetooth devices on linux</title>
 
 </head>
 <body >
@@ -137,119 +144,30 @@
 
     </nav>
 
-
-
-<article>
+<article class="single">
   <header>
-    <h2><a href="https://www.mayanksuman.in/posts/10_Jul_2022_enable-battery-level-reporting-for-bluetooth-devices-on-linux/#enable-battery-level-reporting-for-bluetooth-devices-on-linux">Enable battery level reporting for bluetooth devices on&nbsp;linux</a></h2>
+      
+    <h1 id="enable-battery-level-reporting-for-bluetooth-devices-on-linux">Enable battery level reporting for bluetooth devices on&nbsp;linux</h1>
     <p>
       Posted on Sun 10 July 2022 in <a href="https://www.mayanksuman.in/category/software.html">Software</a>
 
-
-        &#8226; 1 min read
+        &#8226; 1 min read &#8226;
+      
     </p>
   </header>
+
+
   <div>
-      <p>This is an experimental feature of BlueZ bluetooth stack. To enable the feature edit <code>bluetooth.service</code> and put the <code>ExecStart</code> to be <code>/usr/libexec/bluetooth/bluetoothd --experimental</code>.</p>
-<p>The file <code>bluetooth.service</code> is present in <code>/lib/systemd/system/</code> on debian. Otherwise, the file can be edited by issuing command <code>sudo systemctl …</code></p>
-        <br>
-        <a class="btn"
-           href="https://www.mayanksuman.in/posts/10_Jul_2022_enable-battery-level-reporting-for-bluetooth-devices-on-linux/#enable-battery-level-reporting-for-bluetooth-devices-on-linux">
-          Continue reading
-        </a>
+    <p>This is an experimental feature of BlueZ bluetooth stack. To enable the feature edit <code>bluetooth.service</code> and put the <code>ExecStart</code> to be <code>/usr/libexec/bluetooth/bluetoothd --experimental</code>.</p>
+<p>The file <code>bluetooth.service</code> is present in <code>/lib/systemd/system/</code> on debian. Otherwise, the file can be edited by issuing command <code>sudo systemctl edit bluetooth.service</code>.</p>
+<p>After this change restart the bluetooth service by <code>sudo systemctl daemon-reload &amp;&amp; sudo systemctl restart bluetooth</code>. The power status for the device connected via bluetooth should be now visible in power pane of <span class="caps">GNOME</span> Settings application.</p>
   </div>
-  <hr />
+
+
+
+
+
 </article>
-<article>
-  <header>
-    <h2><a href="https://www.mayanksuman.in/posts/21_Nov_2021_create-encrypted-volume-inside-file/#create-encrypted-volume-inside-file">Create Encrypted Volume inside&nbsp;File</a></h2>
-    <p>
-      Posted on Sun 21 November 2021 in <a href="https://www.mayanksuman.in/category/software.html">Software</a>
-
-
-        &#8226; 2 min read
-    </p>
-  </header>
-  <div>
-      <p>Prerequisite: The system should have <code>cryptsetup</code> installed. On debian this can be
-achieved by <code>sudo apt install cryptsetup</code>.</p>
-<p>At first creat the file that will act as encrypted drive/volume. Please ensure that 
-the file should be &gt;=<span class="caps">100MB</span> in size. The file will then be formatted with 
-<code>cryptsetup</code>. This step …</p>
-        <br>
-        <a class="btn"
-           href="https://www.mayanksuman.in/posts/21_Nov_2021_create-encrypted-volume-inside-file/#create-encrypted-volume-inside-file">
-          Continue reading
-        </a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://www.mayanksuman.in/posts/30_Aug_2021_better-sound-quality-in-obs-studio/#better-sound-quality-in-obs-studio">Better sound quality in&nbsp;obs-studio</a></h2>
-    <p>
-      Posted on Mon 30 August 2021 in <a href="https://www.mayanksuman.in/category/software.html">Software</a>
-
-          &#8226; Tagged with
-              <a href="https://www.mayanksuman.in/tag/obs-studio.html">obs-studio</a>,              <a href="https://www.mayanksuman.in/tag/audio-recording.html">audio-recording</a>
-        &#8226; 1 min read
-    </p>
-  </header>
-  <div>
-      <p>A extensive guide for audio mixing is presented at
-<a href="https://indiscipline.github.io/post/voice-sound-reference/">https://indiscipline.github.io/post/voice-sound-reference/</a>.</p>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://www.mayanksuman.in/posts/28_Aug_2021_hardware-accelerated-window-capture-nvidia-fbc-in-obs-studio/#hardware-accelerated-window-capture-nvidia-fbc-in-obs-studio">Hardware-Accelerated Window capture (<span class="caps">NVIDIA</span> <span class="caps">FBC</span>) in <span class="caps">OBS</span>-Studio</a></h2>
-    <p>
-      Posted on Sat 28 August 2021 in <a href="https://www.mayanksuman.in/category/software.html">Software</a>
-
-          &#8226; Tagged with
-              <a href="https://www.mayanksuman.in/tag/obs-studio.html">obs-studio</a>,              <a href="https://www.mayanksuman.in/tag/nvidia.html">nvidia</a>,              <a href="https://www.mayanksuman.in/tag/window-capture.html">window-capture</a>
-        &#8226; 1 min read
-    </p>
-  </header>
-  <div>
-      <p>For getting hardware-accelerated window capture on obs-studio, first we need to patch the nvidia-driver in using <a href="https://github.com/keylase/nvidia-patch">https://github.com/keylase/nvidia-patch</a>. Please note that before applying the patch, please ensure that your driver version is supported. The installed driver version can be seen by issuing <code>nvidia-smi</code> command.</p>
-<p>Next, we need …</p>
-        <br>
-        <a class="btn"
-           href="https://www.mayanksuman.in/posts/28_Aug_2021_hardware-accelerated-window-capture-nvidia-fbc-in-obs-studio/#hardware-accelerated-window-capture-nvidia-fbc-in-obs-studio">
-          Continue reading
-        </a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://www.mayanksuman.in/posts/31_Jan_2021_mounting-qcow2-drive/#mounting-qcow2-drive">Mounting qcow2&nbsp;drive</a></h2>
-    <p>
-      Posted on Sun 31 January 2021 in <a href="https://www.mayanksuman.in/category/software.html">Software</a>
-
-
-        &#8226; 1 min read
-    </p>
-  </header>
-  <div>
-      <p>The qcow2 (or <span class="caps">QEMU</span> copy-on-write) is a virtual disk image format primarly used by <span class="caps">QEMU</span> for guest systems. In many circustances, such as reseting passwords, editting or recovering files etc., mouting a qcow2 disk images without running a guest system is required. This can be acheived by <code>Network Block Device …</code></p>
-        <br>
-        <a class="btn"
-           href="https://www.mayanksuman.in/posts/31_Jan_2021_mounting-qcow2-drive/#mounting-qcow2-drive">
-          Continue reading
-        </a>
-  </div>
-</article>
-
-  <div class="pagination">
-    <a class="btn float-left" href="https://www.mayanksuman.in/category/software2.html">
-      <i class="fa fa-angle-left"></i> Older Posts
-    </a>
-  </div>
-
-
 
     <footer>
 <p>&copy; Mayank Suman 2022</p>
